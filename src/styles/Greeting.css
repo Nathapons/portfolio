@@ -39,13 +39,6 @@
     padding-right: 20px;
 }
 
-.linkedin-style {
-    background-color: blue;
-}
-
-.github-style {
-    color: black
-}
 
 @media only screen and (min-width: 1051px) {
     .greeting-box {

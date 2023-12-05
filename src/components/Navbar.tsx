@@ -17,6 +17,10 @@ const Navbar: React.FC<Props> = (props) => {
         setOpen(false)
     }
 
+    const downloadFile = () => {
+        const pdfUrl: string = ''
+    }
+
     return (
         <nav>
             <Button type="primary" onClick={showDrawer} icon={<AlignLeftOutlined />} className="menu-btn"></Button>

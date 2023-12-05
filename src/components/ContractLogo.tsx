@@ -1,6 +1,8 @@
 import React from 'react'
 import { LinkedinOutlined, GithubOutlined, FacebookOutlined, InstagramOutlined } from '@ant-design/icons';
 
+import '../styles/ContractLogo.css'
+
 const ContractLogo: React.FC = () => {
     const linkedinUrl: string = 'https://www.linkedin.com/in/nuthapon-sripornprasert-a41138213/'
     const githubUrl: string = 'https://github.com/Nathapons'
