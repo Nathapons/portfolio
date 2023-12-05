@@ -1,3 +1,4 @@
-export interface Props {
-    topics: string[]
+export interface TopicType {
+    name: string
+    path: string
 }

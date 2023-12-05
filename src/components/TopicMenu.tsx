@@ -1,15 +1,34 @@
 import { Menu } from "antd";
-import { Props } from "../types/TopicMenu";
 import { Link } from "react-router-dom";
+import { TopicType } from "../types/TopicMenu";
 
-const TopicMenu: React.FC<Props> = (props) => {
-    const { topics } = props
+
+
+const TopicMenu: React.FC = () => {
+    const topics: TopicType[] = [
+        {
+            name: "Profile",
+            path: "/"
+        },
+        {
+            name: "Project",
+            path: "/project"
+        },
+        {
+            name: "Work Experience",
+            path: "/work-experience"
+        },
+        {
+            name: "Skill",
+            path: "/skill"
+        }
+    ]
 
     return (
         <Menu mode="inline">
-            {topics.map((topic, index) => {
+            {topics.map((item, index) => {
                 return (
-                    <Menu.Item key={index}><Link to="/">{topic}</Link></Menu.Item>
+                    <Menu.Item key={index}><Link to={item.path}>{item.name}</Link></Menu.Item>
                 )
             })}
         </Menu>
