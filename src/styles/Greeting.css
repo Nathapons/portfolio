@@ -51,7 +51,7 @@
     .greeting-box {
         display: flex;
         justify-content: space-between;
-        padding: 1.5rem 20rem;
+        padding: 1.5rem 12rem;
     }
 }
 
