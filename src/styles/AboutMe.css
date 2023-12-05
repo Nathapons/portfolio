@@ -1,0 +1,28 @@
+.about-me-theme {
+    background-color: #2f5c9f;
+    color: white;
+}
+
+.about-me-box {
+    padding: 1.5rem 20rem;
+}
+
+.about-me-title {
+    text-align: center;
+    text-decoration: underline;
+}
+
+.about-me-desc {
+    align-items: center;
+    font-size: 1.2rem;
+}
+
+@media only screen and (max-width: 1050px) {
+    .about-me-box {
+        margin-top: 10px;
+        padding: 0.1rem 1rem 0.1rem 1rem;
+    }
+    .about-me-desc {
+        padding-bottom: 0.5rem;
+    }
+}

@@ -1,0 +1,25 @@
+.image-container {
+    width: 100%;
+}
+
+.my-profile {
+    border-radius: 3.125rem;
+    height: auto;
+    width: 500px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    0% {opacity: 0;}
+    25% {opacity: 0.25;}
+    50% {opacity: 0.5;}
+    100% {opacity: 1;}
+}
+
+@media only screen and (max-width: 1050px) {
+    .my-profile {
+        display: flex;
+        margin: 0 auto;
+        width: 300px
+    }
+}

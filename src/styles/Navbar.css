@@ -1,0 +1,14 @@
+nav {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.menu-btn {
+    margin-left: 10px;
+}
+
+.resume-btn {
+    margin-right: 10px
+}

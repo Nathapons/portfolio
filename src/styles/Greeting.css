@@ -1,0 +1,78 @@
+.greeting-box {
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f0f0f0;
+}
+
+.greeting-text {
+    font-size: 2.5rem;
+}
+
+.position-text {
+    font-size: 2.5rem;
+    color: rgb(1, 150, 1);
+    font-style: italic;
+}
+
+.role-text {
+    font-size: 1rem;
+}
+
+.hand-pic {
+    vertical-align: middle;
+}
+
+.role-text {
+    font-size: 1.2rem;
+}
+
+.profile-btn {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.icon-group {
+    padding-top: 30px;
+    font-size: 30px;
+}
+.icon-group a {
+    padding-right: 20px;
+}
+
+.linkedin-style {
+    background-color: blue;
+}
+
+.github-style {
+    color: black
+}
+
+@media only screen and (min-width: 1051px) {
+    .greeting-box {
+        display: flex;
+        justify-content: space-between;
+        padding: 1.5rem 20rem;
+    }
+}
+
+@media only screen and (max-width: 1050px) {
+    .greeting-box {
+        padding-top: 20px;
+        margin-bottom: 20px;
+    }
+    .greeting-pic {
+        display: flex;
+        justify-content: center;
+    }
+    .greeting-sub-box {
+        text-align: center;
+    }
+
+    .greeting-text {
+        font-size: 1.5rem;
+    }
+
+    .position-text  {
+        font-size: 1.5rem;
+    }
+}
