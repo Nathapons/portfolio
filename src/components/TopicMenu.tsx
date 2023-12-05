@@ -8,7 +8,7 @@ const TopicMenu: React.FC<Props> = (props) => {
         <Menu mode="inline">
             {topics.map((topic, index) => {
                 return (
-                    <Menu.Item key={index}>{topic}</Menu.Item>
+                    <Menu.Item key={index}><a href="https://www.google.co.th/?hl=th">{topic}</a></Menu.Item>
                 )
             })}
         </Menu>

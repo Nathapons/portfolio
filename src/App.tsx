@@ -1,16 +1,30 @@
-import { RouterProvider, createBrowserRouter } from "react-router-dom"
-import Home from "./pages/Home"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import React from "react"
 
-function App() {
-    const router = createBrowserRouter([
-      {
-        path: "/",
-        element: <Home />
-      }
-    ])
+import Home from "./pages/Home"
+import Profile from "./pages/Profile"
+import TopicMenu from "./components/TopicMenu"
+import Navbar from "./components/Navbar"
+import WorkExperience from "./pages/WorkExperience"
+import Skill from "./pages/Skill"
+import Project from "./pages/Project"
+
+
+const App: React.FC = () => {
+  const topics = ["Profile", "Project", "Work Experience", "Project", "Skill"]
+  const Menu = <TopicMenu topics={topics} />
 
     return (
-      <RouterProvider router={router} />
+      <BrowserRouter>
+        <Navbar menu={Menu} />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/project" element={<Project />} />
+          <Route path="/work-experience" element={<WorkExperience />} />
+          <Route path="/skill" element={<Skill />} />
+        </Routes>
+      </BrowserRouter>
     )
 }
 

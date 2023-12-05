@@ -21,7 +21,7 @@ const Navbar: React.FC<Props> = (props) => {
         <nav>
             <Button type="primary" onClick={showDrawer} icon={<AlignLeftOutlined />} className="menu-btn"></Button>
             <Drawer
-                title="Portfolio"
+                title="Nathapon Portfolio"
                 placement="left"
                 onClose={onClose}
                 open={open}
