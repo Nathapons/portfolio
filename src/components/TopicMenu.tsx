@@ -4,7 +4,7 @@ import { TopicType } from "../types/TopicMenu";
 
 
 
-const TopicMenu: React.FC = () => {
+const TopicMenu = () => {
     const topics: TopicType[] = [
         {
             name: "Profile",

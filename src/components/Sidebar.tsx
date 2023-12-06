@@ -2,7 +2,7 @@ import React from 'react';
 import { Menu } from 'antd';
 import { HomeOutlined, UserOutlined, SettingOutlined } from '@ant-design/icons';
 
-const Sidebar: React.FC = () => {
+const Sidebar = () => {
   return (
     <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
       <Menu.Item key="1" icon={<HomeOutlined />}>

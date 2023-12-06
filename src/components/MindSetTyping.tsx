@@ -2,10 +2,8 @@ import React from 'react'
 
 import Typewriter from 'typewriter-effect'
 
-import { Props } from '../types/MindSetTyping'
 
-
-const MindSetTyping: React.FC<Props> = (props) => {
+const MindSetTyping = (props) => {
     const name: string[] = props.name
     return (
         <Typewriter

@@ -5,7 +5,7 @@ import '../styles/ContractLogo.css'
 import { ContractGroupType } from '../types/ContractLogo';
 import { Link } from 'react-router-dom';
 
-const ContractLogo: React.FC = () => {
+const ContractLogo = () => {
     const linkedinUrl: string = 'https://www.linkedin.com/in/nuthapon-sripornprasert-a41138213/'
     const githubUrl: string = 'https://github.com/Nathapons'
     const facebookUrl: string = 'https://www.facebook.com/nax.seekid/?locale=th_TH'

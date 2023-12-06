@@ -8,7 +8,7 @@ import Pdf from '../assets/Nuthapon.Resume.pdf'
 import '../styles/Navbar.css'
 
 
-const Navbar: React.FC<Props> = (props) => {
+const Navbar = (props) => {
     const { menu } = props;
     const [open, setOpen] = useState(false);
 

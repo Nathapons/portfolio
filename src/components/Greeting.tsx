@@ -5,7 +5,7 @@ import MindSetTyping from './MindSetTyping';
 
 import '../styles/Greeting.css'
 
-const Greeting: React.FC = () => {
+const Greeting = () => {
     const name: string[] = [
         '<strong>GROWTH MINDSET</strong>',
         '<strong>LEANING PROGRAM</strong>',
