@@ -1,4 +1,3 @@
-import React from 'react';
 import { Menu } from 'antd';
 import { HomeOutlined, UserOutlined, SettingOutlined } from '@ant-design/icons';
 

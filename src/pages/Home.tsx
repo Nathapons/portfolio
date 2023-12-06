@@ -1,4 +1,3 @@
-import React from 'react'
 import { Layout } from 'antd'
 import { Content } from 'antd/es/layout/layout'
 
@@ -7,7 +6,7 @@ import AboutMe from '../components/AboutMe'
 
 import '../styles/Home.css'
 
-const Home: React.FC = () => {
+const Home = () => {
 
   return (
     <div>

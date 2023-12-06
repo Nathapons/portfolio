@@ -1,6 +1,4 @@
-import React from 'react'
-
-const WorkExperience: React.FC = () => {
+const WorkExperience = () => {
   return (
     <div>
       WorkExperience

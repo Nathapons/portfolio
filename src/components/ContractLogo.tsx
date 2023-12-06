@@ -1,4 +1,3 @@
-import React from 'react'
 import { LinkedinOutlined, GithubOutlined, FacebookOutlined, InstagramOutlined } from '@ant-design/icons';
 
 import '../styles/ContractLogo.css'

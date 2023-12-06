@@ -1,6 +1,4 @@
-import React from 'react'
-
-const Skill: React.FC = () => {
+const Skill = () => {
     return (
         <div>
         Skill

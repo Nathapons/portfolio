@@ -1,5 +1,4 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import React from "react"
 
 import Home from "./pages/Home"
 import TopicMenu from "./components/TopicMenu"
@@ -8,7 +7,7 @@ import WorkExperience from "./pages/WorkExperience"
 import Skill from "./pages/Skill"
 import Project from "./pages/Project"
 
-const App: React.FC = () => {
+const App = () => {
   const Menu = <TopicMenu />
 
     return (
