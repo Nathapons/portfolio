@@ -1,8 +1,11 @@
 import Typewriter from 'typewriter-effect'
 
 
-const MindSetTyping = (props) => {
-    const name: string[] = props.name
+interface Props {
+    name: string[]
+}
+
+const MindSetTyping = ({ name }: Props) => {
     return (
         <Typewriter
             options={{

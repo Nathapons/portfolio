@@ -1,8 +1,12 @@
 import { LinkedinOutlined, GithubOutlined, FacebookOutlined, InstagramOutlined } from '@ant-design/icons';
 
 import '../styles/ContractLogo.css'
-import { ContractGroupType } from '../types/ContractLogo';
 import { Link } from 'react-router-dom';
+
+interface ContractGroupType {
+    url: string
+    icon: any
+}
 
 const ContractLogo = () => {
     const linkedinUrl: string = 'https://www.linkedin.com/in/nuthapon-sripornprasert-a41138213/'
