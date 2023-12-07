@@ -1,0 +1,17 @@
+h2 {
+    text-align: center;
+}
+
+.collapse {
+    background-color: blue;
+    font-weight: bold;
+    border: 1px;
+}
+
+.item-panel {
+    color: white;
+}
+
+.icon-style {
+    font-size: 30px;
+}
