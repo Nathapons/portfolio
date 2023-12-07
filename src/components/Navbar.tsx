@@ -31,7 +31,7 @@ const Navbar = ({ menu }: Props) => {
         <nav>
             <Button type="primary" onClick={showDrawer} icon={<AlignLeftOutlined />} className="menu-btn"></Button>
             <Drawer
-                title="Nathapon Portfolio"
+                title="Nuthapon Portfolio"
                 placement="left"
                 onClick={clickMenu}
                 onClose={onClose}
