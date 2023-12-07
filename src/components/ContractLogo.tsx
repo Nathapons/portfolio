@@ -37,7 +37,7 @@ const ContractLogo = () => {
         <div className='icon-group'>
             {contractGroup.map((item, index) => {
                 return (
-                    <Link to={item.url} key={index}>{item.icon}</Link>
+                    <Link to={item.url} key={index} target='_blank'>{item.icon}</Link>
                 )
             })}
         </div>
