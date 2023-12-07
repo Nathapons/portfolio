@@ -23,12 +23,17 @@ const Navbar = ({ menu }: Props) => {
         setOpen(false)
     }
 
+    const clickMenu = () => {
+        setOpen(false)
+    }
+
     return (
         <nav>
             <Button type="primary" onClick={showDrawer} icon={<AlignLeftOutlined />} className="menu-btn"></Button>
             <Drawer
                 title="Nathapon Portfolio"
                 placement="left"
+                onClick={clickMenu}
                 onClose={onClose}
                 open={open}
             >{menu}</Drawer>
