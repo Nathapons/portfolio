@@ -7,6 +7,7 @@ import WorkExperience from "./pages/WorkExperience"
 import Skill from "./pages/Skill"
 import Project from "./pages/Project"
 
+
 const App = () => {
   const Menu = <TopicMenu />
 
