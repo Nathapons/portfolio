@@ -1,7 +1,9 @@
+import SkillAccordion from "../components/SkillAccordion"
+
 const Skill = () => {
     return (
         <div>
-        Skill
+            <SkillAccordion />
         </div>
     )
 }
