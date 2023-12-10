@@ -1,9 +1,13 @@
 import '../styles/MyPic.css'
 
-const MyPic = () => {
-    const my_profile: string = 'https://res.cloudinary.com/dizcg5fnc/image/upload/v1701619719/upload/kqc8rgleicctewcci0cv.jpg'
+interface Props {
+    img: string
+    classname: string
+}
+
+const MyPic = ({img, classname}: Props) => {
     return (
-        <img src={my_profile} alt="My profile" className="my-profile" />
+        <img src={img} alt="My profile" className={classname} />
     )
 }
 

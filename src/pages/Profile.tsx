@@ -1,15 +1,12 @@
-import { Flex } from "antd";
+import { Row, Col } from "antd";
 
 const Profile = () => {
     return (
-        <Flex>
-            <div>
+        <Row>
+            <Col>
                 
-            </div>
-            <div>
-                <h3>Nuthapon Sripornprasert</h3>
-            </div>
-        </Flex>
+            </Col>
+        </Row>
     )
 }
 

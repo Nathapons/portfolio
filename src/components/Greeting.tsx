@@ -11,10 +11,12 @@ const Greeting = () => {
         '<strong>LEANING PROGRAM</strong>',
         '<strong>SELF-MOTIVATION</strong>',
     ]
+    const img: string = "https://res.cloudinary.com/dizcg5fnc/image/upload/v1701619719/upload/kqc8rgleicctewcci0cv.jpg"
+    const classname :string = "my-profile"
 
     return (
         <div className="greeting-box">
-            <MyPic />
+            <MyPic img={img} classname={classname} />
             <div className="greeting-sub-box">
                 <h1 className="greeting-text">Hi, I am Nuthapon Sripornprasert</h1>
                 <h1 className="position-text">Software Engineering</h1>
