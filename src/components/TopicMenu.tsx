@@ -9,16 +9,24 @@ interface TopicType {
 const TopicMenu = () => {
     const topics: TopicType[] = [
         {
-            name: "Profile",
+            name: "About me",
             path: "/"
         },
         {
-            name: "Project",
-            path: "/project"
+            name: "Profile",
+            path: "/profile"
+        },
+        {
+            name: "Education",
+            path: "/education"
         },
         {
             name: "Work Experience",
             path: "/work-experience"
+        },
+        {
+            name: "Project",
+            path: "/project"
         },
         {
             name: "Skill",

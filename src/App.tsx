@@ -6,6 +6,8 @@ import Navbar from "./components/Navbar"
 import WorkExperience from "./pages/WorkExperience"
 import Skill from "./pages/Skill"
 import Project from "./pages/Project"
+import Education from "./pages/Education"
+import Profile from "./pages/Profile"
 
 
 const App = () => {
@@ -16,7 +18,9 @@ const App = () => {
         <Navbar menu={Menu} />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="profile" element={<Profile />} />
           <Route path="/project" element={<Project />} />
+          <Route path="/education" element={<Education />} />
           <Route path="/work-experience" element={<WorkExperience />} />
           <Route path="/skill" element={<Skill />} />
         </Routes>
