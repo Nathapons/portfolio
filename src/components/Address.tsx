@@ -1,5 +1,3 @@
-import { Flex } from "antd";
-
 import { PiBuildings } from "react-icons/pi";
 import { IoLocation } from "react-icons/io5";
 import { TbMail } from "react-icons/tb";
