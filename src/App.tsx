@@ -9,6 +9,7 @@ import Project from "./pages/Project"
 import Education from "./pages/Education"
 import Profile from "./pages/Profile"
 import Certificate from "./pages/Certificate"
+import Contract from "./pages/Contract"
 
 
 const App = () => {
@@ -25,6 +26,7 @@ const App = () => {
           <Route path="/work-experience" element={<WorkExperience />} />
           <Route path="/certificate" element={<Certificate />} />
           <Route path="/skill" element={<Skill />} />
+          <Route path="contract" element={<Contract />} />
         </Routes>
       </BrowserRouter>
     )
