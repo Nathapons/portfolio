@@ -1,9 +1,12 @@
-.profile-box {
+.row {
     margin-top: 20px;
+    border: 1px solid gray;
+    border-radius: 20px;
+    padding: 10px;
 }
 
 @media only screen and (min-width: 1051px) {
-    .profile-box {
+    .row {
         display: flex;
         justify-content: space-between;
         margin-right: 50px;
@@ -13,8 +16,7 @@
 
 
 @media only screen and (max-width: 1051px) {
-    .profile-box div {
-        padding-top: 10px;
-        border-bottom: 1px solid gray;
+    .column {
+        flex: 100% !important;
     }
 }

@@ -1,5 +1,5 @@
 import { Button, Drawer } from 'antd';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { AlignLeftOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 
@@ -12,7 +12,7 @@ interface Props {
 }
 
 
-const Navbar = ({ menu }: Props) => {
+const Navbar: React.FC = ({ menu }: Props) => {
     const [open, setOpen] = useState(false);
 
     const showDrawer = () => {

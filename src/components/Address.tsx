@@ -1,8 +1,9 @@
 import { PiBuildings } from "react-icons/pi";
 import { IoLocation } from "react-icons/io5";
 import { TbMail } from "react-icons/tb";
+import React from "react";
 
-const Address = () => {
+const Address: React.FC = () => {
     return (
         <div>
             <p><PiBuildings /> Swift Dynamics Co., Ltd.</p>

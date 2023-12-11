@@ -6,7 +6,7 @@ interface TopicType {
     path: string
 }
 
-const TopicMenu = () => {
+const TopicMenu: React.FC = () => {
     const topics: TopicType[] = [
         {
             name: "About me",

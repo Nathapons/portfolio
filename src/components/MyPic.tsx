@@ -1,3 +1,4 @@
+import React from 'react'
 import '../styles/MyPic.css'
 
 interface Props {
@@ -5,7 +6,7 @@ interface Props {
     classname: string
 }
 
-const MyPic = ({img, classname}: Props) => {
+const MyPic: React.FC = ({img, classname}: Props) => {
     return (
         <img src={img} alt="My profile" className={classname} />
     )

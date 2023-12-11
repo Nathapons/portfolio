@@ -1,4 +1,4 @@
-const WorkExperience = () => {
+const WorkExperience: React.FC = () => {
   return (
     <div>
       WorkExperience

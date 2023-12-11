@@ -2,10 +2,11 @@ import { Collapse, Flex } from "antd";
 
 import details from '../datas/SkillAccordion.json'
 import '../styles/SkillAccordion.css'
+import React from "react";
 
 const { Panel } = Collapse;
 
-const SkillAccordion = () => {
+const SkillAccordion: React.FC = () => {
     const activeKey = details.map((_, index) => index)
 
     return (

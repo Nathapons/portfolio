@@ -1,6 +1,6 @@
 import '../styles/AboutMe.css'
 
-const AboutMe = () => {
+const AboutMe: React.FC = () => {
     return (
         <div className='about-me-theme'>
             <div className='about-me-box'>

@@ -5,8 +5,9 @@ import Greeting from '../components/Greeting'
 import AboutMe from '../components/AboutMe'
 
 import '../styles/Home.css'
+import React from 'react'
 
-const Home = () => {
+const Home: React.FC = () => {
 
   return (
     <div>

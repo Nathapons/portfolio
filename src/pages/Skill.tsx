@@ -1,6 +1,6 @@
 import SkillAccordion from "../components/SkillAccordion"
 
-const Skill = () => {
+const Skill: React.FC = () => {
     return (
         <div>
             <SkillAccordion />
