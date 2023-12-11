@@ -1,0 +1,7 @@
+@media only screen and (max-width: 1051px) {
+    .github-ctn {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+    }
+}

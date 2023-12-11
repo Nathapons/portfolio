@@ -2,6 +2,8 @@ import { useEffect, useState } from "react"
 import { Button } from "antd"
 import axios from "axios"
 
+import '../styles/GithubAbout.css'
+
 
 const GithubAbout = () => {
     const [name, setName] = useState<string>("");
@@ -21,12 +23,16 @@ const GithubAbout = () => {
     }, [])
 
     return (
-        <div>
-            <Button type="primary" className="connect-btn">Connect</Button>
-            <h3>Nuthapon Sripornprasert</h3>
-            <p className="react-name">{name}</p>
-            <p>Member since {createdAt.getFullYear()}</p>
-            <p>Follower {followers} {followers>1? "people": "person"}</p>
+        <div className="github-ctn">
+            <div>
+                <Button type="primary" className="connect-btn">Connect</Button>
+            </div>
+            <div>
+                <h3>Nuthapon Sripornprasert</h3>
+                <p className="react-name">{name}</p>
+                <p>Member since {createdAt.getFullYear()}</p>
+                <p>Follower {followers} {followers>1? "people": "person"}</p>
+            </div>
         </div>
     )
 }
