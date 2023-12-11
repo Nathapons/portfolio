@@ -12,7 +12,7 @@ const Profile = () => {
     return (
         <>
             <Row className="row">
-                <Col flex="1 0 25%" className="column"><MyPic img={img} classname={classname} /></Col>
+                <Col flex="1 0 25%" className="column-pic"><MyPic img={img} classname={classname} /></Col>
                 <Col flex="1 0 25%" className="column"><GithubAbout /></Col>
                 <Col flex="1 0 25%" className="column"><Address /></Col>
                 <Col flex="1 0 25%" className="column"><TechStack /></Col>

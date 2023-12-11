@@ -17,6 +17,11 @@
 
 
 @media only screen and (max-width: 1051px) {
+    .column-pic {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
     .column {
         flex: 100% !important;
     }

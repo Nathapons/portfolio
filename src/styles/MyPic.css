@@ -27,6 +27,6 @@
     .my-profile {
         display: flex;
         margin: 0 auto;
-        width: 300px
+        width: 300px;
     }
 }
