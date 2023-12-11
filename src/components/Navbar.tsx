@@ -1,18 +1,13 @@
 import { Button, Drawer } from 'antd';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { AlignLeftOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 
 import Pdf from '../assets/Nuthapon.Resume.pdf'
 import '../styles/Navbar.css'
+import { Props } from '../types/Navbar';
 
-
-interface Props {
-    menu: any
-}
-
-
-const Navbar: React.FC = ({ menu }: Props) => {
+const Navbar = ({ menu }: Props) => {
     const [open, setOpen] = useState(false);
 
     const showDrawer = () => {

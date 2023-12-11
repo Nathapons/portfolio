@@ -1,10 +1,6 @@
 import { Menu } from "antd";
 import { Link } from "react-router-dom";
-
-interface TopicType {
-    name: string
-    path: string
-}
+import { TopicType } from "../types/TopicMenu";
 
 const TopicMenu: React.FC = () => {
     const topics: TopicType[] = [

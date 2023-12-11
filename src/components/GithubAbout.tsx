@@ -3,7 +3,7 @@ import { Button } from "antd"
 import axios from "axios"
 
 
-const GithubAbout: React.FC = () => {
+const GithubAbout = () => {
     const [name, setName] = useState<string>("");
     const [createdAt, setCreatedAt] = useState<Date>(new Date());
     const [followers, setFollowers] = useState<number>(0);

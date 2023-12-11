@@ -4,9 +4,8 @@ import ContractLogo from './ContractLogo';
 import MindSetTyping from './MindSetTyping';
 
 import '../styles/Greeting.css'
-import React from "react";
 
-const Greeting: React.FC = () => {
+const Greeting = () => {
     const name: string[] = [
         '<strong>GROWTH MINDSET</strong>',
         '<strong>LEANING PROGRAM</strong>',
