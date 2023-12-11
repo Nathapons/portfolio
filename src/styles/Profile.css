@@ -13,6 +13,12 @@
         margin-right: 50px;
         margin-left: 50px;
     }
+    .column-pic {
+        flex: 25% !important;
+    }
+    .column {
+        flex: 25% !important;
+    }
 }
 
 
@@ -21,8 +27,5 @@
         display: flex;
         justify-content: center;
         margin-bottom: 20px;
-    }
-    .column {
-        flex: 100% !important;
     }
 }
