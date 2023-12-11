@@ -8,6 +8,7 @@ import Skill from "./pages/Skill"
 import Project from "./pages/Project"
 import Education from "./pages/Education"
 import Profile from "./pages/Profile"
+import Certificate from "./pages/Certificate"
 
 
 const App = () => {
@@ -22,6 +23,7 @@ const App = () => {
           <Route path="/project" element={<Project />} />
           <Route path="/education" element={<Education />} />
           <Route path="/work-experience" element={<WorkExperience />} />
+          <Route path="/certificate" element={<Certificate />} />
           <Route path="/skill" element={<Skill />} />
         </Routes>
       </BrowserRouter>

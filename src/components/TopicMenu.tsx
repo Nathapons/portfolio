@@ -27,6 +27,10 @@ const TopicMenu: React.FC = () => {
         {
             name: "Skill",
             path: "/skill"
+        },
+        {
+            name: "Certificate",
+            path: "/certificate"
         }
     ]
 
