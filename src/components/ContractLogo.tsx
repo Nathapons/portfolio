@@ -1,6 +1,5 @@
 import { LinkedinOutlined, GithubOutlined, FacebookOutlined, InstagramOutlined } from '@ant-design/icons';
 
-import '../styles/ContractLogo.css'
 import { Link } from 'react-router-dom';
 import { ContractGroupType } from '../types/ContractLogo';
 
@@ -13,19 +12,19 @@ const ContractLogo = () => {
     const contractGroup: ContractGroupType[] = [
         {
             url: facebookUrl,
-            icon: <FacebookOutlined className="fb-icon" />
+            icon: <FacebookOutlined className="fb-icon" style={{color: "#1677ff"}}/>
         },
         {
             url: githubUrl,
-            icon: <GithubOutlined className="github-icon" />
+            icon: <GithubOutlined className="github-icon" style={{color: "black"}}/>
         },
         {
             url: linkedinUrl,
-            icon: <LinkedinOutlined className="linkedin-icon" />
+            icon: <LinkedinOutlined className="linkedin-icon" style={{color: "#1677ff"}}/>
         },
         {
             url: instragramUrl,
-            icon: <InstagramOutlined className="ig-icon" />
+            icon: <InstagramOutlined style={{color: "rgb(240, 6, 45)"}}/>
         }
     ]
 
