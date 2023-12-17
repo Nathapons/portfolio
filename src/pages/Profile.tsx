@@ -13,8 +13,9 @@ const ProfileRow = styled(Row)`
     border-radius: 20px;
     background-color: #f0f0f0;
     justify-content: center;
+    
 
-    @media (min-width: 1051) {
+    @media (min-width: 800px) {
         margin-right: 50px;
         margin-left: 50px;
     }
@@ -31,7 +32,7 @@ const Profile = () => {
     const img: string = "https://res.cloudinary.com/dizcg5fnc/image/upload/v1701619719/upload/kqc8rgleicctewcci0cv.jpg"
 
     return (
-        <ProfileRow gutter={[20, 20]}>
+        <ProfileRow gutter={[20, 20]} >
             <ColumnPic xl={6} lg={6} md={24} sm={24}><Image src={img} width={300} style={{borderRadius: "10px"}} preview={false}/></ColumnPic>
             <Col xl={6} lg={6} md={24} sm={24} flex="1 0 100%"><GithubAbout /></Col>
             <Col xl={6} lg={6} md={24} sm={24} flex="1 0 100%"><Address /></Col>
