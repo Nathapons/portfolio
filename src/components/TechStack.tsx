@@ -1,5 +1,5 @@
 import React from "react"
-import { Col, Row } from "antd"
+import { Flex, Image, Space } from "antd"
 
 import myStacks from '../datas/TechStack.json'
 import '../styles/TechStack.css'
@@ -8,11 +8,14 @@ import '../styles/TechStack.css'
 const TechStack: React.FC = () => {
     return (
         <>
-            <h3>Tech stack</h3>
+            <h3 style={{marginBottom: "10px"}}>Tech stack</h3>
             {myStacks.map((item, index) => (
-                <Row key={index} className="tech-row" justify="space-between">
-                    <Col className="tech-col" ><img src={item.src} alt={item.src} className="icon-img"/><span className="text-ctn">{item.alt}</span></Col>
-                </Row>
+                <Flex key={index} style={{paddingTop: "10px"}} gap="small">
+                    <Space>
+                        <Image src={item.src} alt={item.src} width={50} preview={false} />
+                        <Flex style={{marginLeft: "20px"}}>{item.alt}</Flex>
+                    </Space>
+                </Flex>
             ))}
         </>
     )
