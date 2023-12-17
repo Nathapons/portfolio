@@ -1,11 +1,11 @@
 import Typewriter from 'typewriter-effect'
-import { Col, Image, Row } from "antd";
+import { Col, Row } from "antd";
 import styled from "styled-components";
 
 import ContractLogo from './ContractLogo';
 
-const CustomImage = styled(Image)`
-    width: 300px;
+const CustomImage = styled.img`
+    width: 400px;
     border-radius: 3.125rem;
     animation: fadeIn 2s ease-in-out;
 
@@ -19,6 +19,7 @@ const CustomImage = styled(Image)`
     @media (max-width: 1050px) {
         display: flex;
         justify-content: center;
+        width: 300px;
     }
 `
 const GreetingBox = styled(Row)`
@@ -76,7 +77,7 @@ const Greeting = () => {
 
     return (
         <GreetingBox gutter={[30, 30]}>
-            <Col><CustomImage src={img} preview={false} width={300}/></Col>
+            <Col><CustomImage src={img} alt="profile-img" /></Col>
             <Col>
                 <GreetingSubBox>
                     <GreetingText>Hi, I am Nuthapon Sripornprasert</GreetingText>
