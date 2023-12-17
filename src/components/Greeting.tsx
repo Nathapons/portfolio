@@ -76,7 +76,7 @@ const Greeting = () => {
 
     return (
         <GreetingBox gutter={[30, 30]}>
-            <Col><CustomImage src={img} preview={false} width={400}/></Col>
+            <Col><CustomImage src={img} preview={false} width={300}/></Col>
             <Col>
                 <GreetingSubBox>
                     <GreetingText>Hi, I am Nuthapon Sripornprasert</GreetingText>
