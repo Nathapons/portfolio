@@ -34,7 +34,7 @@ const GreetingBox = styled(Row)`
     }
 
     @media (min-width: 1050px) {
-        padding: 1.5rem 12rem;
+        padding: 24px 192px;
     }
 `
 const GreetingSubBox = styled.div`
