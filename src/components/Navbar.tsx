@@ -1,10 +1,9 @@
-import { Button, Drawer } from 'antd';
+import { Button, Drawer, Flex } from 'antd';
 import { useState } from 'react';
 import { AlignLeftOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 
 import Pdf from '../assets/Nuthapon.Resume.pdf'
-import '../styles/Navbar.css'
 import { Props } from '../types/Navbar';
 
 const Navbar = ({ menu }: Props) => {
@@ -23,8 +22,8 @@ const Navbar = ({ menu }: Props) => {
     }
 
     return (
-        <nav>
-            <Button type="primary" onClick={showDrawer} icon={<AlignLeftOutlined />} className="menu-btn"></Button>
+        <Flex style={{justifyContent: "space-between", marginBottom: "10px", marginTop: "10px"}}>
+            <Button type="primary" onClick={showDrawer} icon={<AlignLeftOutlined />} style={{marginLeft: "10px"}}></Button>
             <Drawer
                 title="Nuthapon Portfolio"
                 placement="left"
@@ -33,9 +32,9 @@ const Navbar = ({ menu }: Props) => {
                 open={open}
             >{menu}</Drawer>
             <Link to={Pdf} download="Nuthapon-Resume" target='_blank' rel='noreferrer'>
-                <Button type="primary" className="resume-btn">Resume</Button>
+                <Button type="primary" style={{marginRight: "10px"}}>Resume</Button>
             </Link>
-        </nav>
+        </Flex>
     )
 }
 

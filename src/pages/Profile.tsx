@@ -1,26 +1,44 @@
-import { Col, Row } from "antd";
+import { Col, Image, Row } from "antd";
 
-import MyPic from "../components/MyPic";
 import Address from "../components/Address";
 import GithubAbout from "../components/GithubAbout";
 import TechStack from "../components/TechStack";
 
-import '../styles/Profile.css'
+import styled from "styled-components";
 
+
+const ProfileRow = styled(Row)`
+    border-radius: 20px;
+    justify-content: center;
+    
+    @media (min-width: 1051px) {
+        margin: 20px 30px 0px 30px;
+        border: 1px solid #bfbfbf;
+        padding: 20px;
+    }
+
+    @media (max-width: 1051px) {
+        padding: 10px;
+    }
+`
+
+const ColumnPic = styled(Col)`
+    @media (max-width: 1051px) {
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+`
 
 const Profile = () => {
     const img: string = "https://res.cloudinary.com/dizcg5fnc/image/upload/v1701619719/upload/kqc8rgleicctewcci0cv.jpg"
-    const classname: string = "my-profile2"
 
     return (
-        <>
-            <Row className="row">
-                <Col flex="1 0 100%" className="column-pic"><MyPic img={img} classname={classname} /></Col>
-                <Col flex="1 0 100%" className="column"><GithubAbout /></Col>
-                <Col flex="1 0 100%" className="column"><Address /></Col>
-                <Col flex="1 0 100%" className="column"><TechStack /></Col>
-            </Row>
-        </>
+        <ProfileRow >
+            <ColumnPic xl={6} lg={6} md={24} sm={24}><Image src={img} width={300} style={{borderRadius: "10px"}} preview={false}/></ColumnPic>
+            <Col xl={6} lg={6} md={24} sm={24} flex="1 0 100%"><GithubAbout /></Col>
+            <Col xl={6} lg={6} md={24} sm={24} flex="1 0 100%"><Address /></Col>
+            <Col xl={6} lg={6} md={24} sm={24} flex="1 0 100%"><TechStack /></Col>
+        </ProfileRow>
     )
 }
 

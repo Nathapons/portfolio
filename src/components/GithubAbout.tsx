@@ -2,15 +2,21 @@ import { useEffect, useState } from "react"
 import { Button } from "antd"
 import axios from "axios"
 
-import '../styles/GithubAbout.css'
-import { useNavigate } from "react-router-dom"
+import styled from "styled-components"
+
+const GithubDiv = styled.div`
+    @media (max-width: 1051px) {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+    }
+`
 
 
 const GithubAbout = () => {
     const [name, setName] = useState<string>("");
     const [createdAt, setCreatedAt] = useState<Date>(new Date());
     const [followers, setFollowers] = useState<number>(0);
-    const navigate = useNavigate();
 
     useEffect(() => {
         const headers = {"Authorization": `Bearer ${import.meta.env.VITE_GITHUB_TOKEN}`}
@@ -25,13 +31,13 @@ const GithubAbout = () => {
     }, [])
 
     const btnClick = () => {
-        navigate('/contract')
+        alert("Connect page is inprocess")
     }
 
     return (
-        <div className="github-ctn">
+        <GithubDiv>
             <div>
-                <Button type="primary" className="connect-btn" onClick={btnClick}>Connect</Button>
+                <Button type="primary" onClick={btnClick}>Connect</Button>
             </div>
             <div>
                 <h3>Nuthapon Sripornprasert</h3>
@@ -39,7 +45,7 @@ const GithubAbout = () => {
                 <p>Member since {createdAt.getFullYear()}</p>
                 <p>Follower {followers} {followers>1? "people": "person"}</p>
             </div>
-        </div>
+        </GithubDiv>
     )
 }
 
