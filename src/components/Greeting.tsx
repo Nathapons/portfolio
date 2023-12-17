@@ -4,8 +4,7 @@ import styled from "styled-components";
 
 import ContractLogo from './ContractLogo';
 
-
-export const CustomImage = styled(Image)`
+const CustomImage = styled(Image)`
     width: 300px;
     border-radius: 3.125rem;
     animation: fadeIn 2s ease-in-out;
@@ -22,8 +21,7 @@ export const CustomImage = styled(Image)`
         justify-content: center;
     }
 `
-
-export const GreetingBox = styled(Row)`
+const GreetingBox = styled(Row)`
     justify-content: space-between;
     align-items: center;
     background-color: #f0f0f0;
@@ -39,23 +37,20 @@ export const GreetingBox = styled(Row)`
         padding: 1.5rem 12rem;
     }
 `
-
-export const GreetingSubBox = styled.div`
+const GreetingSubBox = styled.div`
     @media (max-width: 1050px) {
         text-align: center;
         justify-content: center;
     }
 `
-
-export const GreetingText = styled.h1`
+const GreetingText = styled.h1`
     font-size: 40px;
 
     @media (max-width: 1050px) {
         font-size: 24px;
     }
 `
-
-export const PositionText = styled.h1`
+const PositionText = styled.h1`
     font-size: 2.5rem;
     color: rgb(1, 150, 1);
     font-style: italic;

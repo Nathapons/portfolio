@@ -13,24 +13,8 @@ const TopicMenu: React.FC = () => {
             path: "/profile"
         },
         {
-            name: "Education",
-            path: "/education"
-        },
-        {
-            name: "Work Experience",
-            path: "/work-experience"
-        },
-        {
-            name: "Project",
-            path: "/project"
-        },
-        {
             name: "Skill",
             path: "/skill"
-        },
-        {
-            name: "Certificate",
-            path: "/certificate"
         }
     ]
 

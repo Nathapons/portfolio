@@ -1,9 +1,22 @@
 import { Col, Row } from 'antd'
+import styled from 'styled-components'
+
+const AboutMeBox = styled(Row)`
+    color: white;
+    background-color: #2f5c9f;
+    padding: 1.6px 1.6px;
+    
+
+    @media (min-width: 1050px) {
+        justify-context: center;
+        padding: 24px 320px;
+    }
+`
 
 const AboutMe = () => {
     return (
-        <Row style={{padding: "1.5rem 20rem", backgroundColor: "#2f5c9f", color: "white"}}>
-            <Row><Col xs={24} lg={24} style={{justifyContent: "center"}}><h2 style={{textDecoration: "underline"}}>About Me</h2></Col></Row>
+        <AboutMeBox>
+            <Row><Col xs={24} sm={24} lg={24} md={24} xl={24} xxl={24}><h2 style={{textDecoration: "underline"}}>About Me</h2></Col></Row>
             <Row style={{fontSize: "1.2rem", textAlign: "left"}}>
                 <Col xs={24} lg={24}>
                     <p style={{margin: "0px", fontSize: "1.2rem"}}>
@@ -13,7 +26,7 @@ const AboutMe = () => {
                     </p>
                 </Col>
             </Row>
-        </Row>
+        </AboutMeBox>
     )
 }
 
