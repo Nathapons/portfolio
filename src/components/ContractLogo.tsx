@@ -1,10 +1,13 @@
 import { LinkedinOutlined, GithubOutlined, FacebookOutlined, InstagramOutlined } from '@ant-design/icons';
 
 import { Link } from 'react-router-dom';
-import { ContractGroupType } from '../types/ContractLogo';
 import { Col, Row } from 'antd';
 import styled from 'styled-components';
 
+interface ContractGroupType {
+    url: string
+    icon: any
+}
 
 const CustomRow = styled(Row)`
     margin-top: 20px;

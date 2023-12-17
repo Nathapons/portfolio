@@ -4,7 +4,10 @@ import { AlignLeftOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 
 import Pdf from '../assets/Nuthapon.Resume.pdf'
-import { Props } from '../types/Navbar';
+
+interface Props {
+    menu: any
+}
 
 const Navbar = ({ menu }: Props) => {
     const [open, setOpen] = useState(false);
