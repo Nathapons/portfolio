@@ -2,7 +2,6 @@ import React from "react"
 import { Flex, Image, Space } from "antd"
 
 import myStacks from '../datas/TechStack.json'
-import '../styles/TechStack.css'
 
 
 const TechStack: React.FC = () => {
