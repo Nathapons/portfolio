@@ -14,7 +14,7 @@ const Home: React.FC = () => {
       <Layout style={{ minHeight: '100vh' }}>
         <Content>
           <Greeting />
-          <AboutMe />
+          {/* <AboutMe /> */}
         </Content>
       </Layout>
     </div>
