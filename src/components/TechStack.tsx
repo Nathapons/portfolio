@@ -1,5 +1,5 @@
 import React from "react"
-import { Flex, Image, Space } from "antd"
+import { Flex, Image, Space, Tooltip } from "antd"
 
 import myStacks from '../datas/TechStack.json'
 
@@ -11,7 +11,9 @@ const TechStack: React.FC = () => {
             {myStacks.map((item, index) => (
                 <Flex key={index} style={{paddingTop: "10px"}} gap="small">
                     <Space>
-                        <Image src={item.src} alt={item.src} width={50} preview={false} />
+                        <Tooltip title={item.alt} >
+                            <Image src={item.src} alt={item.alt} width={50} preview={false} />
+                        </Tooltip>
                         <Flex style={{marginLeft: "20px"}}>{item.alt}</Flex>
                     </Space>
                 </Flex>
