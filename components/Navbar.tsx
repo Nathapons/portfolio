@@ -1,46 +1,29 @@
 "use client"; 
-import { Button, Drawer, Row } from 'antd';
-import React, { useState } from 'react'
+import { Row } from 'antd';
 import Link from 'next/link'
-import styled from "styled-components";
+import MenuButton from './MenuButton';
+import MenuBar from './MenuBar';
+import { useEffect, useState } from 'react';
+
 
 interface Props {
     menu: any;
 }
 
-const CustomNavRow = styled(Row)`
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    background-color: #34353a;
-    color: white;
-`
-
-const MenuButton = styled(Button)`
-    margin-left: 10px;
-    background-color: #ffcc00;
-    color: white;
-`
-
 const Navbar = ({ menu }: Props) => {
-    const [open, setOpen] = useState(false);
+    const [isMobile, setIsMobile] = useState(true);
+
+    useEffect(() => {
+        setIsMobile(window.innerWidth > 1050)
+    }, [])
 
     return (
-        <CustomNavRow>
+        <Row style={{justifyContent: 'space-between', alignItems: 'center', padding: '10px', backgroundColor: '#34353a', color: 'white'}}>
             <Link href="/" style={{textDecoration: "none"}}>
-                <h1 style={{margin: "0", fontFamily: "'Caveat', cursive", color: "white"}}>Nuthapon.S</h1>
+                <h1 style={{margin: "0", color: "white"}}>Nuthapon.S</h1>
             </Link>
-            <MenuButton onClick={() => {setOpen(!open)}}>
-                <span style={{backgroundColor: "#ffcc00", color: 'white'}}>Menu</span>
-            </MenuButton>
-            <Drawer
-                title="Portfolio"
-                placement="right"
-                onClick={() => {setOpen(!open)}}
-                onClose={() => {setOpen(!open)}}
-                open={open}
-            >{menu}</Drawer>
-        </CustomNavRow>
+            {isMobile? <MenuBar />: <MenuButton menu={menu}/>}
+        </Row>
     )
 }
 

@@ -2,6 +2,7 @@
 import Typewriter from 'typewriter-effect'
 import { Col, Row } from "antd";
 import styled from "styled-components";
+import { useEffect, useState } from 'react';
 
 
 const CustomImage = styled.img`
@@ -67,15 +68,21 @@ const Greeting = () => {
         loop: true
     }
     const img: string = "https://res.cloudinary.com/dizcg5fnc/image/upload/v1701619719/upload/kqc8rgleicctewcci0cv.jpg"
+    const [isMobile, setIsMobile] = useState(true);
+
+    useEffect(() => {
+        setIsMobile(window.innerWidth > 1050)
+    }, [])
+
 
     return (
-        <CustomRow style={{margin: 0}} gutter={(window.innerWidth > 1050)? [100, 0]: [0, 0]}>
+        <CustomRow style={{margin: 0}} gutter={isMobile? [100, 0]: [0, 0]}>
             <CustomCol><CustomImage src={img} alt="profile-img" /></CustomCol>
             <CustomImgCol xl={12} xxl={12} lg={12} md={24} sm={24} xs={24} >
                 <GreetingText>
                     I'm <span style={{color: '#ffcc00'}}>Nuthapon Sripornprasert</span>
                 </GreetingText>
-                <p style={{fontSize: '20px'}}><Typewriter options={options} /></p>
+                <Typewriter options={options} />
             </CustomImgCol>
         </CustomRow>
     )

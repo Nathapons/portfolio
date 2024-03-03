@@ -1,24 +1,13 @@
 "use client";
 import { Menu } from "antd";
 import Link from 'next/link'
+import menuName from '../datas/ManuName.json'
 
 
-interface TopicType {
-    name: string
-    path: string
-}
-
-const TopicMenu: React.FC = () => {
-    const topics: TopicType[] = [
-        {
-            "name": "About me",
-            "path": "/"
-        }
-    ]
-
+const SidbarMenu: React.FC = () => {
     return (
         <Menu mode="inline">
-            {topics.map((item, index) => {
+            {menuName.map((item, index) => {
                 return (
                     <Menu.Item key={index}><Link href={item.path}>{item.name}</Link></Menu.Item>
                 )
@@ -27,4 +16,4 @@ const TopicMenu: React.FC = () => {
     )
 }
 
-export default TopicMenu;
+export default SidbarMenu;
