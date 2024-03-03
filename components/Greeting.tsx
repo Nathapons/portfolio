@@ -18,7 +18,6 @@ const CustomImage = styled.img`
     }
 
     @media (min-width: 1050px) {
-        display: content;
         width: 400px;
     }
 `
@@ -80,7 +79,7 @@ const Greeting = () => {
             <CustomCol><CustomImage src={img} alt="profile-img" /></CustomCol>
             <CustomImgCol xl={12} xxl={12} lg={12} md={24} sm={24} xs={24} >
                 <GreetingText>
-                    I'm <span style={{color: '#ffcc00'}}>Nuthapon Sripornprasert</span>
+                    I&apos;m <span style={{color: '#ffcc00'}}>Nuthapon Sripornprasert</span>
                 </GreetingText>
                 <Typewriter options={options} />
             </CustomImgCol>
