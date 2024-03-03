@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/Navbar";
+import TopicMenu from "@/components/TopicMenu";
 
-const inter = Inter({ subsets: ["latin"] });
+const montserrat = Montserrat({ subsets: ["latin"], weight: ['700'] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -14,9 +16,14 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const Menu = <TopicMenu />
+
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" className={montserrat.className}>
+      <body style={{margin: 0}}>
+        <Navbar menu={Menu} />
+        {children}
+      </body>
     </html>
   );
 }
