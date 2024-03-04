@@ -4,11 +4,14 @@ import Link from 'next/link'
 import MenuButton from './MenuButton';
 import MenuBar from './MenuBar';
 import { useEffect, useState } from 'react';
+import { Typography } from 'antd';
 
 
 interface Props {
     menu: any;
 }
+
+const { Title } = Typography;
 
 const Navbar = ({ menu }: Props) => {
     const [isMobile, setIsMobile] = useState(true);
@@ -20,7 +23,7 @@ const Navbar = ({ menu }: Props) => {
     return (
         <Row style={{justifyContent: 'space-between', alignItems: 'center', padding: '10px', backgroundColor: '#34353a', color: 'white'}}>
             <Link href="/" style={{textDecoration: "none"}}>
-                <h1 style={{margin: "0", color: "white"}}>Nuthapon.S</h1>
+                <Title level={2} style={{ margin: 0, textAlign: 'center', border: '1px solid black', padding: '5px' }}>Nuthapon.S</Title>
             </Link>
             {isMobile? <MenuBar />: <MenuButton menu={menu}/>}
         </Row>

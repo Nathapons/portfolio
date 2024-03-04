@@ -3,6 +3,7 @@ import { Row, Col } from 'antd';
 import menuName from '../datas/ManuName.json';
 import Link from 'next/link'
 import styled from 'styled-components';
+import { Typography } from 'antd';
 
 
 const CustomLink = styled(Link)`
@@ -14,12 +15,20 @@ const CustomLink = styled(Link)`
     }
 `
 
+const { Title } = Typography;
+
 const MenuBar = () => {
     return (
-        <Row gutter={[20, 0]} style={{marginRight: '2px'}}>
+        <Row gutter={[30, 0]} style={{marginRight: '2px'}}>
             {menuName.map((item, index) => {
                 return (
-                    <Col key={index}><CustomLink href={item.path}>{item.name}</CustomLink></Col>
+                    <Col key={index}>
+                        <CustomLink href={item.path}>
+                            <Title level={4}>
+                                {item.name}
+                            </Title>
+                        </CustomLink>
+                    </Col>
                 )
             })}
         </Row>
