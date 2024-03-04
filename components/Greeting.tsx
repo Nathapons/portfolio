@@ -3,6 +3,7 @@ import Typewriter from 'typewriter-effect'
 import { Col, Row } from "antd";
 import styled from "styled-components";
 import { useEffect, useState } from 'react';
+import { Typography } from 'antd';
 
 
 const CustomImage = styled.img`
@@ -48,7 +49,9 @@ const CustomImgCol = styled(Col)`
     }
 `
 
-const GreetingText = styled.h1`
+const { Title } = Typography;
+
+const GreetingText = styled(Title)`
     font-size: 24px;
 
     @media (min-width: 1050px) {
@@ -75,12 +78,12 @@ const Greeting = () => {
 
 
     return (
-        <CustomRow style={{margin: 0}} gutter={isMobile? [100, 0]: [0, 0]}>
+        <CustomRow style={{margin: 0}} gutter={isMobile? [100, 0]: [0, 10]}>
             <CustomCol><CustomImage src={img} alt="profile-img" /></CustomCol>
             <CustomImgCol xl={12} xxl={12} lg={12} md={24} sm={24} xs={24} >
-                <GreetingText>
+                <Title level={isMobile? 1: 3} style={{ margin: 0}}>
                     I&apos;m <span style={{color: '#ffcc00'}}>Nuthapon Sripornprasert</span>
-                </GreetingText>
+                </Title>
                 <Typewriter options={options} />
             </CustomImgCol>
         </CustomRow>
