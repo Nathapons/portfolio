@@ -24,7 +24,7 @@ const MenuBar = () => {
                 return (
                     <Col key={index}>
                         <CustomLink href={item.path}>
-                            <Title level={4}>
+                            <Title level={4} style={{color: 'white'}}>
                                 {item.name}
                             </Title>
                         </CustomLink>

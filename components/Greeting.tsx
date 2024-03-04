@@ -81,7 +81,7 @@ const Greeting = () => {
         <CustomRow style={{margin: 0}} gutter={isMobile? [100, 0]: [0, 10]}>
             <CustomCol><CustomImage src={img} alt="profile-img" /></CustomCol>
             <CustomImgCol xl={12} xxl={12} lg={12} md={24} sm={24} xs={24} >
-                <Title level={isMobile? 1: 3} style={{ margin: 0}}>
+                <Title level={isMobile? 1: 3} style={{ margin: 0, color: 'white'}}>
                     I&apos;m <span style={{color: '#ffcc00'}}>Nuthapon Sripornprasert</span>
                 </Title>
                 <Typewriter options={options} />
