@@ -23,7 +23,7 @@ const Navbar = ({ menu }: Props) => {
     return (
         <Row style={{justifyContent: 'space-between', alignItems: 'center', padding: '10px', backgroundColor: '#34353a', color: 'white'}}>
             <Link href="/" style={{textDecoration: "none"}}>
-                <Title level={2} style={{ margin: 0, textAlign: 'center', border: '1px solid white', padding: '5px', color: 'white' }}>Nuthapon.S</Title>
+                <Title level={isMobile? 2: 3} style={{ margin: 0, textAlign: 'center', border: '1px solid white', padding: '5px', color: 'white' }}>Nuthapon.S</Title>
             </Link>
             {isMobile? <MenuBar />: <MenuButton menu={menu}/>}
         </Row>
