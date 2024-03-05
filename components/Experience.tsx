@@ -5,7 +5,7 @@ import { Row, Col, Typography, Timeline, ConfigProvider } from "antd";
 const { Title } = Typography;
 
 const Experience = () => {
-    const experienceArr: any = [
+    const experienceArr = [
         {
             label: '2024',
             children: 'Trinity Root',
@@ -44,10 +44,12 @@ const Experience = () => {
                         },
                     }}
                 >
-                    <Timeline mode="left" style={{width: '90%', textAlign: 'left'}}>
+                    <Timeline mode="left" style={{width: '100%', textAlign: 'left'}}>
                         {experienceArr.map((item, index) => {
                             return (
-                                <Timeline.Item key={index} label={item?.label} children={item?.children} color="#f0bf6c" />
+                                <Timeline.Item key={index} label={item?.label} color="#f0bf6c">
+                                    {item.children}
+                                </Timeline.Item>
                             )
                         })}
                     </Timeline>
