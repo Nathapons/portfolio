@@ -44,7 +44,7 @@ const Experience = () => {
                         },
                     }}
                 >
-                    <Timeline mode="left" style={{width: '90%', textAlign: 'left'}}>
+                    <Timeline mode="left" style={{width: '100%', textAlign: 'left'}}>
                         {experienceArr.map((item, index) => {
                             return (
                                 <Timeline.Item key={index} label={item?.label} color="#f0bf6c">
