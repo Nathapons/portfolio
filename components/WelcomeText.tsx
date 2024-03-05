@@ -2,12 +2,13 @@
 import { Col, Row } from "antd";
 import styled from "styled-components";
 import { Typography } from 'antd';
+import { useEffect, useState } from "react";
 
 const WelcomeRow = styled(Row)`
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #a4a8a8;
+    background-color: #31323a;
     color: white;
     padding: 10px 15px;
 
@@ -20,18 +21,26 @@ const WelcomeRow = styled(Row)`
 const { Paragraph, Title } = Typography;
 
 const CustomParagraph = styled(Paragraph)`
+    color: white;
+
     @media (min-width: 1050px) {
-        width: 60%;
+        width: 70%;
         margin: 0 auto;
-        font-size: 18px;
+        font-size: 22px;
     }
 `
 
 const WelcomeText = () => {
+    const [isComp, setIsComp] = useState(true);
+
+    useEffect(() => {
+        setIsComp(window.innerWidth > 1050)
+    }, [])
+
     return (
         <WelcomeRow gutter={[0, 5]}>
             <Col span={24}>
-                <Title level={3} style={{ margin: 0, textAlign: 'center' }} underline={true}>About</Title>
+                <Title level={3} style={{ textAlign: 'center', color: 'white', fontSize: isComp? '35px': ''}} underline={true}>About me</Title>
             </Col>
             <Col span={24}>
                 <CustomParagraph>
