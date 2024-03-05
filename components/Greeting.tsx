@@ -1,13 +1,12 @@
 "use client"; 
 import Typewriter from 'typewriter-effect'
-import { Col, Row } from "antd";
+import { Col, Image, Row } from "antd";
 import styled from "styled-components";
 import { useEffect, useState } from 'react';
 import { Typography } from 'antd';
 
 
-const CustomImage = styled.img`
-    width: 300px;
+const CustomImage = styled(Image)`
     border-radius: 3.125rem;
     animation: fadeIn 2s ease-in-out;
 
@@ -16,10 +15,6 @@ const CustomImage = styled.img`
         25% {opacity: 0.25;}
         50% {opacity: 0.5;}
         100% {opacity: 1;}
-    }
-
-    @media (min-width: 1050px) {
-        width: 400px;
     }
 `
 
@@ -51,11 +46,11 @@ const CustomImgCol = styled(Col)`
 
 const { Title } = Typography;
 
-const GreetingText = styled(Title)`
-    font-size: 24px;
+const CustomTitle = styled(Title)`
+    font-size: 30000px;
 
     @media (min-width: 1050px) {
-        font-size: 50px;
+        font-size: 5000px;
     }
 `
 
@@ -70,20 +65,20 @@ const Greeting = () => {
         loop: true
     }
     const img: string = "https://res.cloudinary.com/dizcg5fnc/image/upload/v1701619719/upload/kqc8rgleicctewcci0cv.jpg"
-    const [isMobile, setIsMobile] = useState(true);
+    const [isComp, setIsComp] = useState(true);
 
     useEffect(() => {
-        setIsMobile(window.innerWidth > 1050)
+        setIsComp(window.innerWidth > 1050)
     }, [])
 
 
     return (
-        <CustomRow style={{margin: 0}} gutter={isMobile? [100, 0]: [0, 10]}>
-            <CustomCol><CustomImage src={img} alt="profile-img" /></CustomCol>
+        <CustomRow style={{margin: 0}} gutter={isComp? [100, 0]: [0, 10]}>
+            <CustomCol><CustomImage src={img} alt="profile-img" width={isComp? 500: 300}/></CustomCol>
             <CustomImgCol xl={12} xxl={12} lg={12} md={24} sm={24} xs={24} >
-                <Title level={isMobile? 1: 3} style={{ margin: 0, color: 'white'}}>
+                <CustomTitle level={isComp? 1: 3} style={{ margin: 0, color: 'white', fontSize: isComp? '60px': ''}}>
                     I&apos;m <span style={{color: '#ffcc00'}}>Nuthapon Sripornprasert</span>
-                </Title>
+                </CustomTitle>
                 <Typewriter options={options} />
             </CustomImgCol>
         </CustomRow>

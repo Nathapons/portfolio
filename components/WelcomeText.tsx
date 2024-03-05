@@ -7,7 +7,7 @@ const WelcomeRow = styled(Row)`
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #a4a8a8;
+    background-color: #31323a;
     color: white;
     padding: 10px 15px;
 
@@ -20,10 +20,12 @@ const WelcomeRow = styled(Row)`
 const { Paragraph, Title } = Typography;
 
 const CustomParagraph = styled(Paragraph)`
+    color: white;
+
     @media (min-width: 1050px) {
-        width: 60%;
+        width: 70%;
         margin: 0 auto;
-        font-size: 18px;
+        font-size: 22px;
     }
 `
 
@@ -31,7 +33,7 @@ const WelcomeText = () => {
     return (
         <WelcomeRow gutter={[0, 5]}>
             <Col span={24}>
-                <Title level={3} style={{ margin: 0, textAlign: 'center' }} underline={true}>About</Title>
+                <Title level={3} style={{ margin: 0, textAlign: 'center', color: 'white'}} underline={true}>About</Title>
             </Col>
             <Col span={24}>
                 <CustomParagraph>
