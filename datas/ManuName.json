@@ -4,11 +4,7 @@
         "path": "/"
     },
     {
-        "name": "About me",
-        "path": "/"
-    },
-    {
-        "name": "Contract",
-        "path": "/"
+        "name": "Experience",
+        "path": "/experience"
     }
 ]
