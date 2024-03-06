@@ -8,7 +8,7 @@ const Experience = () => {
     const experienceArr = [
         {
             label: '2024',
-            children: 'Trinity Root',
+            children: 'Trinity Roots Co.,Ltd.',
         },
         {
             label: '2022',

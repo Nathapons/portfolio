@@ -74,7 +74,7 @@ const Greeting = () => {
 
     return (
         <CustomRow style={{margin: 0}} gutter={isComp? [100, 0]: [0, 10]}>
-            <CustomCol><CustomImage src={img} alt="profile-img" width={isComp? 500: 300}/></CustomCol>
+            <CustomCol><CustomImage src={img} alt="profile-img" width={isComp? 500: 300} preview={false} /></CustomCol>
             <CustomImgCol xl={12} xxl={12} lg={12} md={24} sm={24} xs={24} >
                 <CustomTitle level={isComp? 1: 3} style={{ margin: 0, color: 'white', fontSize: isComp? '60px': ''}}>
                     I&apos;m <span style={{color: '#ffcc00'}}>Nuthapon Sripornprasert</span>
