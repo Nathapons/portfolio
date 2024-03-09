@@ -1,21 +1,10 @@
 "use client";
 import { Menu } from "antd";
 import Link from 'next/link'
-import { useEffect, useState } from "react";
+import menuName from '../datas/ManuName.json'
 
 
 const SidbarMenu: React.FC = () => {
-    const [menuName, setMenuName] = useState<any[]>([]);
-
-    useEffect(() => {
-        const getMenu = async () => {
-            const menubar = await fetch('http://localhost:3000/apis')
-            const response = await menubar.json();
-            console.log(response)
-            setMenuName(response);
-        }
-        getMenu();
-    }, [])
 
     return (
         <Menu mode="inline">

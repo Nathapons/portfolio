@@ -2,9 +2,5 @@
     {
         "name": "Home",
         "path": "/"
-    },
-    {
-        "name": "Experience",
-        "path": "/experience"
     }
 ]
