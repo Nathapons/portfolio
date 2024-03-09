@@ -1,5 +1,5 @@
-"use client"; 
-import { Row } from 'antd';
+"use client";
+import { ConfigProvider, Row } from 'antd';
 import Link from 'next/link'
 import MenuButton from './MenuButton';
 import MenuBar from './MenuBar';
@@ -14,18 +14,33 @@ interface Props {
 const { Title } = Typography;
 
 const Navbar = ({ menu }: Props) => {
-    const [isMobile, setIsMobile] = useState(true);
+    const [isComp, setIsComp] = useState(true);
 
     useEffect(() => {
-        setIsMobile(window.innerWidth > 1050)
+        setIsComp(window.innerWidth > 1050)
     }, [])
 
     return (
-        <Row style={{justifyContent: 'space-between', alignItems: 'center', padding: '10px', backgroundColor: '#31323a', color: 'white'}}>
-            <Link href="/" style={{textDecoration: "none"}}>
-                <Title level={isMobile? 2: 3} style={{ margin: 0, textAlign: 'center', border: '1px solid white', padding: '5px', color: 'white' }}>Nuthapon.S</Title>
+        <Row style={{justifyContent: 'space-between', alignItems: 'center', padding: '10px', backgroundColor: '#31323a'}}>
+            <Link href="/" >
+                <ConfigProvider
+                        theme={{
+                            token: {
+                                colorText: 'white',
+                                fontSizeHeading2: (isComp? 30: 24)
+                            },
+                            components: {
+                                Typography: {
+                                    titleMarginBottom: 0,
+                                    titleMarginTop: 0
+                                },
+                            }
+                        }}
+                >
+                    <Title level={2} style={{ textAlign: 'center', border: '1px solid white', padding: '5px'}}>Nuthapon.S</Title>
+                </ConfigProvider>
             </Link>
-            {isMobile? <MenuBar />: <MenuButton menu={menu}/>}
+            {isComp? <MenuBar />: <MenuButton menu={menu} />}
         </Row>
     )
 }

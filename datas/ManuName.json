@@ -1,10 +1,6 @@
 [
     {
-        "name": "Home",
+        "name": "About me",
         "path": "/"
-    },
-    {
-        "name": "Experience",
-        "path": "/experience"
     }
 ]
