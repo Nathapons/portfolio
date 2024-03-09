@@ -1,4 +1,4 @@
-"use client"; 
+"use client";
 import { Button, Drawer, Row } from 'antd';
 import { useState } from 'react'
 

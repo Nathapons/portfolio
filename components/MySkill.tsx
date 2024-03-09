@@ -1,11 +1,11 @@
-import { Col, Image, Row } from "antd";
+import { Col, ConfigProvider, Flex, Image, Row } from "antd";
 import styled from "styled-components";
 import { Typography } from 'antd';
 import { useEffect, useState } from "react";
 import mySkill from '../datas/MySkill.json'
 
 
-const MySkillTitleRow = styled(Row)`
+const MySkillTitleCol = styled(Col)`
     display: flex;
     color: white;
     padding: 10px 15px;
@@ -16,7 +16,7 @@ const MySkillTitleRow = styled(Row)`
     }
 `
 
-const MySkillRow = styled(Row)`
+const MySkillCol = styled(Col)`
     display: flex;
     align-items: center;
     justify-content: center;
@@ -45,13 +45,22 @@ const MySkill = () => {
     }, [])
 
     return (
-        <>
-            <MySkillTitleRow gutter={[0, 5]}>
+        <Row>
+            <MySkillCol span={24}>
                 <Col span={24}>
-                    <Title level={3} style={{ textAlign: 'center', color: '#ffcc00', fontSize: isComp? '35px': '' }}>Programing Skill</Title>
+                    <ConfigProvider
+                        theme={{
+                            token: {
+                                colorText: '#ffcc00',
+                                fontSizeHeading3: (isComp? 35: 24)
+                            },
+                        }}
+                    >
+                        <Title level={3} style={{ textAlign: 'center' }}>Programing Skill</Title>
+                    </ConfigProvider>
                 </Col>
-            </MySkillTitleRow>
-            <MySkillRow>
+            </MySkillCol>
+            <MySkillCol span={24}>
                 {mySkill.map((item, index) => {
                     return (
                         <MySkillCard key={index} span={4}>
@@ -59,8 +68,8 @@ const MySkill = () => {
                         </MySkillCard>
                     )
                 })}
-            </MySkillRow>
-        </>
+            </MySkillCol>
+        </Row>
     )
 }
 

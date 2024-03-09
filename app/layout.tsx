@@ -3,6 +3,7 @@ import { Montserrat } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import SidbarMenu from "@/components/SidebarMenu";
+import CopyRight from "@/components/CopyRight";
 
 const montserrat = Montserrat({ subsets: ["latin"], weight: ['700'] });
 
@@ -22,6 +23,7 @@ export default function RootLayout({
       <body style={{margin: 0}}>
         <Navbar menu={<SidbarMenu />} />
         {children}
+        <CopyRight />
       </body>
     </html>
   );

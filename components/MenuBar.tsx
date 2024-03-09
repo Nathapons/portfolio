@@ -1,4 +1,4 @@
-"use client"; 
+"use client";
 import { Row, Col } from 'antd';
 import Link from 'next/link'
 import styled from 'styled-components';

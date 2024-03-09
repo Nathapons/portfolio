@@ -12,7 +12,6 @@ export default function Home() {
       <Greeting />
       <WelcomeText />
       <MySkill />
-      <ContractMe />
     </main>
   );
 }
