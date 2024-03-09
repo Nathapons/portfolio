@@ -1,5 +1,5 @@
 import Typewriter from 'typewriter-effect'
-import { Col, Image, Row } from "antd";
+import { Col, ConfigProvider, Image, Row } from "antd";
 import styled from "styled-components";
 import { useEffect, useState } from 'react';
 import { Typography } from 'antd';
@@ -45,14 +45,6 @@ const CustomImgCol = styled(Col)`
 
 const { Title } = Typography;
 
-const CustomTitle = styled(Title)`
-    font-size: 30000px;
-
-    @media (min-width: 1050px) {
-        font-size: 5000px;
-    }
-`
-
 const Greeting = () => {
     const names: string[] = [
         '<span>Software Developer</span>',
@@ -73,11 +65,29 @@ const Greeting = () => {
 
     return (
         <CustomRow style={{margin: 0}} gutter={isComp? [100, 0]: [0, 10]}>
-            <CustomCol><CustomImage src={img} alt="profile-img" width={isComp? 500: 300} preview={false} /></CustomCol>
+            <CustomCol>
+                <CustomImage src={img} alt="profile-img" width={isComp? 500: 300} preview={false} />
+            </CustomCol>
             <CustomImgCol xl={12} xxl={12} lg={12} md={24} sm={24} xs={24} >
-                <CustomTitle level={isComp? 1: 3} style={{ margin: 0, color: 'white', fontSize: isComp? '60px': ''}}>
-                    I&apos;m <span style={{color: '#ffcc00'}}>Nuthapon Sripornprasert</span>
-                </CustomTitle>
+                <ConfigProvider
+                    theme={{
+                        token: {
+                            colorText: 'white',
+                            fontSizeHeading3: (isComp? 60: 38)
+                        },
+                        components: {
+                            Typography: {
+                                titleMarginBottom: 0,
+                                titleMarginTop: 0
+                            },
+                        }
+                    }}
+                >
+                    <Title level={3}>
+                        I&apos;m <span style={{color: '#ffcc00'}}>Nuthapon Sripornprasert</span>
+                    </Title>
+                </ConfigProvider>
+
                 <Typewriter options={options} />
             </CustomImgCol>
         </CustomRow>
