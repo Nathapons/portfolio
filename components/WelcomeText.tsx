@@ -39,7 +39,7 @@ const WelcomeText = () => {
     return (
         <WelcomeRow gutter={[0, 5]}>
             <Col span={24}>
-                <Title level={3} style={{ textAlign: 'center', color: 'white', fontSize: isComp? '35px': ''}} underline={true}>About me</Title>
+                <Title level={3} style={{ textAlign: 'center', color: 'white', fontSize: isComp? '35px': ''}}>Welcome</Title>
             </Col>
             <Col span={24}>
                 <CustomParagraph>

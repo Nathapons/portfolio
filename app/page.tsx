@@ -3,6 +3,7 @@ import WelcomeText from "@/components/WelcomeText";
 import styles from "./page.module.css";
 import Greeting from "@/components/Greeting";
 import MySkill from "@/components/MySkill";
+import ContractMe from "@/components/ContractMe";
 
 export default function Home() {
 
@@ -11,6 +12,7 @@ export default function Home() {
       <Greeting />
       <WelcomeText />
       <MySkill />
+      <ContractMe />
     </main>
   );
 }

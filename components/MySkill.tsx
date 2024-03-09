@@ -5,6 +5,17 @@ import { useEffect, useState } from "react";
 import mySkill from '../datas/MySkill.json'
 
 
+const MySkillTitleRow = styled(Row)`
+    display: flex;
+    color: white;
+    padding: 10px 15px;
+
+    @media (min-width: 1050px) {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+`
+
 const MySkillRow = styled(Row)`
     display: flex;
     align-items: center;
@@ -13,8 +24,9 @@ const MySkillRow = styled(Row)`
     padding: 10px 15px;
 
     @media (min-width: 1050px) {
-        padding-top: 20px;
-        padding-bottom: 20px;
+        display: flex;
+        margin: 0 auto;
+        padding: 10px 30px;
     }
 `
 
@@ -34,12 +46,12 @@ const MySkill = () => {
 
     return (
         <>
-            <MySkillRow gutter={[0, 5]} className="background-start-rgb">
+            <MySkillTitleRow gutter={[0, 5]}>
                 <Col span={24}>
-                    <Title level={3} style={{ textAlign: 'center', color: '#ffcc00', fontSize: isComp? '35px': '' }} underline={true}>Programing Language</Title>
+                    <Title level={3} style={{ textAlign: 'center', color: '#ffcc00', fontSize: isComp? '35px': '' }}>Programing Skill</Title>
                 </Col>
-            </MySkillRow>
-            <MySkillRow gutter={[10, 20]}>
+            </MySkillTitleRow>
+            <MySkillRow>
                 {mySkill.map((item, index) => {
                     return (
                         <MySkillCard key={index} span={4}>

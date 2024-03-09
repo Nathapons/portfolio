@@ -1,13 +1,5 @@
 [
     {
-        "src": "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/html5-colored.svg",
-        "alt": "HTML5"
-    },
-    {
-        "src": "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/css3-colored.svg",
-        "alt": "CSS3"
-    },
-    {
         "src": "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/python-colored.svg",
         "alt": "Python"
     },
@@ -22,5 +14,9 @@
     {
         "src": "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/java-colored.svg",
         "alt": "Java"
+    },
+    {
+        "src": "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/go-colored.svg",
+        "alt": "Go"
     }
 ]
