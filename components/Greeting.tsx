@@ -73,7 +73,7 @@ const Greeting = () => {
                     theme={{
                         token: {
                             colorText: 'white',
-                            fontSizeHeading3: (isComp? 60: 38)
+                            fontSizeHeading3: (isComp? 60: 30)
                         },
                         components: {
                             Typography: {
@@ -87,7 +87,6 @@ const Greeting = () => {
                         I&apos;m <span style={{color: '#ffcc00'}}>Nuthapon Sripornprasert</span>
                     </Title>
                 </ConfigProvider>
-
                 <Typewriter options={options} />
             </CustomImgCol>
         </CustomRow>
