@@ -3,7 +3,7 @@ import WelcomeText from "@/components/WelcomeText";
 import styles from "./page.module.css";
 import Greeting from "@/components/Greeting";
 import MySkill from "@/components/MySkill";
-import ContractMe from "@/components/ContractMe";
+import Connect from "@/components/Connect";
 
 export default function Home() {
 
@@ -12,6 +12,7 @@ export default function Home() {
       <Greeting />
       <WelcomeText />
       <MySkill />
+      <Connect />
     </main>
   );
 }
