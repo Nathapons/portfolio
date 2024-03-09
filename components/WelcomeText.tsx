@@ -43,7 +43,7 @@ const WelcomeText = () => {
                         },
                     }}
                 >
-                    <Title level={3} style={{ textAlign: 'center'}}>Welcome</Title>
+                    <Title level={3} style={{ textAlign: 'center'}}>Welcome to My Website</Title>
                 </ConfigProvider>
             </Col>
             <Col span={24}>

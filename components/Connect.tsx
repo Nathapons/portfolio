@@ -4,43 +4,24 @@ import { Col, Row, Typography, ConfigProvider } from 'antd';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
-interface ContractGroupType {
-    url: string
-    icon: any
-}
 
 const { Title } = Typography;
 
 const Connect = () => {
-    const [isComp, setIsComp] = useState(true);
+    const [isComp, setIsComp] = useState(false);
+    const [iconSize, setIconSize] = useState("30px");
 
     useEffect(() => {
-        setIsComp(window.innerWidth > 1050)
+        if (window.innerWidth > 1050) {
+            setIsComp(true)
+            setIconSize("50px")
+        }
     }, [])
 
     const linkedinUrl: string = 'https://www.linkedin.com/in/nuthapon-sripornprasert-a41138213/'
     const githubUrl: string = 'https://github.com/Nathapons'
     const facebookUrl: string = 'https://www.facebook.com/nax.seekid/?locale=th_TH'
     const instragramUrl: string = 'https://www.instagram.com/nuthapon.s/'
-
-    const contractGroup: ContractGroupType[] = [
-        {
-            url: facebookUrl,
-            icon: <FacebookOutlined className="fb-icon" style={{color: "#1677ff", fontSize: "30px"}}/>
-        },
-        {
-            url: githubUrl,
-            icon: <GithubOutlined className="github-icon" style={{color: "black", fontSize: "30px"}}/>
-        },
-        {
-            url: linkedinUrl,
-            icon: <LinkedinOutlined className="linkedin-icon" style={{color: "#1677ff", fontSize: "30px"}}/>
-        },
-        {
-            url: instragramUrl,
-            icon: <InstagramOutlined style={{color: "rgb(240, 6, 45)", fontSize: "30px"}}/>
-        }
-    ]
 
     return (
         <Row style={{alignItems: "center", textAlign: "center", paddingTop: "20px", paddingBottom: "20px", backgroundColor: '#31323a'}}>
@@ -53,18 +34,23 @@ const Connect = () => {
                         },
                     }}
                 >
-                    <Title level={3}>Connect</Title>
+                    <Title level={3} style={{ textAlign: 'center' }}>Connect</Title>
                 </ConfigProvider>
             </Col>
             <Col span={24}>
                 <Row gutter={[1, 1]} style={{marginTop: "20px", justifyContent: "center"}}>
-                    {contractGroup.map((item, index) => {
-                        return (
-                            <Col xs={4} sm={4} md={4} lg={4} xl={4} xxl={4} flex={1}>
-                                <Link href={item.url} key={index} target='_blank'>{item.icon}</Link>
-                            </Col>
-                        )
-                    })}
+                    <Col xs={4} sm={4} md={4} lg={4} xl={4} xxl={4} flex={1}>
+                        <Link href={facebookUrl} target='_blank'><FacebookOutlined className="fb-icon" style={{color: "#1677ff", fontSize: iconSize}}/></Link>
+                    </Col>
+                    <Col xs={4} sm={4} md={4} lg={4} xl={4} xxl={4} flex={1}>
+                        <Link href={githubUrl} target='_blank'><GithubOutlined className="github-icon" style={{color: "black", fontSize: iconSize}}/></Link>
+                    </Col>
+                    <Col xs={4} sm={4} md={4} lg={4} xl={4} xxl={4} flex={1}>
+                        <Link href={linkedinUrl} target='_blank'><LinkedinOutlined className="linkedin-icon" style={{color: "#1677ff", fontSize: iconSize}}/></Link>
+                    </Col>
+                    <Col xs={4} sm={4} md={4} lg={4} xl={4} xxl={4} flex={1}>
+                        <Link href={instragramUrl} target='_blank'><InstagramOutlined style={{color: "rgb(240, 6, 45)", fontSize: iconSize}}/></Link>
+                    </Col>
                 </Row>
             </Col>
         </Row>
