@@ -1,4 +1,3 @@
-"use client";
 import { Menu } from "antd";
 import Link from 'next/link'
 import menuName from '../datas/ManuName.json'

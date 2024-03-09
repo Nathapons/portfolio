@@ -1,4 +1,3 @@
-"use client";
 import { Row, Col, Typography, Timeline, ConfigProvider } from "antd";
 
 

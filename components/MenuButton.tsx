@@ -1,4 +1,3 @@
-"use client"; 
 import { Button, Drawer, Row } from 'antd';
 import Link from 'next/link'
 import { useState } from 'react'

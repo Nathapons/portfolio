@@ -1,4 +1,3 @@
-"use client"; 
 import { Row } from 'antd';
 import Link from 'next/link'
 import MenuButton from './MenuButton';
