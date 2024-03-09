@@ -1,4 +1,3 @@
-"use client"; 
 import { Col, Row } from "antd";
 import styled from "styled-components";
 import { Typography } from 'antd';

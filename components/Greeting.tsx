@@ -1,4 +1,3 @@
-"use client"; 
 import Typewriter from 'typewriter-effect'
 import { Col, Image, Row } from "antd";
 import styled from "styled-components";
