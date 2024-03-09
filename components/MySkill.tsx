@@ -5,22 +5,10 @@ import { useEffect, useState } from "react";
 import mySkill from '../datas/MySkill.json'
 
 
-const MySkillTitleCol = styled(Col)`
-    display: flex;
-    color: white;
-    padding: 10px 15px;
-
-    @media (min-width: 1050px) {
-        padding-top: 20px;
-        padding-bottom: 20px;
-    }
-`
-
 const MySkillCol = styled(Col)`
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
     padding: 10px 15px;
 
     @media (min-width: 1050px) {
@@ -35,7 +23,7 @@ const MySkillCard = styled(Col)`
     border-radius: 10px;
 `
 
-const { Title, Paragraph } = Typography;
+const { Title } = Typography;
 
 const MySkill = () => {
     const [isComp, setIsComp] = useState(true);
