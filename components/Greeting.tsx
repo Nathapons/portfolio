@@ -73,7 +73,7 @@ const Greeting = () => {
                     theme={{
                         token: {
                             colorText: 'white',
-                            fontSizeHeading3: (isComp? 60: 30)
+                            fontSizeHeading3: (isComp? 60: 28)
                         },
                         components: {
                             Typography: {
