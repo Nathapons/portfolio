@@ -1,6 +1,10 @@
 [
     {
-        "name": "About me",
-        "path": "/"
+        "name": "Profile",
+        "path": "/profile"
+    },
+    {
+        "name": "Experience",
+        "path": "/experience"
     }
 ]
