@@ -1,4 +1,4 @@
-import { Col, ConfigProvider, Image, Row, Typography } from "antd";
+import { Col, ConfigProvider, Flex, Image, Row, Typography } from "antd";
 
 
 const { Title, Paragraph } = Typography;
@@ -14,11 +14,11 @@ const History = () => {
             <Col>
                 <Row>
                     <ConfigProvider>
-                        <Title level={1}>Profile</Title>
+                        <Title level={1}>Nuthapon Sripornprasert</Title>
                     </ConfigProvider>
                 </Row>
                 <Row>
-                    <Paragraph>Hello World</Paragraph>
+                    <Paragraph>Current living: Bangkok, Thailand</Paragraph>
                 </Row>
             </Col>
         </Row>
