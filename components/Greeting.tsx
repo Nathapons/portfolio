@@ -1,8 +1,8 @@
 import Typewriter from 'typewriter-effect'
 import { Col, ConfigProvider, Image, Row } from "antd";
 import styled from "styled-components";
-import { useEffect, useState } from 'react';
 import { Typography } from 'antd';
+import { Props } from '@/interfaces/globalInterfaces';
 
 
 const CustomImage = styled(Image)`
@@ -45,7 +45,7 @@ const CustomImgCol = styled(Col)`
 
 const { Title } = Typography;
 
-const Greeting = () => {
+const Greeting = ({ isComp }: Props) => {
     const names: string[] = [
         '<span>Software Developer</span>',
         '<span>Backend Developer</span>',
@@ -56,12 +56,6 @@ const Greeting = () => {
         loop: true
     }
     const img: string = "https://res.cloudinary.com/dizcg5fnc/image/upload/v1701619719/upload/kqc8rgleicctewcci0cv.jpg"
-    const [isComp, setIsComp] = useState(true);
-
-    useEffect(() => {
-        setIsComp(window.innerWidth > 1050)
-    }, [])
-
 
     return (
         <CustomRow style={{margin: 0}} gutter={isComp? [100, 0]: [0, 10]}>

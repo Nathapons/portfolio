@@ -1,7 +1,7 @@
 import { Col, ConfigProvider, Row } from "antd";
 import styled from "styled-components";
 import { Typography } from 'antd';
-import { useEffect, useState } from "react";
+import { Props } from "@/interfaces/globalInterfaces";
 
 const WelcomeRow = styled(Row)`
     display: flex;
@@ -25,12 +25,7 @@ const CustomParagraph = styled(Paragraph)`
     }
 `
 
-const WelcomeText = () => {
-    const [isComp, setIsComp] = useState(true);
-
-    useEffect(() => {
-        setIsComp(window.innerWidth > 1050)
-    }, [])
+const WelcomeText = ({ isComp }: Props) => {
 
     return (
         <WelcomeRow gutter={[0, 5]}>

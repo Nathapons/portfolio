@@ -1,8 +1,8 @@
 import { Col, ConfigProvider, Flex, Image, Row } from "antd";
 import styled from "styled-components";
 import { Typography } from 'antd';
-import { useEffect, useState } from "react";
 import mySkill from '../datas/MySkill.json'
+import { Props } from "@/interfaces/globalInterfaces";
 
 
 const MySkillCol = styled(Col)`
@@ -25,12 +25,8 @@ const MySkillCard = styled(Col)`
 
 const { Title } = Typography;
 
-const MySkill = () => {
-    const [isComp, setIsComp] = useState(true);
 
-    useEffect(() => {
-        setIsComp(window.innerWidth > 1050)
-    }, [])
+const MySkill = ({isComp}: Props) => {
 
     return (
         <Row>
