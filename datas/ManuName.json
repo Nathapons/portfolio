@@ -1,10 +1,6 @@
 [
     {
         "name": "Profile",
-        "path": "/profile"
-    },
-    {
-        "name": "Experience",
-        "path": "/experience"
+        "path": "/"
     }
 ]

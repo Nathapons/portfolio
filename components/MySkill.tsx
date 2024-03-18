@@ -29,7 +29,7 @@ const { Title } = Typography;
 const MySkill = ({isComp}: Props) => {
 
     return (
-        <Row>
+        <Row style={{backgroundColor: '#31323a'}}>
             <MySkillCol span={24}>
                 <Col span={24}>
                     <ConfigProvider

@@ -5,6 +5,7 @@ import Greeting from "@/components/Greeting";
 import MySkill from "@/components/MySkill";
 import Connect from "@/components/Connect";
 import { useEffect, useState } from "react";
+import WorkExperience from "@/components/WorkExperience";
 
 
 export default function Home() {
@@ -18,6 +19,7 @@ export default function Home() {
     <main className={styles.main}>
       <Greeting isComp={isComp} />
       <WelcomeText isComp={isComp} />
+      <WorkExperience isComp={isComp} />
       <MySkill isComp={isComp} />
       <Connect isComp={isComp} />
     </main>

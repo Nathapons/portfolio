@@ -34,7 +34,7 @@ const WelcomeText = ({ isComp }: Props) => {
                     theme={{
                         token: {
                             colorText: 'white',
-                            fontSizeHeading3: (isComp? 35: 24)
+                            fontSizeHeading3: (isComp? 35: 24),
                         },
                     }}
                 >
