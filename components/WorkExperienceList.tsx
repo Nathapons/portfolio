@@ -1,6 +1,7 @@
 import { Props } from "@/interfaces/globalInterfaces";
-import { Col, ConfigProvider, Row, Image, Alert } from "antd";
+import { Col, ConfigProvider, Row, Image, Alert, Typography } from "antd";
 
+const { Paragraph } = Typography;
 
 const WorkExperienceList = ({ isComp }: Props) => {
     const experienceData = [
@@ -56,7 +57,7 @@ const WorkExperienceList = ({ isComp }: Props) => {
                                                 <Col style={{fontWeight: 'normal'}}>{item.timeline}</Col>
                                             </Row>
                                         }
-                                        description={item.company}
+                                        description={<Paragraph style={{margin: 0, fontWeight: 'normal'}}>{item.company}</Paragraph>}
                                         style={{width: isComp? '80%': '90%'}}
                                         type="warning"
                                     />
