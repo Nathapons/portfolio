@@ -1,7 +1,7 @@
 import { Props } from "@/interfaces/globalInterfaces";
-import { Col, ConfigProvider, Row, Image, Alert, Button } from "antd";
-import Link from "next/link";
+import { Col, ConfigProvider, Row, Image, Alert, Typography } from "antd";
 
+const { Paragraph } = Typography;
 
 const WorkExperienceList = ({ isComp }: Props) => {
     const experienceData = [
@@ -51,8 +51,13 @@ const WorkExperienceList = ({ isComp }: Props) => {
                             return (
                                 <Col span={24} key={index} style={isComp? {}: {display: 'flex', justifyContent: "center"}}>
                                     <Alert 
-                                        message={item.position}
-                                        description={item.company}
+                                        message={
+                                            <Row justify="space-between">
+                                                <Col>{item.position}</Col>
+                                                <Col style={{fontWeight: 'normal'}}>{item.timeline}</Col>
+                                            </Row>
+                                        }
+                                        description={<Paragraph style={{margin: 0, fontWeight: 'normal'}}>{item.company}</Paragraph>}
                                         style={{width: isComp? '80%': '90%'}}
                                         type="warning"
                                     />
