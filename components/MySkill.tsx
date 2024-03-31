@@ -43,17 +43,31 @@ const MySkill = ({isComp}: Props) => {
                 </MySkillCol>
                 <MySkillCol span={24}>
                     <Marquee pauseOnHover={false}>
-                        <Row gutter={[20, 0]}>
+                        <Row gutter={isComp? [20, 0]: [5, 0]}>
                             {mySkill.map((item, index) => {
                                 return (
-                                    <Col>
-                                        <Image 
-                                            key={index} 
-                                            src={item.src} 
-                                            alt={item.alt} 
-                                            width={isComp? 70: 40} 
-                                            preview={false}
-                                        />
+                                    <Col key={index}>
+                                        <Row gutter={[0, 10]} align="middle" justify="center">
+                                            <Col span={24} style={{display: 'flex', justifyContent: "center"}}>
+                                                <Image 
+                                                    src={item.src} 
+                                                    alt={item.alt} 
+                                                    width={isComp? 70: 40} 
+                                                    preview={false}
+                                                />
+                                            </Col>
+                                            <Col span={24} style={{display: 'flex', justifyContent: "center"}}>
+                                                <ConfigProvider
+                                                    theme={{
+                                                        token: {
+                                                            colorText: 'white'
+                                                        },
+                                                    }}
+                                                >
+                                                    <Title level={5}>{item.alt}</Title>
+                                                </ConfigProvider>
+                                            </Col>
+                                        </Row>
                                     </Col>
                                 )
                             })}

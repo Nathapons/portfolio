@@ -1,5 +1,13 @@
 [
     {
+        "src": "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/html5-colored.svg",
+        "alt": "HTML"
+    },
+    {
+        "src": "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/css3-colored.svg",
+        "alt": "CSS"
+    },
+    {
         "src": "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/python-colored.svg",
         "alt": "Python"
     },
@@ -17,6 +25,27 @@
     },
     {
         "src": "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/go-colored.svg",
-        "alt": "Go"
+        "alt": "GoLang"
+    },
+    {
+        "src": "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/react-colored.svg",
+        "alt": "ReactJs"
+    },
+    
+    {
+        "src": "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/git-colored.svg",
+        "alt": "GitBash"
+    },
+    {
+        "src": "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/postgresql-colored.svg",
+        "alt": "PostgresSQL"
+    },
+    {
+        "src": "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/mysql-colored.svg",
+        "alt": "MySQL"
+    },
+    {
+        "src": "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/oracle-colored.svg",
+        "alt": "OracleSQL"
     }
 ]
