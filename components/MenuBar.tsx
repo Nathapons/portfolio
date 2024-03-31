@@ -22,7 +22,7 @@ const MenuBar = () => {
                                     },
                                 }}
                             >
-                                <Title level={4}>
+                                <Title level={4} style={{margin: 0}}>
                                     {item.name}
                                 </Title>
                             </ConfigProvider>

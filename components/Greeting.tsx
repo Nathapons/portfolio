@@ -1,5 +1,5 @@
 "use client";
-import { Col, ConfigProvider, Image, Row } from "antd";
+import { Button, Col, ConfigProvider, Image, Row } from "antd";
 import styled from "styled-components";
 import { Typography } from 'antd';
 import { Props } from '@/interfaces/globalInterfaces';
@@ -34,15 +34,6 @@ const CustomImgCol = styled(Col)`
 const { Title } = Typography;
 
 const Greeting = ({ isComp }: Props) => {
-    const names: string[] = [
-        '<span>Software Developer</span>',
-        '<span>Backend Developer</span>',
-    ]
-    const options = {
-        strings: names,
-        autoStart: true,
-        loop: true
-    }
     const img: string = "https://res.cloudinary.com/dizcg5fnc/image/upload/v1701619719/upload/kqc8rgleicctewcci0cv.jpg"
 
     return (
@@ -60,7 +51,7 @@ const Greeting = ({ isComp }: Props) => {
                 }
             }}
         >
-            <CustomRow style={{margin: 0}} gutter={isComp? [40, 0]: [0, 10]}>
+            <CustomRow style={{margin: 0}} gutter={isComp? [40, 10]: [0, 10]}>
                 <CustomCol>
                     <Image src={img} alt="profile-img" width={isComp? 500: 300} preview={false} />
                 </CustomCol>
@@ -69,6 +60,12 @@ const Greeting = ({ isComp }: Props) => {
                         <Title level={3}>
                             I&apos;m <span style={{color: '#ffcc00'}}>Nuthapon Sripornprasert</span>
                         </Title>
+                    </Col>
+                    <Col>
+                        <Row gutter={[20, 0]} justify={isComp? 'right': 'center'} style={{marginTop: (isComp? '0px': '10px')}}>
+                            <Col><Button type="primary">My Resume</Button></Col>
+                            <Col><Button type="primary" danger>Contract</Button></Col>
+                        </Row>
                     </Col>
                 </CustomImgCol>
             </CustomRow>
