@@ -1,19 +1,9 @@
 "use client";
-import { Row, Col } from 'antd';
+import { Row, Col, ConfigProvider } from 'antd';
 import Link from 'next/link'
-import styled from 'styled-components';
 import { Typography } from 'antd';
 import menuName from '../datas/ManuName.json'
 
-
-const CustomLink = styled(Link)`
-    text-decoration: none;
-    font-size: 16px
-
-    &:hover {
-        text-decoration: underline;
-    }
-`
 
 const { Title } = Typography;
 
@@ -23,11 +13,20 @@ const MenuBar = () => {
             {menuName.map((item, index) => {
                 return (
                     <Col key={index}>
-                        <CustomLink href={item.path}>
-                            <Title level={4} style={{color: 'white'}}>
-                                {item.name}
-                            </Title>
-                        </CustomLink>
+                        <Link href={item.path} style={{textDecoration: 'none'}}>
+                            <ConfigProvider
+                                theme={{
+                                    token: {
+                                        colorText: 'white',
+                                        fontSize: 16,
+                                    },
+                                }}
+                            >
+                                <Title level={4}>
+                                    {item.name}
+                                </Title>
+                            </ConfigProvider>
+                        </Link>
                     </Col>
                 )
             })}

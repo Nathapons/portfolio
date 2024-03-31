@@ -27,11 +27,11 @@ const CopyRight = () => {
                 theme={{
                     token: {
                         colorText: 'white',
-                        fontSizeHeading3: (isComp? 22: 18)
+                        fontSizeHeading1: (isComp? 22: 18)
                     },
                 }}
             >
-                <Title level={3}>&#169; Nuthapon.S 2024. All Rights Reserved.</Title>
+                <Title level={1}>&#169; Nuthapon.S 2024. All Rights Reserved.</Title>
             </ConfigProvider>
         </Row>
     )

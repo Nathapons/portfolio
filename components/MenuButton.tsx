@@ -15,7 +15,7 @@ const MenuButton = ({ menu }: Props) => {
                 Menu
             </Button>
             <Drawer
-                title="Portfolio"
+                title="Nuthapon Portfolio"
                 placement="right"
                 onClick={() => {setOpen(!open)}}
                 onClose={() => {setOpen(!open)}}

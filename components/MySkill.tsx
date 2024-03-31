@@ -1,8 +1,10 @@
+"use client";
 import { Col, ConfigProvider, Flex, Image, Row } from "antd";
 import styled from "styled-components";
 import { Typography } from 'antd';
-import { useEffect, useState } from "react";
 import mySkill from '../datas/MySkill.json'
+import { Props } from "@/interfaces/globalInterfaces";
+import Marquee from "react-fast-marquee";
 
 
 const MySkillCol = styled(Col)`
@@ -18,45 +20,61 @@ const MySkillCol = styled(Col)`
     }
 `
 
-const MySkillCard = styled(Col)`
-    text-align: center;
-    border-radius: 10px;
-`
-
 const { Title } = Typography;
 
-const MySkill = () => {
-    const [isComp, setIsComp] = useState(true);
-
-    useEffect(() => {
-        setIsComp(window.innerWidth > 1050)
-    }, [])
+const MySkill = ({isComp}: Props) => {
 
     return (
-        <Row>
-            <MySkillCol span={24}>
-                <Col span={24}>
-                    <ConfigProvider
-                        theme={{
-                            token: {
-                                colorText: '#ffcc00',
-                                fontSizeHeading3: (isComp? 35: 24)
-                            },
-                        }}
-                    >
-                        <Title level={3} style={{ textAlign: 'center' }}>Programing Skill</Title>
-                    </ConfigProvider>
-                </Col>
-            </MySkillCol>
-            <MySkillCol span={24}>
-                {mySkill.map((item, index) => {
-                    return (
-                        <MySkillCard key={index} span={4}>
-                            <Image src={item.src} alt={item.alt} width={isComp? 70: 40} preview={false} style={{alignItems: 'center'}}/>
-                        </MySkillCard>
-                    )
-                })}
-            </MySkillCol>
+        <Row style={{backgroundColor: '#31323a'}}>
+            <Row style={isComp? {backgroundColor: '#31323a', margin: '0 auto', width: '80%'}: {}}>
+                <MySkillCol span={24}>
+                    <Col span={24}>
+                        <ConfigProvider
+                            theme={{
+                                token: {
+                                    colorText: '#ffcc00',
+                                    fontSizeHeading3: (isComp? 35: 24)
+                                },
+                            }}
+                        >
+                            <Title level={3} style={{ textAlign: 'center' }}>Programing Skill</Title>
+                        </ConfigProvider>
+                    </Col>
+                </MySkillCol>
+                <MySkillCol span={24}>
+                    <Marquee pauseOnHover={false}>
+                        <Row gutter={isComp? [20, 0]: [5, 0]}>
+                            {mySkill.map((item, index) => {
+                                return (
+                                    <Col key={index}>
+                                        <Row gutter={[0, 10]} align="middle" justify="center">
+                                            <Col span={24} style={{display: 'flex', justifyContent: "center"}}>
+                                                <Image 
+                                                    src={item.src} 
+                                                    alt={item.alt} 
+                                                    width={isComp? 70: 40} 
+                                                    preview={false}
+                                                />
+                                            </Col>
+                                            <Col span={24} style={{display: 'flex', justifyContent: "center"}}>
+                                                <ConfigProvider
+                                                    theme={{
+                                                        token: {
+                                                            colorText: 'white'
+                                                        },
+                                                    }}
+                                                >
+                                                    <Title level={5}>{item.alt}</Title>
+                                                </ConfigProvider>
+                                            </Col>
+                                        </Row>
+                                    </Col>
+                                )
+                            })}
+                        </Row>
+                    </Marquee>
+                </MySkillCol>
+            </Row>
         </Row>
     )
 }
