@@ -1,3 +1,4 @@
+"use client";
 import Typewriter from 'typewriter-effect'
 import { Col, ConfigProvider, Image, Row } from "antd";
 import styled from "styled-components";

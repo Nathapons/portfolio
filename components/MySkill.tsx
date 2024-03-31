@@ -1,3 +1,4 @@
+"use client";
 import { Col, ConfigProvider, Flex, Image, Row } from "antd";
 import styled from "styled-components";
 import { Typography } from 'antd';
@@ -18,19 +19,14 @@ const MySkillCol = styled(Col)`
     }
 `
 
-const MySkillCard = styled(Col)`
-    text-align: center;
-    border-radius: 10px;
-`
-
 const { Title } = Typography;
 
 
 const MySkill = ({isComp}: Props) => {
 
     return (
-        <Row style={{backgroundColor: '#31323a'}}>
-            <MySkillCol span={24}>
+        <Row style={{backgroundColor: '#34353a'}}>
+            <MySkillCol span={24} style={{display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '10px 15px'}}>
                 <Col span={24}>
                     <ConfigProvider
                         theme={{
@@ -44,12 +40,12 @@ const MySkill = ({isComp}: Props) => {
                     </ConfigProvider>
                 </Col>
             </MySkillCol>
-            <MySkillCol span={24}>
+            <MySkillCol span={24} style={{display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '10px 15px'}}>
                 {mySkill.map((item, index) => {
                     return (
-                        <MySkillCard key={index} span={4}>
+                        <Col key={index} span={4} style={{textAlign: 'center', borderRadius: '10px'}}>
                             <Image src={item.src} alt={item.alt} width={isComp? 70: 40} preview={false} style={{alignItems: 'center'}}/>
-                        </MySkillCard>
+                        </Col>
                     )
                 })}
             </MySkillCol>

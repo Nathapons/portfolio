@@ -19,7 +19,6 @@ export default function Home() {
     <main className={styles.main}>
       <Greeting isComp={isComp} />
       <WelcomeText isComp={isComp} />
-      <WorkExperience isComp={isComp} />
       <MySkill isComp={isComp} />
       <Connect isComp={isComp} />
     </main>

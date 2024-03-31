@@ -1,3 +1,4 @@
+"use client";
 import { Props } from '@/interfaces/globalInterfaces';
 import { LinkedinOutlined, GithubOutlined, FacebookOutlined, InstagramOutlined } from '@ant-design/icons';
 
@@ -8,8 +9,6 @@ const { Title } = Typography;
 
 
 const Connect = ({ isComp }: Props) => {
-    const getIconSize = () => (isComp)? '50px': '30px';
-
     const linkedinUrl: string = 'https://www.linkedin.com/in/nuthapon-sripornprasert-a41138213/'
     const githubUrl: string = 'https://github.com/Nathapons'
     const facebookUrl: string = 'https://www.facebook.com/nax.seekid/?locale=th_TH'
