@@ -1,5 +1,6 @@
 import { Props } from "@/interfaces/globalInterfaces";
 import { Col, ConfigProvider, Row, Image, Alert, Button } from "antd";
+import Link from "next/link";
 
 
 const WorkExperienceList = ({ isComp }: Props) => {
@@ -31,13 +32,11 @@ const WorkExperienceList = ({ isComp }: Props) => {
             theme={{
                 token: {
                     colorText: 'black',
-                    fontSizeHeading3: (isComp? 35: 24),
                     fontSize: (isComp? 16: 14),
-                    colorSuccessBg: '#b7eb8f'
                 },
             }}
         >
-            <Row style={{paddingTop: '24px', paddingBottom: '24px', margin: 0}} align="middle" gutter={[10, 0]}>
+            <Row style={{paddingBottom: '24px', margin: 0}} align="middle" gutter={[10, 0]}>
                 {isComp && <Col xxl={12} xl={12} style={{display: 'flex', justifyContent: 'center'}}>
                     <Image 
                         src="https://media1.tenor.com/m/xsDhHrBrMcYAAAAd/frieren-sousou-no-frieren.gif" 
@@ -55,6 +54,7 @@ const WorkExperienceList = ({ isComp }: Props) => {
                                         message={item.position}
                                         description={item.company}
                                         style={{width: isComp? '80%': '90%'}}
+                                        type="warning"
                                     />
                                 </Col>
                             )

@@ -70,7 +70,6 @@ const Greeting = ({ isComp }: Props) => {
                             I&apos;m <span style={{color: '#ffcc00'}}>Nuthapon Sripornprasert</span>
                         </Title>
                     </Col>
-                    
                 </CustomImgCol>
             </CustomRow>
         </ConfigProvider>

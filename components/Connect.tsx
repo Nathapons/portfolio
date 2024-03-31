@@ -15,7 +15,7 @@ const Connect = ({ isComp }: Props) => {
     const instragramUrl: string = 'https://www.instagram.com/nuthapon.s/'
 
     return (
-        <Row style={{alignItems: "center", textAlign: "center", paddingTop: "20px", paddingBottom: "20px", backgroundColor: '#31323a'}}>
+        <Row style={{alignItems: "center", textAlign: "center", paddingTop: "20px", paddingBottom: "20px"}}>
             <Col span={24}>
                 <ConfigProvider
                     theme={{

@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { Typography } from 'antd';
 import mySkill from '../datas/MySkill.json'
 import { Props } from "@/interfaces/globalInterfaces";
+import Marquee from "react-fast-marquee";
 
 
 const MySkillCol = styled(Col)`
@@ -21,34 +22,45 @@ const MySkillCol = styled(Col)`
 
 const { Title } = Typography;
 
-
 const MySkill = ({isComp}: Props) => {
 
     return (
-        <Row style={{backgroundColor: '#34353a'}}>
-            <MySkillCol span={24} style={{display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '10px 15px'}}>
-                <Col span={24}>
-                    <ConfigProvider
-                        theme={{
-                            token: {
-                                colorText: '#ffcc00',
-                                fontSizeHeading3: (isComp? 35: 24)
-                            },
-                        }}
-                    >
-                        <Title level={3} style={{ textAlign: 'center' }}>Programing Skill</Title>
-                    </ConfigProvider>
-                </Col>
-            </MySkillCol>
-            <MySkillCol span={24} style={{display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '10px 15px'}}>
-                {mySkill.map((item, index) => {
-                    return (
-                        <Col key={index} span={4} style={{textAlign: 'center', borderRadius: '10px'}}>
-                            <Image src={item.src} alt={item.alt} width={isComp? 70: 40} preview={false} style={{alignItems: 'center'}}/>
-                        </Col>
-                    )
-                })}
-            </MySkillCol>
+        <Row style={{backgroundColor: '#31323a'}}>
+            <Row style={isComp? {backgroundColor: '#31323a', margin: '0 auto', width: '80%'}: {}}>
+                <MySkillCol span={24}>
+                    <Col span={24}>
+                        <ConfigProvider
+                            theme={{
+                                token: {
+                                    colorText: '#ffcc00',
+                                    fontSizeHeading3: (isComp? 35: 24)
+                                },
+                            }}
+                        >
+                            <Title level={3} style={{ textAlign: 'center' }}>Programing Skill</Title>
+                        </ConfigProvider>
+                    </Col>
+                </MySkillCol>
+                <MySkillCol span={24}>
+                    <Marquee pauseOnHover={false}>
+                        <Row gutter={[20, 0]}>
+                            {mySkill.map((item, index) => {
+                                return (
+                                    <Col>
+                                        <Image 
+                                            key={index} 
+                                            src={item.src} 
+                                            alt={item.alt} 
+                                            width={isComp? 70: 40} 
+                                            preview={false}
+                                        />
+                                    </Col>
+                                )
+                            })}
+                        </Row>
+                    </Marquee>
+                </MySkillCol>
+            </Row>
         </Row>
     )
 }
