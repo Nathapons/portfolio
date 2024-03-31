@@ -2,5 +2,9 @@
     {
         "name": "Profile",
         "path": "/"
+    },
+    {
+        "name": "About Me",
+        "path": "/"
     }
 ]
