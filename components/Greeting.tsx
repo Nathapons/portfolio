@@ -66,8 +66,8 @@ const Greeting = ({ isComp }: Props) => {
                             gutter={[20, 0]}
                             style={!isComp? {marginTop:'10px', justifyContent: 'center'}: {}}
                         >
-                            <Col><Button type="primary">My Resume</Button></Col>
-                            <Col><Button type="primary" danger>Contract</Button></Col>
+                            <Col><Button type="primary" size="large">My Resume</Button></Col>
+                            <Col><Button type="primary" danger size="large">Contract</Button></Col>
                         </Row>
                     </Col>
                 </CustomImgCol>
