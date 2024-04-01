@@ -29,7 +29,7 @@ const Connect = ({ isComp }: Props) => {
                 </ConfigProvider>
             </Col>
             <Col span={24}>
-                <Row gutter={[1, 1]} style={{marginTop: "20px", justifyContent: "center"}}>
+                <Row style={{marginTop: "20px", justifyContent: "center"}}>
                     <Col xs={4} sm={4} md={4} lg={4} xl={4} xxl={4} flex={1}>
                         <Link href={facebookUrl} target='_blank'><FacebookOutlined className="fb-icon" style={{color: "#1677ff", fontSize: (isComp)? '50px': '30px'}}/></Link>
                     </Col>
