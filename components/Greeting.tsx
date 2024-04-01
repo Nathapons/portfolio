@@ -3,6 +3,7 @@ import { Button, Col, ConfigProvider, Image, Row } from "antd";
 import styled from "styled-components";
 import { Typography } from 'antd';
 import { Props } from '@/interfaces/globalInterfaces';
+import Link from "next/link";
 
 
 const CustomRow = styled(Row)`
@@ -35,6 +36,7 @@ const { Title } = Typography;
 
 const Greeting = ({ isComp }: Props) => {
     const img: string = "https://res.cloudinary.com/dizcg5fnc/image/upload/v1701619719/upload/kqc8rgleicctewcci0cv.jpg"
+    const resumeUrl: string = 'https://drive.google.com/file/d/1z7ruEQQ2BhazmfotxEqvT7A3Q3ez17m9/view?usp=drive_link'
 
     return (
         <ConfigProvider
@@ -66,7 +68,11 @@ const Greeting = ({ isComp }: Props) => {
                             gutter={[20, 0]}
                             style={!isComp? {marginTop:'10px', justifyContent: 'center'}: {}}
                         >
-                            <Col><Button type="primary" size="large">My Resume</Button></Col>
+                            <Col>
+                                <Link href={resumeUrl} target="_blank">
+                                    <Button type="primary" size="large">My Resume</Button>
+                                </Link>
+                            </Col>
                             <Col><Button type="primary" danger size="large">Contract</Button></Col>
                         </Row>
                     </Col>
