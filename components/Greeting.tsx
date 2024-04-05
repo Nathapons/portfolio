@@ -37,7 +37,7 @@ const { Title } = Typography;
 const Greeting = ({ isComp }: Props) => {
     const img: string = "https://res.cloudinary.com/dizcg5fnc/image/upload/v1701619719/upload/kqc8rgleicctewcci0cv.jpg"
     const resumeUrl: string = 'https://drive.google.com/file/d/1z7ruEQQ2BhazmfotxEqvT7A3Q3ez17m9/view?usp=drive_link'
-
+    
     return (
         <ConfigProvider
             theme={{
@@ -73,7 +73,6 @@ const Greeting = ({ isComp }: Props) => {
                                     <Button type="primary" size="large">My Resume</Button>
                                 </Link>
                             </Col>
-                            <Col><Button type="primary" danger size="large">Contract</Button></Col>
                         </Row>
                     </Col>
                 </CustomImgCol>

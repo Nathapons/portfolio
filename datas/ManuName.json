@@ -5,6 +5,6 @@
     },
     {
         "name": "Certificate",
-        "path": "/"
+        "path": "/certificate"
     }
 ]
