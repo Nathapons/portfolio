@@ -9,11 +9,11 @@ const CertificateTitle = ({ isComp }: Props) => {
             theme={{
                 token: {
                     colorText: 'white',
-                    fontSizeHeading3: (isComp? 60: 28)
+                    fontSizeHeading3: (isComp? 35: 24)
                 },
             }}
         >
-            <Row gutter={[10, 30]}>
+            <Row style={{padding: '10px'}}>
                 <Col span={24}>
                     <Title level={3} style={{textAlign: 'center'}}>Certificate</Title>
                 </Col>

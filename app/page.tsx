@@ -8,15 +8,12 @@ import { useEffect, useState } from "react";
 import WorkExperience from "@/components/WorkExperience";
 import WorkExperienceList from "@/components/WorkExperienceList";
 
-import {imageListApi} from '../utils/cloudinary';
-
 
 export default function Home() {
   const [isComp, setIsComp] = useState(true);
 
     useEffect(() => {
         setIsComp(window.innerWidth > 1050)
-        console.log(imageListApi)
     }, [])
 
   return (

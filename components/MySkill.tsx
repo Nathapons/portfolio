@@ -5,6 +5,7 @@ import { Typography } from 'antd';
 import mySkill from '../datas/MySkill.json'
 import { Props } from "@/interfaces/globalInterfaces";
 import Marquee from "react-fast-marquee";
+import { useEffect, useState } from "react";
 
 
 const MySkillCol = styled(Col)`
@@ -22,7 +23,24 @@ const MySkillCol = styled(Col)`
 
 const { Title } = Typography;
 
+interface MySkillData {
+    src: string
+    alt: string
+}
+
 const MySkill = ({isComp}: Props) => {
+    const [mySkill, setMySkill] = useState<MySkillData[]>([]);
+
+    useEffect(() => {
+        fetch('/api/v1/skill')
+        .then((response => response.json()))
+        .then((data: MySkillData[]) => {
+            setMySkill(data)
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+        })
+    }, [])
 
     return (
         <Row style={{backgroundColor: '#31323a'}}>

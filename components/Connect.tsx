@@ -29,17 +29,17 @@ const Connect = ({ isComp }: Props) => {
                 </ConfigProvider>
             </Col>
             <Col span={24}>
-                <Row style={{marginTop: "20px", justifyContent: "center"}}>
-                    <Col xs={4} sm={4} md={4} lg={4} xl={4} xxl={4} flex={1}>
+                <Row  gutter={isComp? [100, 100]: [50, 50]} justify="center" align="middle" style={{marginTop: "20px"}}>
+                    <Col xs={4} sm={4} md={4} lg={4} xl={4} xxl={4} flex="none">
                         <Link href={facebookUrl} target='_blank'><FacebookOutlined className="fb-icon" style={{color: "#1677ff", fontSize: (isComp)? '50px': '30px'}}/></Link>
                     </Col>
-                    <Col xs={4} sm={4} md={4} lg={4} xl={4} xxl={4} flex={1}>
+                    <Col xs={4} sm={4} md={4} lg={4} xl={4} xxl={4} flex="none">
                         <Link href={githubUrl} target='_blank'><GithubOutlined className="github-icon" style={{color: "black", fontSize: (isComp)? '50px': '30px'}}/></Link>
                     </Col>
-                    <Col xs={4} sm={4} md={4} lg={4} xl={4} xxl={4} flex={1}>
+                    <Col xs={4} sm={4} md={4} lg={4} xl={4} xxl={4} flex="none">
                         <Link href={linkedinUrl} target='_blank'><LinkedinOutlined className="linkedin-icon" style={{color: "#1677ff", fontSize: (isComp)? '50px': '30px'}}/></Link>
                     </Col>
-                    <Col xs={4} sm={4} md={4} lg={4} xl={4} xxl={4} flex={1}>
+                    <Col xs={4} sm={4} md={4} lg={4} xl={4} xxl={4} flex="none">
                         <Link href={instragramUrl} target='_blank'><InstagramOutlined style={{color: "rgb(240, 6, 45)", fontSize: (isComp)? '50px': '30px'}}/></Link>
                     </Col>
                 </Row>
