@@ -1,1 +1,0 @@
-export const imageListApi = `https://${process.env.NEXT_PUBLIC_API_KEY}:${process.env.NEXT_PUBLIC_API_SECRET}@api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUD_NAME}/resources/image`

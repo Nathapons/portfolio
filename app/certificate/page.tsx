@@ -2,6 +2,7 @@
 import styles from "../page.module.css";
 import { useEffect, useState } from "react";
 import CertificateTitle from "@/components/CertificateTitle";
+import CertificateList from "@/components/CertificateList";
 
 
 export default function Home() {
@@ -14,6 +15,7 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <CertificateTitle isComp={isComp} />
+      <CertificateList isComp={isComp} />
     </main>
   );
 }
