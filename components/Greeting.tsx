@@ -66,7 +66,7 @@ const Greeting = ({ isComp }: Props) => {
                     <Col>
                         <Row 
                             gutter={[20, 0]}
-                            style={!isComp? {marginTop:'10px', justifyContent: 'center'}: {}}
+                            style={!isComp? {marginTop:'10px', justifyContent: 'center'}: {marginTop: '10px'}}
                         >
                             <Col>
                                 <Link href={resumeUrl} target="_blank">
