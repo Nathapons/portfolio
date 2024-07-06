@@ -1,31 +1,10 @@
 import { Props } from "@/interfaces/globalInterfaces";
 import { Col, ConfigProvider, Row, Image, Alert, Typography } from "antd";
+import experienceData from '../datas/Experience.json'
 
 const { Paragraph } = Typography;
 
 const WorkExperienceList = ({ isComp }: Props) => {
-    const experienceData = [
-        {
-            timeline: 'February, 2024 - Present',
-            position: 'Software Developer',
-            company: 'Trinity Roots Co.,Ltd.',
-        },
-        {
-            timeline: 'July, 2022 – December, 2023',
-            position: 'Backend Developer',
-            company: 'Swift Dynamics Co., Ltd.',
-        },
-        {
-            timeline: 'October, 2021 – June, 2022',
-            position: 'Backend Developer',
-            company: 'Mor Corporation (The VC Group)',
-        },
-        {
-            timeline: 'June, 2018 – September, 2021',
-            position: 'IoT Engineering',
-            company: 'Fujikura Electronics ( Thailand ) Co.,Ltd.',
-        },
-    ]
 
     return (
         <ConfigProvider
