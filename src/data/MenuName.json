@@ -1,0 +1,10 @@
+[
+    {
+        "name": "About Me",
+        "path": "/"
+    },
+    {
+        "name": "Certificate",
+        "path": "/certificate"
+    }
+]
