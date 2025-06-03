@@ -34,7 +34,7 @@ const { Title } = Typography;
 
 const Greeting: React.FC<Props> = ({ isComp }) => {
     const img: string = "https://res.cloudinary.com/dizcg5fnc/image/upload/v1701619719/upload/kqc8rgleicctewcci0cv.jpg";
-    const resumeUrl: string = 'https://drive.google.com/file/d/1z7ruEQQ2BhazmfotxEqvT7A3Q3ez17m9/view?usp=sharing';
+    const resumeUrl: string = 'https://drive.google.com/file/d/13GNoOVVR_S8DUz5z3dz3QdXFtr2jydsb/view?usp=sharing';
     
     return (
         <ConfigProvider
