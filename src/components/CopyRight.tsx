@@ -1,14 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { ConfigProvider, Row, Typography } from "antd";
-import styled from "styled-components";
-
-const CustomRow = styled(Row)`
-    height: 100px;
-    background-color: black;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-`;
 
 const { Title } = Typography;
 
