@@ -1,5 +1,17 @@
 [
     {
+        "url": "https://res.cloudinary.com/dizcg5fnc/image/upload/v1748972898/Certificate/xrzau9ca9u3o1fpmauc5.jpg",
+        "alt": "AWS Cloud Practitioner Essentials"
+    },
+    {
+        "url": "https://res.cloudinary.com/dizcg5fnc/image/upload/v1748973097/Certificate/rozwhu8w0bvcjd1gamfw.png",
+        "alt": "Basic Cloud and Network"
+    },
+    {
+        "url": "https://res.cloudinary.com/dizcg5fnc/image/upload/v1748973205/Certificate/gu8bhbokcophjpb4tstq.jpg",
+        "alt": "Cloud Computing for Everyone"
+    },
+    {
         "url": "https://res.cloudinary.com/dizcg5fnc/image/upload/v1718943812/Certificate/tsdv5ynaguvdr6sv8qm8.jpg",
         "alt": "C#.net"
     },
@@ -26,9 +38,5 @@
     {
         "url": "https://res.cloudinary.com/dizcg5fnc/image/upload/v1713109185/Certificate/ggtbdqbg9qeucahemo0h.jpg",
         "alt": "Go The Complete Guide"
-    },
-    {
-        "url": "https://res.cloudinary.com/dizcg5fnc/image/upload/v1705157403/Certificate/uloxi61klcimusuytynl.jpg",
-        "alt": "Tsukuba University"
     }
 ]
