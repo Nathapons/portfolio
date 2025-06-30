@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import WelcomeText from "../components/WelcomeText";
 import Greeting from "../components/Greeting";
 import MySkill from "../components/MySkill";
 import WorkExperience from "../components/WorkExperience";
