@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import WelcomeText from "../components/WelcomeText";
 import Greeting from "../components/Greeting";
 import MySkill from "../components/MySkill";
-import Connect from "../components/Connect";
 import WorkExperience from "../components/WorkExperience";
 
 const Home: React.FC = () => {
@@ -23,11 +22,18 @@ const Home: React.FC = () => {
 
   return (
     <main className="main-content">
-      <Greeting isComp={isComp} />
-      <WelcomeText isComp={isComp} />
-      <WorkExperience isComp={isComp} />
-      <MySkill isComp={isComp} />
-      <Connect isComp={isComp} />
+      <div id="greeting" className="min-h-screen">
+        <Greeting isComp={isComp} />
+      </div>
+      {/* <div id="welcome" className="min-h-screen">
+        <WelcomeText isComp={isComp} />
+      </div> */}
+      <div id="work_experience" className="min-h-screen">
+        <WorkExperience isComp={isComp} />
+      </div>
+      <div id="my_skill" className="min-h-screen">
+        <MySkill isComp={isComp} />
+      </div>
     </main>
   );
 };
