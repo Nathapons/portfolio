@@ -10,6 +10,10 @@ export interface MenuItemProps {
     icon: React.ReactNode;
 }
 
+export interface MenuBarProps {
+    menuItems: MenuItemProps[];
+}
+
 export interface TechStackItem {
     src: string;
     alt: string;
@@ -27,6 +31,10 @@ export interface ExperienceItem {
 }
 
 export interface CertificateItem {
-    url: string;
-    alt: string;
+    id: number;
+    title: string;
+    issuer: string;
+    date: string;
+    imageUrl: string;
+    credentialUrl: string;
 }

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Button, Drawer } from 'antd';
 import SidebarMenu from './SidebarMenu';
+import { MenuBarProps } from '@/interfaces/globalInterfaces';
 
-const MenuButton: React.FC = () => {
+const MenuButton: React.FC<MenuBarProps> = ({ menuItems }) => {
     const [open, setOpen] = useState(false);
 
     const toggleDrawer = () => {
@@ -24,7 +25,7 @@ const MenuButton: React.FC = () => {
                 onClose={toggleDrawer}
                 open={open}
             >
-                <SidebarMenu />
+                <SidebarMenu menuItems={menuItems}/>
             </Drawer>
         </>
     );

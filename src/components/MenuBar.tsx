@@ -1,20 +1,14 @@
 import React from 'react';
 import { Row, Col, ConfigProvider, Typography } from 'antd';
 import { Link } from 'react-router-dom';
-import { HomeOutlined, TruckOutlined } from "@ant-design/icons"
-import { MenuItemProps } from '../interfaces/globalInterfaces';
+import { MenuBarProps, MenuItemProps } from '../interfaces/globalInterfaces';
 
 const { Title } = Typography;
 
-const MenuBar: React.FC = () => {
-    const menuItem: MenuItemProps[] = [
-        { name: 'Home', path: '/', icon: <HomeOutlined className="mr-2" /> },
-        { name: 'Certificates', path: '/certificate', icon: <TruckOutlined className="mr-2" /> }
-    ];
-    
+const MenuBar: React.FC<MenuBarProps> = ({ menuItems }) => {
     return (
         <Row gutter={[30, 0]} style={{marginRight: '2px'}}>
-            {menuItem.map((item, index) => {
+            {menuItems.map((item: MenuItemProps, index: number) => {
                 return (
                     <Col key={index}>
                         <Link to={item.path} style={{textDecoration: 'none'}}>
