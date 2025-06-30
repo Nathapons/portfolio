@@ -4,7 +4,6 @@ import Greeting from "../components/Greeting";
 import MySkill from "../components/MySkill";
 import Connect from "../components/Connect";
 import WorkExperience from "../components/WorkExperience";
-import WorkExperienceList from "../components/WorkExperienceList";
 
 const Home: React.FC = () => {
   const [isComp, setIsComp] = useState(true);
@@ -27,7 +26,6 @@ const Home: React.FC = () => {
       <Greeting isComp={isComp} />
       <WelcomeText isComp={isComp} />
       <WorkExperience isComp={isComp} />
-      <WorkExperienceList isComp={isComp} />
       <MySkill isComp={isComp} />
       <Connect isComp={isComp} />
     </main>
