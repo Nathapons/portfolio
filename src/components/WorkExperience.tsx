@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Typography, Timeline, Card, Tag, Row, Col, ConfigProvider } from "antd"
-import { CalendarOutlined, EnvironmentOutlined, ProjectOutlined } from "@ant-design/icons"
+import { CalendarOutlined, EnvironmentOutlined, ProjectOutlined, ProductOutlined, CaretRightOutlined } from "@ant-design/icons"
 import { motion } from "framer-motion"
 
 import { ExperienceItem } from "../interfaces/globalInterfaces"
@@ -47,48 +47,36 @@ const WorkExperience: React.FC<Props> = ({ isComp }) => {
                                     initial={{ opacity: 0, x: 50 }}
                                     whileInView={{ opacity: 1, x: 0 }}
                                     transition={{ duration: 0.6, delay: index * 0.1 }}
-                            >
+                                >
                                 <Card className="ml-4 shadow-lg hover:shadow-xl transition-shadow">
-                                <div className="flex justify-between items-start mb-4">
+                                    <div className="flex justify-between items-start mb-4">
+                                        <div>
+                                            <Title level={5} className="!mt-0 !mb-0">{job.position}</Title>
+                                            <Paragraph className="!mb-0"><ProjectOutlined className="mr-2" />Project: {job.project}</Paragraph>
+                                            <Paragraph className="!mb-0"><ProductOutlined className="mr-2" />{job.company}</Paragraph>
+                                            <Paragraph className="!mb-0"><CalendarOutlined className="mr-2" />{job.duration}</Paragraph>
+                                            <Paragraph className="!mb-0"><EnvironmentOutlined className="mr-2" />{job.location}</Paragraph>
+                                        </div>
+                                    </div>
+                                    {isComp && (
+                                        <div className="mb-4">
+                                            <strong>Key Achievements:</strong>
+                                            <ul className="mt-2 ml-4">
+                                                {job.achievements.map((achievement, i) => (
+                                                    <li key={i} className="!mb-0">
+                                                        <CaretRightOutlined className="mr-1" />{achievement}
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    )}
                                     <div>
-                                    <Title level={4} className="mb-1">
-                                        {job.position}
-                                    </Title>
-                                    <Title level={5} className="text-blue-600 mb-2">
-                                        {job.company}
-                                    </Title>
+                                        {job.technologies.map((tech, i) => (
+                                            <Tag key={i} color="blue" className="mb-1">
+                                                {tech}
+                                            </Tag>
+                                        ))}
                                     </div>
-                                    <div className="text-right text-gray-500">
-                                        <div className="flex items-center mb-1">
-                                            <CalendarOutlined className="mr-2" />
-                                            {job.duration}
-                                        </div>
-                                        <div className="flex items-center">
-                                            <EnvironmentOutlined className="mr-2" />
-                                            {job.location}
-                                        </div>
-                                    </div>
-                                </div>
-                                <Paragraph className="mb-4"><ProjectOutlined className="mr-2" />Project: {job.project}</Paragraph>
-                                {isComp && (
-                                    <div className="mb-4">
-                                        <strong>Key Achievements:</strong>
-                                        <ul className="mt-2 ml-4">
-                                            {job.achievements.map((achievement, i) => (
-                                                <li key={i} className="mb-1">
-                                                {achievement}
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                )}
-                                <div>
-                                    {job.technologies.map((tech, i) => (
-                                    <Tag key={i} color="blue" className="mb-1">
-                                        {tech}
-                                    </Tag>
-                                    ))}
-                                </div>
                                 </Card>
                             </motion.div>
                             ),
