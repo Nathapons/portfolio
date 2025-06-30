@@ -25,9 +25,6 @@ const Home: React.FC = () => {
       <div id="greeting" className="min-h-screen">
         <Greeting isComp={isComp} />
       </div>
-      {/* <div id="welcome" className="min-h-screen">
-        <WelcomeText isComp={isComp} />
-      </div> */}
       <div id="work_experience" className="min-h-screen">
         <WorkExperience isComp={isComp} />
       </div>
