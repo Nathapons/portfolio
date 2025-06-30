@@ -1,32 +1,71 @@
 [
     {
-        "timeline": "August, 2024 - Present",
-        "position": "Full Stack Developer",
-        "company": "NestiFly Co., Ltd."
+      "id": 1,
+      "position": "Full Stack Developer & DevOps",
+      "company": "NestiFly Co., Ltd.",
+      "location": "Bangkok, Thailand",
+      "duration": "August, 2024 - Present",
+      "project": "StockLend by Nestifly",
+      "achievements": [
+        "Successfully delivered new features aligned with Bank of Thailand (BOT) requirements, including Major Shareholder management, Contract Acceptance workflows, Investment/Contract Report generation, and Majorshareholder",
+        "Developed and customized user interfaces and front-end components for Phoenix Admin using HTML and CSS, ensuing, a responsive and user-friendly administrative experience",
+        "Management the deployment and maintenance of web applications and other services on Google Cloud Platform (GCP), ensuring scalability and reliability.",
+        "Coordinated with relevant Liberator Securities Co., Ltd. to prepare and submit the Business Continuity Plan (BCP) testing report to the Bank of Thailand."
+      ],
+      "technologies": ["Django", "JavaScript", "Google Cloud Platform", "HTML", "Tailwind CSS", "Ajax", "Docker", "Github", "Redis"]
     },
     {
-        "timeline": "July, 2024 - September, 2024",
-        "position": "Backend Developer",
-        "company": "Softdebut Co.,Ltd."
+      "id": 2,
+      "position": "C# Developer",
+      "company": "SoftDebut Co., Ltd",
+      "location": "Bangkok, Thailand",
+      "duration": "July, 2024 - September 2024",
+      "project": "www.certpra.com",
+      "achievements": [
+        "Developed and created user interfaces and web applications for Certpra using HTML, CSS, and AJAX",
+        "Familiar with developing web applications using the .NET framework."
+      ],
+      "technologies": ["ASP.net", "C#", "Umbraco", "Microsoft SQL Server", "Gitlab"]
     },
     {
-        "timeline": "February, 2024 - June, 2024",
-        "position": "Software Developer",
-        "company": "Trinity Roots Co.,Ltd."
+      "id": 3,
+      "position": "Backend Developer (Python)",
+      "company": "Swift Dynamics Co., Ltd.",
+      "location": "Bangkok, Thailand",
+      "duration": "July, 2022 – December, 2023",
+      "project": "Constructor management (https://cm.sitearoud.com)",
+      "achievements": [
+        "Led technical discussions with the development team to clarify issues and define project plans",
+        "Established a new scalable project structure leveraging Django’s ModelViewSet, Serializer Model, and Middleware components",
+        "Developed functionalities for generating CSV and PDF reports using Django Import Export and Jasper Studio",
+        "Optimized application performance by identifying and resolving bottlenecks using Django silk, resulting in cleaner and more efficient code."
+      ],
+      "technologies": ["Django", "Docker", "PostgresSQL", "Jasper Reports", "Github"]
     },
     {
-        "timeline": "July, 2022 – December, 2023",
-        "position": "Backend Developer",
-        "company": "Swift Dynamics Co., Ltd."
+      "id": 4,
+      "position": "Backend Developer (Python)",
+      "company": "Mor Coporation",
+      "location": "Bangkok, Thailand",
+      "duration": "October, 2021 – August, 2022",
+      "project": "Chakri Naruebodindra Medical Institute",
+      "achievements": [
+        "Significantly improved the performance of Django APIs and Django Admin interface through the implementation of Django Silk.",
+        "Enhanced the application with new features such as Appointment Document generation, Covid-19 Document management, and Health Check-up functionalities"
+      ],
+      "technologies": ["Django", "Docker", "PostgresSQL", "Jasper Reports", "Gitlab"]
     },
     {
-        "timeline": "October, 2021 – June, 2022",
-        "position": "Backend Developer",
-        "company": "Mor Corporation (The VC Group)"
-    },
-    {
-        "timeline": "June, 2018 – September, 2021",
-        "position": "IoT Engineering",
-        "company": "Fujikura Electronics ( Thailand ) Co.,Ltd."
+      "id": 5,
+      "position": "Internet of Things Engineer",
+      "company": "Fujikura Ltd.",
+      "location": "Ayuttaya, Thailand",
+      "duration": "June, 2018 – November, 2021",
+      "project": "-",
+      "achievements": [
+        "Design PL/SQL Database to match excel file",
+        "Python setting for query and upload database"
+      ],
+      "technologies": ["Django", "Docker", "PostgresSQL", "Jasper Reports", "Gitlab"]
     }
 ]

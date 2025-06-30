@@ -13,9 +13,14 @@ export interface TechStackItem {
 }
 
 export interface ExperienceItem {
-    timeline: string;
+    id: Number;
     position: string;
     company: string;
+    location: string;
+    duration: string;
+    project: string;
+    achievements: string[];
+    technologies: string[];
 }
 
 export interface CertificateItem {
