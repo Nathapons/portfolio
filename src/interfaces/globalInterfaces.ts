@@ -10,6 +10,10 @@ export interface MenuItemProps {
     icon: React.ReactNode;
 }
 
+export interface MenuBarProps {
+    menuItems: MenuItemProps[];
+}
+
 export interface TechStackItem {
     src: string;
     alt: string;
