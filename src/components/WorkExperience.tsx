@@ -70,16 +70,18 @@ const WorkExperience: React.FC<Props> = ({ isComp }) => {
                                     </div>
                                 </div>
                                 <Paragraph className="mb-4">Project: {job.project}</Paragraph>
-                                <div className="mb-4">
-                                    <strong>Key Achievements:</strong>
-                                    <ul className="mt-2 ml-4">
-                                    {job.achievements.map((achievement, i) => (
-                                        <li key={i} className="mb-1">
-                                        {achievement}
-                                        </li>
-                                    ))}
-                                    </ul>
-                                </div>
+                                {isComp && (
+                                    <div className="mb-4">
+                                        <strong>Key Achievements:</strong>
+                                        <ul className="mt-2 ml-4">
+                                            {job.achievements.map((achievement, i) => (
+                                                <li key={i} className="mb-1">
+                                                {achievement}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                )}
                                 <div>
                                     {job.technologies.map((tech, i) => (
                                     <Tag key={i} color="blue" className="mb-1">
