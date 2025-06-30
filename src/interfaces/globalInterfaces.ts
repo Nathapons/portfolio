@@ -27,6 +27,10 @@ export interface ExperienceItem {
 }
 
 export interface CertificateItem {
-    url: string;
-    alt: string;
+    id: number;
+    title: string;
+    issuer: string;
+    date: string;
+    imageUrl: string;
+    credentialUrl: string;
 }
