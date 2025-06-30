@@ -35,7 +35,7 @@ const CustomImgCol = styled(Col)`
 const { Title, Paragraph } = Typography;
 
 const Greeting: React.FC<Props> = ({ isComp }) => {
-    const img: string = "https://res.cloudinary.com/dizcg5fnc/image/upload/v1701619719/upload/kqc8rgleicctewcci0cv.jpg";
+    const img: string = "https://res.cloudinary.com/dizcg5fnc/image/upload/v1751286613/upload/pxjotniorcjdiip9fs79.jpg";
     
     return (
         <ConfigProvider
@@ -62,8 +62,9 @@ const Greeting: React.FC<Props> = ({ isComp }) => {
                     <motion.div initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
                         <Col span={24}>
                             <Title level={3}>
-                                I'm <span style={{color: '#ffcc00'}}>Nuthapon Sripornprasert</span>
+                                I'm <span className="text-amber-400">Nuthapon Sripornprasert</span>
                             </Title>
+                            <Title level={4}><span className="text-amber-400">Fullstack Developer</span></Title>
                             <Paragraph>
                                 <EnvironmentOutlined className="mr-2" />Bangkok, Thailand
                             </Paragraph>

@@ -31,8 +31,8 @@ const MySkill: React.FC<Props> = ({ isComp }) => {
     }, []);
 
     return (
-        <Row style={{backgroundColor: '#31323a'}}>
-            <Row style={isComp ? {backgroundColor: '#31323a', margin: '0 auto', width: '80%'} : {}}>
+        <Row>
+            <Row style={isComp ? { margin: '0 auto'} : {}}>
                 <MySkillCol span={24}>
                     <Col span={24}>
                         <ConfigProvider
