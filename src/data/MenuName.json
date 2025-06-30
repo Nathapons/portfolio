@@ -1,10 +1,10 @@
 [
     {
-        "name": "About Me",
+        "name": "Home",
         "path": "/"
     },
     {
-        "name": "Certificate",
+        "name": "Certificates",
         "path": "/certificate"
     }
 ]

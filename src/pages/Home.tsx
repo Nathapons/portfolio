@@ -20,14 +20,14 @@ const Home: React.FC = () => {
   }, []);
 
   return (
-    <main className="main-content">
-      <div id="greeting" className="min-h-screen">
+    <main>
+      <div id="greeting">
         <Greeting isComp={isComp} />
       </div>
-      <div id="work_experience" className="min-h-screen">
+      <div id="work_experience" className="bg-zinc-800">
         <WorkExperience isComp={isComp} />
       </div>
-      <div id="my_skill" className="min-h-screen">
+      <div id="my_skill">
         <MySkill isComp={isComp} />
       </div>
     </main>

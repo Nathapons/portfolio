@@ -1,3 +1,5 @@
+import React from "react";
+
 export interface Props {
     isComp: boolean
 }
@@ -5,6 +7,7 @@ export interface Props {
 export interface MenuItemProps {
     name: string;
     path: string;
+    icon: React.ReactNode;
 }
 
 export interface TechStackItem {
