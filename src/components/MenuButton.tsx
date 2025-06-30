@@ -1,13 +1,8 @@
 import React, { useState } from 'react';
 import { Button, Drawer } from 'antd';
-import { MenuItemProps } from '../interfaces/globalInterfaces';
 import SidebarMenu from './SidebarMenu';
 
-interface Props {
-    menu: MenuItemProps[];
-}
-
-const MenuButton: React.FC<Props> = ({ menu }) => {
+const MenuButton: React.FC = () => {
     const [open, setOpen] = useState(false);
 
     const toggleDrawer = () => {

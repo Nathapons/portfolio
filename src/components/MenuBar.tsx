@@ -1,15 +1,20 @@
 import React from 'react';
 import { Row, Col, ConfigProvider, Typography } from 'antd';
 import { Link } from 'react-router-dom';
-import menuName from '../data/MenuName.json';
+import { HomeOutlined, TruckOutlined } from "@ant-design/icons"
 import { MenuItemProps } from '../interfaces/globalInterfaces';
 
 const { Title } = Typography;
 
 const MenuBar: React.FC = () => {
+    const menuItem: MenuItemProps[] = [
+        { name: 'Home', path: '/', icon: <HomeOutlined className="mr-2" /> },
+        { name: 'Certificates', path: '/certificate', icon: <TruckOutlined className="mr-2" /> }
+    ];
+    
     return (
         <Row gutter={[30, 0]} style={{marginRight: '2px'}}>
-            {menuName.map((item: MenuItemProps, index: number) => {
+            {menuItem.map((item, index) => {
                 return (
                     <Col key={index}>
                         <Link to={item.path} style={{textDecoration: 'none'}}>
@@ -22,7 +27,7 @@ const MenuBar: React.FC = () => {
                                 }}
                             >
                                 <Title level={4} style={{margin: 0}}>
-                                    {item.name}
+                                    {item.icon}{item.name}
                                 </Title>
                             </ConfigProvider>
                         </Link>

@@ -64,12 +64,12 @@ const Greeting: React.FC<Props> = ({ isComp }) => {
                             <Title level={3}>
                                 I'm <span className="text-amber-400">Nuthapon Sripornprasert</span>
                             </Title>
-                            <Title level={4}><span className="text-amber-400">Fullstack Developer</span></Title>
-                            <Paragraph>
+                            <Title level={4} className="mb-10"><span className="text-amber-400">Fullstack Developer</span></Title>
+                            <Paragraph className="mt-2 !mb-0">
                                 <EnvironmentOutlined className="mr-2" />Bangkok, Thailand
                             </Paragraph>
-                            <Paragraph>
-                                Gender: <ManOutlined className="ml-2 mr-2" />Male
+                            <Paragraph className="mb-2 !mt-0">
+                                <ManOutlined className="mr-2" />Gender: Male
                             </Paragraph>
                             <Paragraph>
                                 Experienced Backend Developer with a proven track record in designing, developing, and deploying scalable web applications 
