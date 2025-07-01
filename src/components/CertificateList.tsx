@@ -17,6 +17,18 @@ const CertificateList: React.FC<Props> = ({ isComp }) => {
         setCertificates(certificateData);
     }, []);
 
+    useEffect(() => {
+        if (selectedCert) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
+        }
+    
+        return () => {
+            document.body.style.overflow = 'auto';
+        };
+    }, [selectedCert]);
+
     const openModal = (cert: any) => {
         setSelectedCert(cert)
         setRotation(0)
@@ -29,7 +41,7 @@ const CertificateList: React.FC<Props> = ({ isComp }) => {
 
     return (
         <div className="max-w-7xl mx-auto">
-            <Row gutter={[24, 24]}>
+            <Row gutter={[24, 24]} className="max-w-7xl mx-auto">
                 {certificates.map((cert, index) => (
                     <Col xs={24} sm={12} lg={6} key={cert.id}>
                     <motion.div
@@ -41,7 +53,7 @@ const CertificateList: React.FC<Props> = ({ isComp }) => {
                             hoverable
                             className="h-full"
                             cover={
-                                <div className="relative overflow-hidden h-48">
+                                <div className="relative h-48">
                                     <img
                                         alt={cert.title}
                                         src={cert.imageUrl || "/placeholder.svg"}
