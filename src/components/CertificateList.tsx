@@ -17,18 +17,6 @@ const CertificateList: React.FC<Props> = ({ isComp }) => {
         setCertificates(certificateData);
     }, []);
 
-    useEffect(() => {
-        if (selectedCert) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = 'auto';
-        }
-    
-        return () => {
-            document.body.style.overflow = 'auto';
-        };
-    }, [selectedCert]);
-
     const openModal = (cert: any) => {
         setSelectedCert(cert)
         setRotation(0)
