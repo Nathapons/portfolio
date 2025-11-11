@@ -1,5 +1,6 @@
 import React from "react";
 import { Col, ConfigProvider, Row, Typography } from "antd";
+import { GithubOutlined } from "@ant-design/icons";
 import { Props } from '../interfaces/globalInterfaces';
 
 const { Title, Paragraph } = Typography;
@@ -15,16 +16,12 @@ const GithubTitle: React.FC<Props> = ({ isComp }) => {
                 },
             }}
         >
-            <Row style={{padding: '10px'}}>
+            <Row className="p-2">
                 <Col span={24}>
-                    <Title level={3} style={{textAlign: 'center'}}>My Github Timeline</Title>
-                </Col>
-            </Row>
-            <Row style={{padding: '10px'}}>
-                <Col span={24}>
-                    <Paragraph style={{textAlign: 'center'}}>
-                        A summary of my public contributions on Github. Select a year to view the timeline.
-                    </Paragraph>
+                    <Title level={3} className="text-center">
+                        <GithubOutlined className="mr-2" />
+                        Github Profile
+                    </Title>
                 </Col>
             </Row>
         </ConfigProvider>

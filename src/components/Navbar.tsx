@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { ConfigProvider, Row, Typography } from 'antd';
 import { Link } from 'react-router-dom';
 import MenuButton from './MenuButton';
-import { GithubOutlined, HomeOutlined, TruckOutlined } from "@ant-design/icons";
+import { GithubOutlined, HomeOutlined, ProfileOutlined } from "@ant-design/icons";
 import { MenuItemProps } from '../interfaces/globalInterfaces';
 import MenuBar from './MenuBar';
 
@@ -13,9 +13,9 @@ const Navbar: React.FC = () => {
     const [isComp, setIsComp] = useState(true);
 
     const menuItems: MenuItemProps[] = [
-        { name: 'Home', path: '/', icon: <HomeOutlined className="mr-2" /> },
+        { name: 'Home', path: '', icon: <HomeOutlined className="mr-2" /> },
         { name: 'Github', path: '/github', icon: <GithubOutlined className="mr-2" /> },
-        { name: 'Certificates', path: '/certificate', icon: <TruckOutlined className="mr-2" /> },
+        { name: 'Certificates', path: '/certificate', icon: <ProfileOutlined className="mr-2" /> },
     ];
 
     useEffect(() => {
