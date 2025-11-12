@@ -1,4 +1,4 @@
-import { Col, Image, Row, Card } from "antd";
+import { Col, Image, Row } from "antd";
 import { Props } from "../interfaces/globalInterfaces";
 import { motion } from "framer-motion";
 
