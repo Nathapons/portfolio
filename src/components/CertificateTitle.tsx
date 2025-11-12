@@ -1,5 +1,6 @@
 import React from 'react';
 import { Typography, ConfigProvider, Row, Col } from 'antd';
+import { ProfileOutlined } from "@ant-design/icons";
 import { Props } from '../interfaces/globalInterfaces';
 
 const { Title } = Typography;
@@ -16,7 +17,9 @@ const CertificateTitle: React.FC<Props> = ({ isComp }) => {
         >
             <Row style={{padding: '10px'}}>
                 <Col span={24}>
-                    <Title level={3} style={{textAlign: 'center'}}>Certificate</Title>
+                    <Title level={3} style={{textAlign: 'center'}}>
+                        <ProfileOutlined className="mr-2"/>Certificate
+                    </Title>
                 </Col>
             </Row>
         </ConfigProvider>
