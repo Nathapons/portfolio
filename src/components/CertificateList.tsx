@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { Col, Row, Card, Modal } from "antd";
+import { Col, Row, Card, Modal, Typography, Image } from "antd";
 import { Props } from "../interfaces/globalInterfaces";
 import certificateData from "../data/Certificate.json";
 import { CertificateItem } from "../interfaces/globalInterfaces";
 import { ZoomInOutlined, CloseOutlined } from "@ant-design/icons"
 import { motion } from "framer-motion"
 
+const { Title, Text } = Typography;
+const { Meta } = Card;
 
 const CertificateList: React.FC<Props> = ({ isComp }) => {
     const [certificates, setCertificates] = useState<CertificateItem[]>([]);
@@ -13,7 +15,6 @@ const CertificateList: React.FC<Props> = ({ isComp }) => {
     const [rotation, setRotation] = useState(0)
 
     useEffect(() => {
-        // In React, we'll use the imported JSON directly instead of fetching
         setCertificates(certificateData);
     }, []);
 
@@ -39,44 +40,31 @@ const CertificateList: React.FC<Props> = ({ isComp }) => {
                     >
                         <Card
                             hoverable
-                            className="h-full"
+                            className="bg-gray-200 border-none"
                             cover={
-                                <div className="relative h-48">
-                                    <img
-                                        alt={cert.title}
-                                        src={cert.imageUrl || "/placeholder.svg"}
-                                        className="w-full h-full object-cover transition-transform hover:scale-105"
-                                    />
-                                    <div className="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition-all flex items-center justify-center">
-                                        <ZoomInOutlined
-                                        className="text-white text-2xl opacity-0 hover:opacity-100 transition-opacity cursor-pointer"
-                                        onClick={() => openModal(cert)}
+                                <Row>
+                                    <Col xs={24} sm={24} lg={24} className="flex justify-center">
+                                        <Image
+                                            alt={cert.title}
+                                            src={cert.imageUrl || "/placeholder.svg"}
+                                            height={200}
+                                            
                                         />
-                                    </div>
-                                </div>
+                                        <div className="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition-all flex items-center justify-center">
+                                            <ZoomInOutlined
+                                                className="text-white text-2xl opacity-0 hover:opacity-100 transition-opacity cursor-pointer"
+                                                onClick={() => openModal(cert)}
+                                            />
+                                        </div>
+                                    </Col>
+                                </Row>
                             }
                             onClick={() => openModal(cert)}
                         >
-                        <Card.Meta
-                            title={cert.title}
-                            description={
-                            <div>
-                                <p className="text-blue-600 font-medium">{cert.issuer}</p>
-                                <p className="text-gray-500 text-sm">{cert.date}</p>
-                                {cert.credentialUrl && (
-                                <a
-                                    href={cert.credentialUrl}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="text-blue-500 hover:text-blue-700 text-sm"
-                                    onClick={(e) => e.stopPropagation()}
-                                >
-                                    View Credential →
-                                </a>
-                                )}
-                            </div>
-                            }
-                        />
+                            <Meta
+                                title={<Title level={5} className="text-wrap text-center">{cert.title}</Title>}
+                                className="h-[50px]"
+                            />
                         </Card>
                     </motion.div>
                     </Col>

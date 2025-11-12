@@ -17,7 +17,7 @@ const WorkExperience: React.FC<Props> = ({ isComp }) => {
     }, [])
 
     return (
-        <div className="py-20 px-6">
+        <div className="py-10 px-6">
             <div className="max-w-6xl mx-auto">
                 <motion.div
                     initial={{ opacity: 0, y: 50 }}
