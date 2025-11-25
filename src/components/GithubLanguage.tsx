@@ -12,10 +12,10 @@ export default function GithubLangauge({ isComp }: Props) {
     ]
 
     return (
-        <Row gutter={[0, 10]} className="mt-5">
-            <Col span={24} className='flex justify-center'>
-                {urlItem.map((item, index) => {
-                    return (
+        <Row gutter={[0, 2]} className="p-2">
+            {urlItem.map((item, index) => {
+                return (
+                    <Col xl={12} xxl={12} lg={12} md={24} sm={24} xs={24} className='flex justify-center'>
                         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 2 }}>
                             <Image 
                                 draggable={false}
@@ -23,13 +23,13 @@ export default function GithubLangauge({ isComp }: Props) {
                                 src={item.src} 
                                 alt={item.alt} 
                                 preview={false} 
-                                width={450}
+                                width={(isComp)? 450: 380}
                                 height={200}
                             />
                         </motion.div>
-                    )
-                })}
-            </Col>
+                    </Col>
+                )
+            })}
         </Row>
     )
 }
