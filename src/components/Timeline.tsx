@@ -1,52 +1,80 @@
 import { useState } from 'react';
-import GitHubCalendar from "react-github-calendar";
+import GitHubCalendar, { Activity } from "react-github-calendar";
 import { Props } from '../interfaces/globalInterfaces';
-import { Col, Row, Typography } from "antd";
-import { Select } from 'antd';
+import { ConfigProvider, Select, theme } from "antd";
 import { motion } from "framer-motion"
 
-const { Paragraph } = Typography;
+const CARD_BG = '#22232a';
+const CARD_BORDER = '#3a3b44';
+const ACCENT = '#39d353';
+const GREEN_SCALE = ['#161b22', '#0e4429', '#006d32', '#26a641', '#39d353'];
 
 export default function Timeline({ isComp }: Props) {
     const currentYear = new Date().getFullYear();
     const [selectedYear, setSelectedYear] = useState(String(currentYear));
+    const [totalCount, setTotalCount] = useState<number | null>(null);
 
     const handleYearChange = (year: string) => {
+        setTotalCount(null);
         setSelectedYear(year);
     };
 
+    const transformData = (data: Activity[]) => {
+        setTotalCount(data.reduce((sum, activity) => sum + activity.count, 0));
+        return data;
+    };
+
     return (
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
-            <Row className='text-center mb-6' gutter={[8, 8]}>
-                <Col span={24} className='text-center'>
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }} className="flex flex-col items-center">
+            <div className="mb-8">
+                <ConfigProvider
+                    theme={{
+                        algorithm: theme.darkAlgorithm,
+                        token: { colorPrimary: ACCENT, borderRadius: 10 },
+                    }}
+                >
                     <Select
                         size='large'
-                        defaultValue={selectedYear}
+                        value={selectedYear}
                         style={{ width: 120 }}
                         onChange={handleYearChange}
                         options={Array.from({ length: 5 }, (_, i) => {
-                            return {value: currentYear - i, label: (currentYear - i).toString()}
+                            return { value: String(currentYear - i), label: (currentYear - i).toString() }
                         })}
                     />
-                </Col>
-            </Row>
-            <Row className='flex justify-center'>
-                <Col span={24} className='p-8 bg-card rounded-lg border-2 border-solid border-white w-full max-w-4xl'>
+                </ConfigProvider>
+            </div>
+
+            <div
+                className="w-full"
+                style={{
+                    maxWidth: 960,
+                    background: CARD_BG,
+                    border: `1px solid ${CARD_BORDER}`,
+                    borderRadius: 16,
+                    padding: isComp ? '28px 32px' : '20px 16px',
+                    boxShadow: '0 12px 32px rgba(0,0,0,0.4)',
+                }}
+            >
+                <div style={{ fontSize: 15, fontWeight: 600, color: '#d9d9db', marginBottom: 18, minHeight: 21 }}>
+                    {totalCount !== null ? `${totalCount} contributions in ${selectedYear}` : ' '}
+                </div>
+
+                <div style={{ overflowX: 'auto', paddingBottom: 6 }}>
                     <GitHubCalendar
                         username="Nathapons"
                         year={Number(selectedYear)}
-                        blockSize={16}
-                        blockMargin={4}
-                        fontSize={16}
-                        theme={{
-                            light: ['hsl(0, 0%, 92%)', 'hsl(60, 95%, 80%)', 'hsl(60, 95%, 70%)', 'hsl(60, 95%, 60%)', 'hsl(60, 95%, 50%)'],
-                            dark: ['hsl(0, 0%, 20%)', 'hsl(60, 95%, 30%)', 'hsl(60, 95%, 40%)', 'hsl(60, 95%, 50%)', 'hsl(60, 95%, 60%)'],
-                        }}
-                        hideColorLegend
+                        transformData={transformData}
+                        blockSize={isComp ? 12 : 10}
+                        blockMargin={3}
+                        fontSize={12}
+                        colorScheme="dark"
+                        theme={{ dark: GREEN_SCALE }}
                         hideTotalCount
+                        labels={{ legend: { less: 'Less', more: 'More' } }}
                     />
-                </Col>
-            </Row>
+                </div>
+            </div>
         </motion.div>
     );
 }
