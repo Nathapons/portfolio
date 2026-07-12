@@ -19,7 +19,7 @@ const Certificate: React.FC = () => {
   }, []);
 
   return (
-    <main className="main-content">
+    <main className="main-content" style={{ overflow: "hidden" }}>
       <CertificateTitle isComp={isComp} />
       <CertificateList isComp={isComp} />
     </main>
