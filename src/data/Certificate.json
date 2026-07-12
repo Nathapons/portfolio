@@ -1,6 +1,5 @@
 [
     {
-      "id": 1,
       "title": "Digital Intelligence Bootcamp: Google Cloud, Big Data & GenAI",
       "issuer": "Digital Economy Promotion Agency (depa) of Thailand",
       "date": "Jul 2025",
@@ -8,7 +7,13 @@
       "credentialUrl": "https://res.cloudinary.com/dizcg5fnc/image/upload/v1783602408/Certificate/digital_intelligence_bootcamp_gcp_onxfhi.png"
     },
     {
-      "id": 2,
+      "title": "Claude Cowork สำหรับคนทำงาน",
+      "issuer": "IT Genius Engineering Company Limited",
+      "date": "Jul 2025",
+      "imageUrl": "https://res.cloudinary.com/dizcg5fnc/image/upload/v1783612855/1782222275325_vsomj5.jpg",
+      "credentialUrl": "https://res.cloudinary.com/dizcg5fnc/image/upload/v1783612855/1782222275325_vsomj5.jpg"
+    },
+    {
       "title": "Claude Code 101",
       "issuer": "Anthropic",
       "date": "May 2026",
@@ -16,7 +21,20 @@
       "credentialUrl": "https://res.cloudinary.com/dizcg5fnc/image/upload/v1779857994/Certificate/certificate-krhq98fzoumz-1779857480_page-0001_rmkyth.jpg"
     },
     {
-      "id": 3,
+      "title": "Claude Skills 101: with Cowork and Code (10 hrs.)",
+      "issuer": "IT Genius Engineering Company Limited",
+      "date": "May 2026",
+      "imageUrl": "https://res.cloudinary.com/dizcg5fnc/image/upload/v1778515517/Certificate/certificate-en-2_page-0001_nbhxdb.jpg",
+      "credentialUrl": "https://res.cloudinary.com/dizcg5fnc/image/upload/v1778515517/Certificate/certificate-en-2_page-0001_nbhxdb.jpg"
+    },
+    {
+      "title": "AWS re/Start Graduate",
+      "issuer": "Amazon Web Services Training and Certification",
+      "date": "April 2026",
+      "imageUrl": "https://res.cloudinary.com/dizcg5fnc/image/upload/v1783861543/image_iar3az.png",
+      "credentialUrl": "https://www.credly.com/badges/9d4fba2d-aee4-449f-a7e2-a0d880a8628e/linked_in_profile"
+    },
+    {
       "title": "A Tour of Google Cloud Hands-on Labs",
       "issuer": "Coursera",
       "date": "November 2025",
@@ -24,7 +42,6 @@
       "credentialUrl": "https://res.cloudinary.com/dizcg5fnc/image/upload/v1763007419/Certificate/A_Tour_of_Google__Cloud__Hands_on__Labs_jf3q1y.png"
     },
     {
-      "id": 4,
       "title": "Google Cloud Fundamentals: Core Infrastructure",
       "issuer": "Coursera",
       "date": "November 2025",
@@ -32,7 +49,6 @@
       "credentialUrl": "https://res.cloudinary.com/dizcg5fnc/image/upload/v1762788525/Certificate/Google_Cloud_Fundamentals_Core_Infrastructure_page-0001_eacj8l.jpg"
     },
     {
-      "id": 5,
       "title": "Gemini Certified Educator",
       "issuer": "Google Cloud Learning Services",
       "date": "September 2025",
@@ -40,7 +56,6 @@
       "credentialUrl": "https://res.cloudinary.com/dizcg5fnc/image/upload/v1757602418/Certificate/Google_Certified_Educator_m6nm4w.jpg"
     },
     {
-      "id": 6,
       "title": "Big Data and Machine Learning",
       "issuer": "Google Cloud Learning Services",
       "date": "July 2025",
@@ -48,7 +63,6 @@
       "credentialUrl": "https://res.cloudinary.com/dizcg5fnc/image/upload/v1756985607/Certificate/Big_Data_and_Machine_Learning_page-0001_nhgotz.jpg"
     },
     {
-      "id": 7,
       "title": "AWS Technical Essentials",
       "issuer": "The Enterprise Resources Training Co., Ltd.",
       "date": "July 2025",
@@ -56,7 +70,6 @@
       "credentialUrl": "https://res.cloudinary.com/dizcg5fnc/image/upload/v1751644913/Certificate/ATP_Certificate_Nuthapon_Sripornprasert_page-0001_r77rlj.jpg"
     },
     {
-      "id": 8,
       "title": "Getting Started with Google Kubernetes Engine",
       "issuer": "TRAINOCATE (Thailand) Co. Ltd.",
       "date": "June 2025",
@@ -64,7 +77,6 @@
       "credentialUrl": "https://res.cloudinary.com/dizcg5fnc/image/upload/v1751341307/Certificate/ogcmj6bub16mlnrb2qrk.png"
     },
     {
-      "id": 9,
       "title": "Google Cloud Fundamentals Course Completion Certificate",
       "issuer": "Google Cloud Learning Services",
       "date": "June 2025",
@@ -72,7 +84,6 @@
       "credentialUrl": "https://res.cloudinary.com/dizcg5fnc/image/upload/v1751006014/Certificate/hrlsebwjwyvxaxcb4z5h.jpg"
     },
     {
-      "id": 10,
       "title": "AWS Cloud Practitioner Essentials",
       "issuer": "The Enterprise Resources Training Co., Ltd.",
       "date": "May 2025",
@@ -80,7 +91,6 @@
       "credentialUrl": "https://res.cloudinary.com/dizcg5fnc/image/upload/v1748972898/Certificate/xrzau9ca9u3o1fpmauc5.jpg"
     },
     {
-      "id": 11,
       "title": "Basic Cloud and Nework",
       "issuer": "CONS ROBOTICS COMPANY LIMITED",
       "date": "December 2024",
@@ -88,7 +98,6 @@
       "credentialUrl": "https://res.cloudinary.com/dizcg5fnc/image/upload/v1748973097/Certificate/rozwhu8w0bvcjd1gamfw.png"
     },
     {
-      "id": 12,
       "title": "Cloud Computing for Everyone",
       "issuer": "Chulalongkorn University",
       "date": "December 2024",
@@ -96,7 +105,6 @@
       "credentialUrl": "https://res.cloudinary.com/dizcg5fnc/image/upload/v1748973205/Certificate/gu8bhbokcophjpb4tstq.jpg"
     },
     {
-      "id": 13,
       "title": "C# .NET Core 8 with MS SQL Complete Beginner to Master 2024",
       "issuer": "Udemy",
       "date": "July 2024",
@@ -104,7 +112,6 @@
       "credentialUrl": "https://res.cloudinary.com/dizcg5fnc/image/upload/v1718943812/Certificate/tsdv5ynaguvdr6sv8qm8.jpg"
     },
     {
-      "id": 12,
       "title": "The Complete Spring Boot Development Bootcamp",
       "issuer": "Udemy",
       "date": "January 2024",
@@ -112,7 +119,6 @@
       "credentialUrl": "https://res.cloudinary.com/dizcg5fnc/image/upload/v1706532940/Certificate/lqlsjprmlbl0eapc9gjj.jpg"
     },
     {
-      "id": 13,
       "title": "MERN Stack by JavaScript Web Application",
       "issuer": "Udemy",
       "date": "September 2024",
@@ -120,7 +126,6 @@
       "credentialUrl": "https://res.cloudinary.com/dizcg5fnc/image/upload/v1703337000/Certificate/qkmwh8svayjo0ozpsliv.jpg"
     },
     {
-      "id": 14,
       "title": "Go: The Complete Developer's Guide (Golang)",
       "issuer": "Udemy",
       "date": "April 2024",
@@ -128,7 +133,6 @@
       "credentialUrl": "https://res.cloudinary.com/dizcg5fnc/image/upload/v1713109185/Certificate/ggtbdqbg9qeucahemo0h.jpg"
     },
     {
-      "id": 15,
       "title": "Devloper Web Application with React (React-World Projects)",
       "issuer": "Udemy",
       "date": "September 2023",
@@ -136,7 +140,6 @@
       "credentialUrl": "https://res.cloudinary.com/dizcg5fnc/image/upload/v1705136482/Certificate/olo2h23rvlmejrqd0kjt.jpg"
     },
     {
-      "id": 16,
       "title": "Full Stack Python For Web Developer",
       "issuer": "Software Park Thailand",
       "date": "May 2021",
@@ -144,7 +147,6 @@
       "credentialUrl": "https://res.cloudinary.com/dizcg5fnc/image/upload/v1705136468/Certificate/pidd0gi5iokvwabewhsg.jpg"
     },
     {
-      "id": 17,
       "title": "Complete Python3 Programming",
       "issuer": "BORNTODEV CO., LTD",
       "date": "August 2021",
