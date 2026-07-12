@@ -15,7 +15,9 @@ const CertificateList: React.FC<Props> = ({ isComp }) => {
     const [rotation, setRotation] = useState(0)
 
     useEffect(() => {
-        setCertificates(certificateData);
+        setCertificates(
+            certificateData.map((cert, index) => ({ ...cert, id: index }))
+        );
     }, []);
 
     const openModal = (cert: any) => {
