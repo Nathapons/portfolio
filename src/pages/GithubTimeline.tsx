@@ -24,7 +24,7 @@ const GithubTimeline: React.FC = () => {
     <main className="main-content">
         <GithubTitle isComp={isComp} />
         <Timeline isComp={isComp} />
-        {/* <GithubLangauge isComp={isComp} /> */}
+        <GithubLangauge isComp={isComp} />
     </main>
   );
 };
