@@ -1,0 +1,26 @@
+[
+    {
+        "src": "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/aws-colored.svg",
+        "alt": "AWS"
+    },
+    {
+        "src": "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/googlecloud-colored.svg",
+        "alt": "Google Cloud"
+    },
+    {
+        "src": "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/docker-colored.svg",
+        "alt": "Docker"
+    },
+    {
+        "src": "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/kubernetes-colored.svg",
+        "alt": "Kubernetes"
+    },
+    {
+        "src": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg",
+        "alt": "Redis"
+    },
+    {
+        "src": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/githubactions/githubactions-plain.svg",
+        "alt": "CI/CD"
+    }
+]
