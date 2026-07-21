@@ -64,7 +64,7 @@ const Greeting: React.FC<Props> = ({ isComp }) => {
                             <Title level={3}>
                                 I'm <span className="text-amber-400">Nuthapon Sripornprasert</span>
                             </Title>
-                            <Title level={4} className="mb-10"><span className="text-amber-400">Fullstack Developer</span></Title>
+                            <Title level={4} className="mb-10"><span className="text-amber-400">Backend/DevOps Engineer</span></Title>
                             <Paragraph className="mt-2 !mb-0">
                                 <EnvironmentOutlined className="mr-2" />Bangkok, Thailand
                             </Paragraph>
@@ -72,9 +72,9 @@ const Greeting: React.FC<Props> = ({ isComp }) => {
                                 <ManOutlined className="mr-2" />Gender: Male
                             </Paragraph>
                             <Paragraph>
-                                Experienced Backend Developer with a proven track record in designing, developing, and deploying scalable web applications 
-                                using Python/Django. Strong in database management and RESTful APIs. Collaborative and results-driven, seeking a challenging role at NestiFly Co., Ltd. 
-                                to contribute to impactful projects and expand technical skills.
+                                Backend/DevOps Engineer with 4+ years of experience building scalable fintech systems on Python/Django and GCP infrastructure.
+                                Currently expanding into AWS cloud architecture. Seeking a Cloud/DevOps Engineer role to apply infrastructure automation and
+                                regulatory-compliant system design skills.
                             </Paragraph>
                             <Space size="large">
                                 <Button

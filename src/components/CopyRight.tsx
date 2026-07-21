@@ -29,7 +29,7 @@ const CopyRight: React.FC = () => {
                     },
                 }}
             >
-                <Title level={1}>&#169; Nuthapon.S 2024. All Rights Reserved.</Title>
+                <Title level={1}>&#169; Nuthapon.S 2026. All Rights Reserved.</Title>
             </ConfigProvider>
         </Row>
     );
