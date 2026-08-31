@@ -24,3 +24,17 @@ This is a single-page portfolio site built with React 18 + TypeScript + Vite, de
 - **Styling**: mix of Ant Design components, styled-components, Tailwind utility classes (via `tailwind-merge`/`tailwindcss-animate`), and global CSS in `src/styles/`. No single styling system is canonical — check the existing component's approach before adding a new one.
 - **Path alias**: `@/*` maps to `src/*` (`tsconfig.json`).
 - **Responsive behavior**: several components (e.g. `Home.tsx`) track viewport width manually via a `window.resize` listener and pass an `isComp` boolean prop down, rather than using CSS breakpoints alone — follow this pattern for components that need desktop/mobile branching logic.
+
+## Agent skills
+
+### Issue tracker
+
+Issues and specs live as GitHub issues on `Nathapons/portfolio`, via the `gh` CLI. See `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+Default five-role vocabulary (`needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`), unchanged. See `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+Single-context layout: `CONTEXT.md` + `docs/adr/` at the repo root. See `docs/agents/domain.md`.
