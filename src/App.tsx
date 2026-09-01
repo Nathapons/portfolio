@@ -5,6 +5,8 @@ import Home from './pages/Home';
 import Certificate from './pages/Certificate';
 import GithubTimeline from './pages/GithubTimeline';
 import ProjectPrototype from './pages/ProjectPrototype';
+import ProjectList from './pages/ProjectList';
+import ProjectDetail from './pages/ProjectDetail';
 
 const App: React.FC = () => {
   return (
@@ -13,6 +15,8 @@ const App: React.FC = () => {
         <Route index element={<Home />} />
         <Route path="/certificate" element={<Certificate />} />
         <Route path="/github" element={<GithubTimeline />} />
+        <Route path="/project" element={<ProjectList />} />
+        <Route path="/project/:id" element={<ProjectDetail />} />
         {(import.meta as any).env.DEV && (
           <Route path="/project-prototype" element={<ProjectPrototype />} />
         )}
