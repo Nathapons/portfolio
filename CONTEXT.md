@@ -10,6 +10,10 @@ _Avoid_: Professional (too vague — was the original working term before this w
 
 Project content that names a real employer or internal system is anonymized before publishing (company → a generic descriptor like "a Bank of Thailand-regulated P2P lending platform", internal system names → generic role descriptors) — vulnerability/finding *categories* stay general and can be shown, but the specific employer and system names cannot. Decided 2026-09-01 for the Security Remediation project, applies to any future Project with similar sensitivity.
 
+Anonymization also covers personal PII, not just company/system names: real people's names, phone numbers, usernames, or credentials appearing in a source document (e.g. an internal test report's Call Tree or admin screenshots) must never appear in Project content, even anonymized-company copy. Sharpened 2026-09-01 while turning an internal BCP Test Report (containing executives' personal phone numbers) into the BCP Testing Project — a stricter case than the original employer/system-name rule.
+
+Two Projects can share the same anonymized employer descriptor while remaining separate Project entries, when they represent distinct pieces of engineering work for that employer (e.g. Security Remediation and BCP Testing are both "a Bank of Thailand-regulated P2P lending platform" but are unrelated efforts). Decided 2026-09-01.
+
 **Work Experience**:
 A row in the employment history shown on the Home page (`Experience.json` / `WorkExperience.tsx`) — position, company, duration, achievements. One employer can have multiple Projects associated with it, but Work Experience itself is not a Project.
 _Avoid_: Job, position (use only inside a Work Experience record's fields, not as the record's name)

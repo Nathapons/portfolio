@@ -15,6 +15,52 @@
       "GCP",
       "Fintech",
       "Compliance"
-    ]
+    ],
+    "theme": "security"
+  },
+  {
+    "id": "bcp-testing-2025-2026",
+    "title": "Business Continuity Plan Testing Program",
+    "subtitle": "2 consecutive annual BCP drills passed, submitted to BOT both years",
+    "company": "A Bank of Thailand-regulated P2P lending platform",
+    "role": "Infrastructure & BCP Test Coordinator",
+    "status": "Compliant — annual cadence",
+    "startDate": "2025-07",
+    "endDate": "2026-07",
+    "tags": [
+      "Business Continuity",
+      "Disaster Recovery",
+      "GCP",
+      "Fintech",
+      "Compliance"
+    ],
+    "theme": "resilience",
+    "timeline": [
+      {
+        "phase": "2025 BCP Test",
+        "duration": "Jul 2025",
+        "effort": "1 day",
+        "description": "IT infrastructure recovery drill (database, API, and CRM failover)",
+        "status": "completed"
+      },
+      {
+        "phase": "2026 BCP Test",
+        "duration": "Jul 2026",
+        "effort": "1 day",
+        "description": "Expanded to 2 dimensions: IT infrastructure recovery plus workplace/personnel continuity (remote-ops and crisis call-tree drill)",
+        "status": "completed"
+      }
+    ],
+    "achievements": [
+      { "icon": "✅", "label": "Result", "value": "100% pass rate across both annual test cycles" },
+      { "icon": "⏱️", "label": "Recovery", "value": "Core services restored within 3–30 minutes depending on scenario" },
+      { "icon": "📋", "label": "Compliance", "value": "BCP test report submitted to and accepted by the Bank of Thailand, 2 years running" },
+      { "icon": "📞", "label": "People", "value": "Verified crisis communication (call-tree) and remote-ops continuity across leadership, IT, and operations teams" }
+    ],
+    "techStack": {
+      "Infrastructure": ["GCP Cloud SQL", "Cloud Run", "App Engine"],
+      "Process": ["Backup & restore drills", "Failover testing", "Crisis communication planning"]
+    },
+    "skills": ["Disaster Recovery Planning", "Business Continuity Testing", "Cross-team Incident Coordination"]
   }
 ]

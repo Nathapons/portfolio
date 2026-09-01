@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
-import { Row, Col, Card, Tag, Steps, Tabs, Statistic, Typography, ConfigProvider } from "antd";
+import { Tag, Steps, Typography, ConfigProvider } from "antd";
+import { motion } from "framer-motion";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 
 import { ProjectItem } from "@/interfaces/globalInterfaces";
@@ -11,9 +12,21 @@ const { Title, Text, Paragraph } = Typography;
 
 const projects: ProjectItem[] = ProjectData as ProjectItem[];
 
+// All text white, headings (Title) yellow — this page's fixed detail theme.
 const lightOnDark = {
-  token: { colorText: "white", colorTextSecondary: "#a1a1aa" },
+  token: { colorText: "white", colorTextSecondary: "white", colorTextHeading: "#ffcc00" },
   components: { Tag: { defaultColor: "rgba(0, 0, 0, 0.88)" } },
+};
+
+// Sections stagger in top-to-bottom on mount instead of appearing all at once.
+const containerVariants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.09, delayChildren: 0.05 } },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 18 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.45, ease: "easeOut" } },
 };
 
 const customProjectDetails: Record<string, React.FC> = {
@@ -50,119 +63,94 @@ const ProjectDetail: React.FC = () => {
 
   return (
     <main className="main-content py-10 px-6">
-      <div className="max-w-5xl mx-auto">
-        <ConfigProvider theme={lightOnDark}>
-          <div className="mb-6">
-            <Link to="/project" className="inline-flex items-center gap-2 mb-2">
-              <ArrowLeftOutlined /> Back to projects
+      <ConfigProvider theme={lightOnDark}>
+        <motion.div
+          key={project.id}
+          variants={containerVariants}
+          initial="hidden"
+          animate="show"
+          className="max-w-3xl mx-auto"
+        >
+          <motion.div variants={itemVariants}>
+            <Link to="/project" className="inline-flex items-center gap-2 mb-6">
+              <ArrowLeftOutlined /> All projects
             </Link>
-            <Title level={2} className="!mt-0 !mb-1">{project.title}</Title>
-            <Text style={{ color: "#ffffff" }}>
-              {project.company} · {project.role} · {project.startDate} – {project.endDate}
-            </Text>
-          </div>
-        </ConfigProvider>
+          </motion.div>
 
-        {project.metrics && (
-          <Row gutter={16} className="mb-6">
-            {[
-              { title: "Findings before", value: project.metrics.before.totalVulnerabilities, bg: "#FFD0D0" },
-              { title: "Findings after", value: project.metrics.after.totalVulnerabilities, bg: "#D0EFC0" },
-              { title: "Effort", value: project.metrics.after.effort, suffix: project.metrics.after.effortUnit, bg: "#FFFDAB" },
-              {
-                title: "Success rate",
-                value: project.metrics.after.successRate ?? "—",
-                suffix: project.metrics.after.successRate ? "%" : "",
-                bg: "#C6B5FD",
-              },
-            ].map((metric) => (
-              <Col span={6} key={metric.title}>
-                <Card style={{ backgroundColor: metric.bg }}>
-                  <Statistic
-                    title={<span style={{ color: "#000000" }}>{metric.title}</span>}
-                    value={metric.value}
-                    suffix={metric.suffix}
-                    valueStyle={{ color: "#000000" }}
-                  />
-                </Card>
-              </Col>
-            ))}
-          </Row>
-        )}
+          <motion.div variants={itemVariants}>
+            <Text type="secondary">{project.company} · {project.role}</Text>
+            <Title level={2} className="!mt-1">{project.title}</Title>
+            <Paragraph className="text-lg">{project.subtitle}</Paragraph>
+            <div className="flex gap-2 flex-wrap mb-6">
+              {project.tags.map((tag) => <Tag key={tag}>{tag}</Tag>)}
+            </div>
+          </motion.div>
 
-        <ConfigProvider theme={lightOnDark}>
-          <Tabs
-            items={[
-              project.timeline && {
-                key: "timeline",
-                label: "Timeline",
-                children: (
-                  <Steps
-                    items={project.timeline.map((phase) => ({
-                      title: phase.phase,
-                      description: <span style={{ color: "#ffffff" }}>{phase.description}</span>,
-                      status: phase.status === "completed" ? "finish" : "process",
-                    }))}
-                  />
-                ),
-              },
-              (project.challenges || project.solutions) && {
-                key: "challenges",
-                label: "Challenges & Solutions",
-                children: (
-                  <Row gutter={24}>
-                    <Col span={12}>
-                      <Title level={5}>Challenges</Title>
-                      {project.challenges?.map((challenge) => (
-                        <Paragraph key={challenge.title}>
-                          <Text strong>{challenge.title}</Text> — {challenge.description}
-                        </Paragraph>
-                      ))}
-                    </Col>
-                    <Col span={12}>
-                      <Title level={5}>Solutions</Title>
-                      {project.solutions?.map((solution) => (
-                        <div key={solution.category} className="mb-3">
-                          <Text strong>{solution.category}</Text>
-                          <ul className="list-disc pl-5">
-                            {solution.items.map((item) => <li key={item}>{item}</li>)}
-                          </ul>
-                        </div>
-                      ))}
-                    </Col>
-                  </Row>
-                ),
-              },
-              project.techStack && {
-                key: "stack",
-                label: "",
-                children: Object.entries(project.techStack).map(([category, items]) => (
-                  <div key={category} className="mb-3">
-                    <Text strong>{category}: </Text>
-                    {items.map((item) => <Tag key={item}>{item}</Tag>)}
-                  </div>
-                )),
-              },
-              project.achievements && {
-                key: "achievements",
-                label: "",
-                children: (
-                  <Row gutter={16}>
-                    {project.achievements.map((achievement) => (
-                      <Col span={12} key={achievement.label}>
-                        <div className="border border-zinc-600 rounded-lg p-3">
-                          {achievement.icon} <Text strong>{achievement.label}</Text>
-                          <div className="text-white">{achievement.value}</div>
-                        </div>
-                      </Col>
-                    ))}
-                  </Row>
-                ),
-              },
-            ].filter((item): item is NonNullable<typeof item> => Boolean(item))}
-          />
-        </ConfigProvider>
-      </div>
+          {project.metrics && (
+            <motion.div variants={itemVariants} className="flex gap-8 mb-8 py-4 border-y border-zinc-700">
+              <div>
+                <Text type="secondary">Before</Text>
+                <div className="text-2xl font-bold text-white">{project.metrics.before.totalVulnerabilities} findings</div>
+              </div>
+              <div>
+                <Text type="secondary">After</Text>
+                <div className="text-2xl font-bold text-white">{project.metrics.after.totalVulnerabilities} findings</div>
+              </div>
+            </motion.div>
+          )}
+
+          {project.timeline && (
+            <motion.div variants={itemVariants} className="mb-8">
+              <Title level={4}>Timeline</Title>
+              <Steps
+                direction="vertical"
+                size="small"
+                items={project.timeline.map((phase) => ({
+                  title: phase.phase,
+                  description: `${phase.duration} — ${phase.description}`,
+                  status: phase.status === "completed" ? "finish" : "process",
+                }))}
+              />
+            </motion.div>
+          )}
+
+          {project.challenges && project.solutions && (
+            <motion.div variants={itemVariants} className="mb-8 flex flex-col gap-6">
+              <Title level={4}>Challenges &amp; Solutions</Title>
+              {project.challenges.map((challenge, i) => (
+                <div key={challenge.title}>
+                  <Paragraph><Text strong>{challenge.title}.</Text> {challenge.description}</Paragraph>
+                  {project.solutions?.[i] && (
+                    <ul className="list-disc pl-6 text-white">
+                      {project.solutions[i].items.map((item) => <li key={item}>{item}</li>)}
+                    </ul>
+                  )}
+                </div>
+              ))}
+            </motion.div>
+          )}
+
+          {project.achievements && (
+            <motion.div variants={itemVariants} className="mb-8">
+              <Title level={4}>Achievements</Title>
+              <ul className="flex flex-col gap-2">
+                {project.achievements.map((achievement) => (
+                  <li key={achievement.label}>
+                    {achievement.icon} <Text strong>{achievement.label}:</Text> {achievement.value}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          )}
+
+          {(project.techStack || project.skills) && (
+            <motion.div variants={itemVariants} className="flex gap-2 flex-wrap">
+              {project.techStack && Object.values(project.techStack).flat().map((item) => <Tag key={item}>{item}</Tag>)}
+              {project.skills?.map((skill) => <Tag key={skill} color="blue">{skill}</Tag>)}
+            </motion.div>
+          )}
+        </motion.div>
+      </ConfigProvider>
     </main>
   );
 };

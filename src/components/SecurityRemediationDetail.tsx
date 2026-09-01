@@ -1,38 +1,60 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Row, Col, Card, Tag, Steps, Tabs, Statistic, Typography, ConfigProvider } from "antd";
+import { Tag, Steps, Typography, ConfigProvider } from "antd";
+import { motion } from "framer-motion";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 
 const { Title, Text, Paragraph } = Typography;
 
+// All text white, headings (Title) yellow — matches the generic detail page's theme.
 const lightOnDark = {
-  token: { colorText: "white", colorTextSecondary: "#a1a1aa" },
+  token: { colorText: "white", colorTextSecondary: "white", colorTextHeading: "#ffcc00" },
   components: { Tag: { defaultColor: "rgba(0, 0, 0, 0.88)" } },
 };
+
+// Sections stagger in top-to-bottom on mount instead of appearing all at once.
+const containerVariants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.09, delayChildren: 0.05 } },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 18 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.45, ease: "easeOut" } },
+};
+
+const tags = ["Security", "Penetration Testing", "Django", "GCP", "Fintech", "Compliance"];
+
+const metrics = { before: 15, after: 1 };
 
 const timeline = [
   {
     phase: "Initial Penetration Test",
+    duration: "Apr 9–23, 2026",
     description: "Comprehensive security assessment",
     status: "completed" as const,
   },
   {
     phase: "Report & Analysis",
+    duration: "Apr 30, 2026",
     description: "Initial findings documented",
     status: "completed" as const,
   },
   {
     phase: "Remediation Sprint",
+    duration: "May–Jun 2026",
     description: "Fix vulnerabilities by priority",
     status: "completed" as const,
   },
   {
     phase: "Revisited Penetration Test",
+    duration: "Jun 9–11, 2026",
     description: "Verify fixes and validate remediation",
     status: "completed" as const,
   },
   {
     phase: "Final Report",
+    duration: "Jun 18, 2026",
     description: "Clearance for production",
     status: "completed" as const,
   },
@@ -88,125 +110,95 @@ const achievements = [
 ];
 
 const techStack: Record<string, string[]> = {
-  backend: ["Python", "Django", "Django Ninja"],
-  infrastructure: ["GCP Cloud Run", "Cloud SQL", "Memorystore"],
-  testing: ["Penetration Testing (STH)", "Burp Suite", "Security Automation"],
-  deployment: ["GitHub Actions", "Cloud Build", "Monitoring"],
-  security: ["TLS/SSL", "OAuth 2.0", "Encryption"],
+  Backend: ["Python", "Django", "Django Ninja"],
+  Infrastructure: ["GCP Cloud Run", "Cloud SQL", "Memorystore"],
+  Testing: ["Penetration Testing (STH)", "Burp Suite", "Security Automation"],
+  Deployment: ["GitHub Actions", "Cloud Build", "Monitoring"],
+  Security: ["TLS/SSL", "OAuth 2.0", "Encryption"],
 };
-
-const statCards = [
-  { title: "Findings before", value: 15, bg: "#FFD0D0" },
-  { title: "Findings after", value: 1, bg: "#D0EFC0" },
-  { title: "Effort", value: 4, suffix: "man-days", bg: "#FFFDAB" },
-  { title: "Success rate", value: 93.3, suffix: "%", bg: "#C6B5FD" },
-];
 
 const SecurityRemediationDetail: React.FC = () => (
   <main className="main-content py-10 px-6">
-    <div className="max-w-5xl mx-auto">
-      <ConfigProvider theme={lightOnDark}>
-        <div className="mb-6">
-          <Link to="/project" className="inline-flex items-center gap-2 mb-2">
-            <ArrowLeftOutlined /> Back to projects
+    <ConfigProvider theme={lightOnDark}>
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate="show"
+        className="max-w-3xl mx-auto"
+      >
+        <motion.div variants={itemVariants}>
+          <Link to="/project" className="inline-flex items-center gap-2 mb-6">
+            <ArrowLeftOutlined /> All projects
           </Link>
-          <Title level={2} className="!mt-0 !mb-1">
+        </motion.div>
+
+        <motion.div variants={itemVariants}>
+          <Text type="secondary">
+            A Bank of Thailand-regulated P2P lending platform · Full Stack Developer &amp; Security Remediation Lead
+          </Text>
+          <Title level={2} className="!mt-1">
             Security Remediation &amp; Penetration Testing Response
           </Title>
-          <Text style={{ color: "#ffffff" }}>
-            A Bank of Thailand-regulated P2P lending platform · Full Stack Developer &amp; Security Remediation Lead · 2026-04-09 – 2026-06-18
-          </Text>
-        </div>
-      </ConfigProvider>
+          <Paragraph className="text-lg">Reduced 15 vulnerabilities to 1 in 10 weeks</Paragraph>
+          <div className="flex gap-2 flex-wrap mb-6">
+            {tags.map((tag) => <Tag key={tag}>{tag}</Tag>)}
+          </div>
+        </motion.div>
 
-      <Row gutter={16} className="mb-6">
-        {statCards.map((metric) => (
-          <Col span={6} key={metric.title}>
-            <Card style={{ backgroundColor: metric.bg }}>
-              <Statistic
-                title={<span style={{ color: "#000000" }}>{metric.title}</span>}
-                value={metric.value}
-                suffix={metric.suffix}
-                valueStyle={{ color: "#000000" }}
-              />
-            </Card>
-          </Col>
-        ))}
-      </Row>
+        <motion.div variants={itemVariants} className="flex gap-8 mb-8 py-4 border-y border-zinc-700">
+          <div>
+            <Text type="secondary">Before</Text>
+            <div className="text-2xl font-bold text-white">{metrics.before} findings</div>
+          </div>
+          <div>
+            <Text type="secondary">After</Text>
+            <div className="text-2xl font-bold text-white">{metrics.after} findings</div>
+          </div>
+        </motion.div>
 
-      <ConfigProvider theme={lightOnDark}>
-        <Tabs
-          items={[
-            {
-              key: "timeline",
-              label: "Timeline",
-              children: (
-                <Steps
-                  items={timeline.map((phase) => ({
-                    title: phase.phase,
-                    description: <span style={{ color: "#ffffff" }}>{phase.description}</span>,
-                    status: phase.status === "completed" ? "finish" : "process",
-                  }))}
-                />
-              ),
-            },
-            {
-              key: "challenges",
-              label: "Challenges & Solutions",
-              children: (
-                <Row gutter={24}>
-                  <Col span={12}>
-                    <Title level={5}>Challenges</Title>
-                    {challenges.map((challenge) => (
-                      <Paragraph key={challenge.title}>
-                        <Text strong>{challenge.title}</Text> — {challenge.description}
-                      </Paragraph>
-                    ))}
-                  </Col>
-                  <Col span={12}>
-                    <Title level={5}>Solutions</Title>
-                    {solutions.map((solution) => (
-                      <div key={solution.category} className="mb-3">
-                        <Text strong>{solution.category}</Text>
-                        <ul className="list-disc pl-5">
-                          {solution.items.map((item) => <li key={item}>{item}</li>)}
-                        </ul>
-                      </div>
-                    ))}
-                  </Col>
-                </Row>
-              ),
-            },
-            {
-              key: "stack",
-              label: "",
-              children: Object.entries(techStack).map(([category, items]) => (
-                <div key={category} className="mb-3">
-                  <Text strong>{category}: </Text>
-                  {items.map((item) => <Tag key={item}>{item}</Tag>)}
-                </div>
-              )),
-            },
-            {
-              key: "achievements",
-              label: "",
-              children: (
-                <Row gutter={16}>
-                  {achievements.map((achievement) => (
-                    <Col span={12} key={achievement.label}>
-                      <div className="border border-zinc-600 rounded-lg p-3">
-                        {achievement.icon} <Text strong>{achievement.label}</Text>
-                        <div className="text-white">{achievement.value}</div>
-                      </div>
-                    </Col>
-                  ))}
-                </Row>
-              ),
-            },
-          ]}
-        />
-      </ConfigProvider>
-    </div>
+        <motion.div variants={itemVariants} className="mb-8">
+          <Title level={4}>Timeline</Title>
+          <Steps
+            direction="vertical"
+            size="small"
+            items={timeline.map((phase) => ({
+              title: phase.phase,
+              description: `${phase.duration} — ${phase.description}`,
+              status: phase.status === "completed" ? "finish" : "process",
+            }))}
+          />
+        </motion.div>
+
+        <motion.div variants={itemVariants} className="mb-8 flex flex-col gap-6">
+          <Title level={4}>Challenges &amp; Solutions</Title>
+          {challenges.map((challenge, i) => (
+            <div key={challenge.title}>
+              <Paragraph><Text strong>{challenge.title}.</Text> {challenge.description}</Paragraph>
+              {solutions[i] && (
+                <ul className="list-disc pl-6 text-white">
+                  {solutions[i].items.map((item) => <li key={item}>{item}</li>)}
+                </ul>
+              )}
+            </div>
+          ))}
+        </motion.div>
+
+        <motion.div variants={itemVariants} className="mb-8">
+          <Title level={4}>Achievements</Title>
+          <ul className="flex flex-col gap-2">
+            {achievements.map((achievement) => (
+              <li key={achievement.label}>
+                {achievement.icon} <Text strong>{achievement.label}:</Text> {achievement.value}
+              </li>
+            ))}
+          </ul>
+        </motion.div>
+
+        <motion.div variants={itemVariants} className="flex gap-2 flex-wrap">
+          {Object.values(techStack).flat().map((item) => <Tag key={item}>{item}</Tag>)}
+        </motion.div>
+      </motion.div>
+    </ConfigProvider>
   </main>
 );
 
