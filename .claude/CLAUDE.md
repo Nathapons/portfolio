@@ -25,6 +25,13 @@ This is a single-page portfolio site built with React 18 + TypeScript + Vite, de
 - **Path alias**: `@/*` maps to `src/*` (`tsconfig.json`).
 - **Responsive behavior**: several components (e.g. `Home.tsx`) track viewport width manually via a `window.resize` listener and pass an `isComp` boolean prop down, rather than using CSS breakpoints alone — follow this pattern for components that need desktop/mobile branching logic.
 
+## Rules
+
+Auto-loaded project rules live under `.claude/rules/`:
+
+- Naming, component/function structure, duplication, comments, error handling, and React/TypeScript conventions specific to this repo. See `rules/clean-code.md`.
+- Dated log of conversation-derived rules (clean-code rules origin, and the one-question-at-a-time grilling/clarification rule). See `rules/conversation.md`.
+
 ## Agent skills
 
 ### Issue tracker
