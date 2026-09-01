@@ -4,6 +4,7 @@ import Layout from './components/Layout';
 import Home from './pages/Home';
 import Certificate from './pages/Certificate';
 import GithubTimeline from './pages/GithubTimeline';
+import ProjectDetail from './pages/ProjectDetail';
 
 const App: React.FC = () => {
   return (
@@ -12,6 +13,7 @@ const App: React.FC = () => {
         <Route index element={<Home />} />
         <Route path="/certificate" element={<Certificate />} />
         <Route path="/github" element={<GithubTimeline />} />
+        <Route path="/project/:id" element={<ProjectDetail />} />
       </Route>
     </Routes>
   );
