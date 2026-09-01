@@ -40,6 +40,7 @@ Guidelines for writing and reviewing code in this repository. General principles
 ### Content vs. Components
 - Page content (experience, certificates, skills, tech stack, menu items) lives in JSON under `src/data/`, not hardcoded in JSX. If you're editing text/labels/links, edit the JSON file, not the component.
 - Components should stay presentational: map over typed data, don't embed content-specific literals when a data file already exists for that content type.
+- Exception: a project's *detail* page may use a component registered in `ProjectDetail.tsx`'s override registry instead of JSON-driven content, when that project's story doesn't fit the generic renderer (see ADR 0002). The Projects *list* page still always reads from JSON regardless.
 
 ### Types
 - Every JSON data shape must have a corresponding interface in `src/interfaces/globalInterfaces.ts`. Don't use `any` or inline anonymous types for data that's reused across components.

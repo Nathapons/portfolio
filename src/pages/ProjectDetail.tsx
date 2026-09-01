@@ -5,6 +5,7 @@ import { ArrowLeftOutlined } from "@ant-design/icons";
 
 import { ProjectItem } from "@/interfaces/globalInterfaces";
 import ProjectData from "../data/ProjectData.json";
+import SecurityRemediationDetail from "../components/SecurityRemediationDetail";
 
 const { Title, Text, Paragraph } = Typography;
 
@@ -15,8 +16,18 @@ const lightOnDark = {
   components: { Tag: { defaultColor: "rgba(0, 0, 0, 0.88)" } },
 };
 
+const customProjectDetails: Record<string, React.FC> = {
+  "security-remediation-2026": SecurityRemediationDetail,
+};
+
 const ProjectDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
+
+  const CustomDetail = id ? customProjectDetails[id] : undefined;
+  if (CustomDetail) {
+    return <CustomDetail />;
+  }
+
   const project = projects.find((p) => p.id === id);
 
   if (!project) {
