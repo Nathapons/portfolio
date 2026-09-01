@@ -1,11 +1,19 @@
-// PROTOTYPE — throwaway UI exploration for the future /project + /project/:id pages.
-// Plan: three radically different variants of the Project list+detail flow, switchable
-// via ?variant=A|B|C, mounted on a new dev-only route (/project-prototype) since no
-// Project page exists yet (sub-shape B). List/detail navigation here is local component
-// state, not real nested routing — that's a routing decision for the real implementation,
-// not what this prototype is answering. Data shape mirrors the ADR (single interface,
-// optional sections) and the real ProjectData.json; two extra projects are fabricated
-// placeholders so the list view has something to lay out. Not for production.
+// PROTOTYPE — throwaway UI exploration, now on its THIRD question.
+// Round 1 (detail-page narrative style, A/B/C) is decided and shipped for real
+// (ADR 0002 + production ProjectDetail.tsx's Security Remediation override) —
+// DetailVariantA below is kept only as a reference/fallback for this prototype.
+// Round 2 (illustration thumbnail bolted onto the existing timeline-card list)
+// was rejected: it read as "same card, different icon," not a real option.
+//
+// Current question: what should the Projects LIST page's structure itself look
+// like? Three structurally different layouts (ListLayoutA/B/C below), each with
+// its own information hierarchy and its own use of the illustration components —
+// switchable via ?variant=A|B|C. The detail page is fixed to the narrative style
+// (DetailVariantA) since that part is already settled.
+// Data: the real Security Remediation project, plus a new anonymized "BCP Testing"
+// entry mirroring the Project that will actually ship (see CONTEXT.md's anonymization
+// rules — no real company/system names or personal PII in this data, matching what
+// production ProjectData.json will contain).
 
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
@@ -27,8 +35,6 @@ import {
   LeftOutlined,
   RightOutlined,
   ArrowLeftOutlined,
-  CalendarOutlined,
-  ProjectOutlined,
 } from "@ant-design/icons";
 
 const { Title, Text, Paragraph } = Typography;
@@ -41,6 +47,13 @@ const { Title, Text, Paragraph } = Typography;
 // is pinned back to AntD's normal dark default rather than inheriting colorText.
 const lightOnDark = {
   token: { colorText: "white", colorTextSecondary: "#a1a1aa" },
+  components: { Tag: { defaultColor: "rgba(0, 0, 0, 0.88)" } },
+};
+
+// Detail page: every AntD text token forced to white, headings (Title) forced
+// to yellow via colorTextHeading — per explicit request, not just "readable."
+const detailTheme = {
+  token: { colorText: "white", colorTextSecondary: "white", colorTextHeading: "#ffcc00" },
   components: { Tag: { defaultColor: "rgba(0, 0, 0, 0.88)" } },
 };
 
@@ -78,6 +91,8 @@ interface Achievement {
   value: string;
 }
 
+type IllustrationTheme = "security" | "resilience";
+
 interface PrototypeProject {
   id: string;
   title: string;
@@ -88,6 +103,7 @@ interface PrototypeProject {
   startDate: string;
   endDate: string;
   tags: string[];
+  theme: IllustrationTheme;
   metrics?: { before: MetricSnapshot; after: MetricSnapshot };
   timeline?: TimelinePhase[];
   challenges?: Challenge[];
@@ -98,7 +114,8 @@ interface PrototypeProject {
 }
 
 // ---------------------------------------------------------------------------
-// Mock data — real project data plus two fabricated placeholders for list variety
+// Data — the real Security Remediation project, plus the new BCP Testing
+// project as it's planned to ship (anonymized; see file header).
 // ---------------------------------------------------------------------------
 
 const PROJECTS: PrototypeProject[] = [
@@ -112,6 +129,7 @@ const PROJECTS: PrototypeProject[] = [
     startDate: "2026-04-09",
     endDate: "2026-06-18",
     tags: ["Security", "Penetration Testing", "Django", "GCP", "Fintech", "Compliance"],
+    theme: "security",
     metrics: {
       before: { totalVulnerabilities: 15, effort: 16, effortUnit: "man-days" },
       after: { totalVulnerabilities: 1, effort: 4, effortUnit: "man-days", successRate: 93.3 },
@@ -147,112 +165,367 @@ const PROJECTS: PrototypeProject[] = [
     skills: ["Security Vulnerability Analysis", "API Security Hardening", "Django Security Best Practices", "GCP Security Configuration"],
   },
   {
-    id: "analytics-dashboard-revamp",
-    title: "Realtime Analytics Dashboard Revamp",
-    subtitle: "Cut dashboard load time from 8s to under 1s",
-    company: "A mid-size e-commerce platform",
-    role: "Frontend Lead",
-    status: "Shipped",
-    startDate: "2025-11-01",
-    endDate: "2026-01-20",
-    tags: ["React", "Performance", "Data Viz", "TypeScript"],
-    achievements: [
-      { icon: "⚡", label: "Speed", value: "8x faster initial load" },
-      { icon: "📊", label: "Adoption", value: "Used by 4 internal teams daily" },
+    id: "bcp-testing-2025-2026",
+    title: "Business Continuity Plan Testing Program",
+    subtitle: "2 consecutive annual BCP drills passed, submitted to BOT both years",
+    company: "A Bank of Thailand-regulated P2P lending platform",
+    role: "Infrastructure & BCP Test Coordinator",
+    status: "Compliant — annual cadence",
+    startDate: "2025-07",
+    endDate: "2026-07",
+    tags: ["Business Continuity", "Disaster Recovery", "GCP", "Fintech", "Compliance"],
+    theme: "resilience",
+    timeline: [
+      { phase: "2025 BCP Test", duration: "Jul 2025", description: "IT infrastructure recovery drill (database, API, CRM failover)", status: "completed" },
+      { phase: "2026 BCP Test", duration: "Jul 2026", description: "Expanded to 2 dimensions: IT infrastructure recovery + workplace/personnel continuity (remote-ops & crisis call-tree drill)", status: "completed" },
     ],
-    techStack: { Frontend: ["React", "TypeScript", "D3.js"], Infrastructure: ["CDN caching", "Web Workers"] },
-    skills: ["Performance Profiling", "Data Visualization", "Frontend Architecture"],
-  },
-  {
-    id: "internal-tooling-automation",
-    title: "Internal Tooling Automation Suite",
-    subtitle: "Automated 6 manual ops workflows into one CLI",
-    company: "A logistics coordination startup",
-    role: "Full Stack Developer",
-    status: "In active use",
-    startDate: "2025-06-15",
-    endDate: "2025-09-10",
-    tags: ["Automation", "Node.js", "DevEx"],
     achievements: [
-      { icon: "🛠️", label: "Efficiency", value: "~20 hours/week of manual ops removed" },
+      { icon: "✅", label: "Result", value: "100% pass rate across both annual test cycles" },
+      { icon: "⏱️", label: "Recovery", value: "Core services restored within 3–30 min depending on scenario" },
+      { icon: "📋", label: "Compliance", value: "BCP test report submitted to and accepted by BOT, 2 years running" },
+      { icon: "📞", label: "People", value: "Verified crisis communication (call-tree) and remote-ops continuity across leadership, IT, and operations teams" },
     ],
-    techStack: { Backend: ["Node.js", "TypeScript"], Tooling: ["GitHub Actions", "CLI"] },
-    skills: ["Developer Experience", "Process Automation"],
+    techStack: { Infrastructure: ["GCP Cloud SQL", "Cloud Run", "App Engine"], Process: ["Backup & restore drills", "Failover testing", "Crisis communication planning"] },
+    skills: ["Disaster Recovery Planning", "Business Continuity Testing", "Cross-team Incident Coordination"],
   },
 ];
 
+// The real Project list only ever has the 2 entries above. This padded-out
+// array exists ONLY so Layout A's left/right zigzag rhythm can be judged
+// across a realistic row count — items 3-10 are clearly-labeled placeholders,
+// not real work, and never touch production ProjectData.json.
+const RHYTHM_PREVIEW_PROJECTS: PrototypeProject[] = [
+  ...PROJECTS,
+  ...Array.from({ length: 8 }, (_, i) => {
+    const n = i + 3;
+    const theme: IllustrationTheme = i % 2 === 0 ? "security" : "resilience";
+    return {
+      id: `placeholder-${n}`,
+      title: `Placeholder Project ${n}`,
+      subtitle: "Filler row — for previewing the alternating layout rhythm only",
+      company: "Placeholder company",
+      role: "Placeholder role",
+      status: "Placeholder",
+      startDate: "20XX-01",
+      endDate: "20XX-06",
+      tags: ["Placeholder", "Demo"],
+      theme,
+    };
+  }),
+];
+
 // ---------------------------------------------------------------------------
-// Shared list — timeline dot + Card, matching WorkExperience.tsx's pattern.
-// All three variants use this same list now (per feedback); only the detail
-// view still differs per variant.
+// Illustration thumbnails — THIS is the thing being prototyped. Three
+// structurally different styles (A/B/C), each themed per-project via
+// `theme` (security | resilience). Pure inline SVG, no image assets.
 // ---------------------------------------------------------------------------
 
-const ListCards: React.FC<{ projects: PrototypeProject[]; onSelect: (id: string) => void }> = ({ projects, onSelect }) => (
-  <div className="max-w-4xl mx-auto relative">
-    <div
-      className="absolute top-1 bottom-1 w-[2px]"
-      style={{ left: 3, backgroundColor: "rgba(255, 255, 255, 0.15)" }}
-    />
-    <div className="flex flex-col gap-6">
-      {projects.map((p, index) => (
-        <div key={p.id} className="grid grid-cols-[8px_1fr] gap-3">
-          <div className="pt-2">
-            <div
-              role="img"
-              aria-label={`${p.title}, ${p.startDate} – ${p.endDate}`}
-              className="w-2 h-2 rounded-full"
-              style={{ backgroundColor: "#ffcc00" }}
-            />
-          </div>
+type IllustrationStyle = "A" | "B" | "C";
+
+const IllustrationA: React.FC<{ theme: IllustrationTheme; rounded?: boolean }> = ({ theme, rounded = true }) => (
+  <svg viewBox="0 0 64 64" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+    <rect width={64} height={64} rx={rounded ? 12 : 0} fill="#111114" />
+    <circle cx={32} cy={32} r={22} fill="none" stroke="#ffcc00" strokeWidth={1.5} opacity={0.5} />
+    {theme === "security" ? (
+      <path
+        d="M32 14 L46 20 V32 C46 42 40 48 32 51 C24 48 18 42 18 32 V20 Z"
+        fill="none"
+        stroke="#ffcc00"
+        strokeWidth={2}
+        strokeLinejoin="round"
+      />
+    ) : (
+      <g fill="none" stroke="#ffcc00" strokeWidth={2} strokeLinecap="round">
+        <path d="M20 26 a12 12 0 1 1 -1 10" />
+        <path d="M20 18 v8 h8" />
+      </g>
+    )}
+  </svg>
+);
+
+const IllustrationB: React.FC<{ theme: IllustrationTheme; fill?: boolean }> = ({ theme, fill = false }) => {
+  const gradientId = `blob-${theme}`;
+  return (
+    <svg viewBox="0 0 64 64" width="100%" height="100%" preserveAspectRatio={fill ? "xMidYMid slice" : "xMidYMid meet"}>
+      {fill && <rect width={64} height={64} fill={`url(#${gradientId})`} />}
+      <defs>
+        <linearGradient id={gradientId} x1="0" y1="0" x2="1" y2="1">
+          {theme === "security" ? (
+            <>
+              <stop offset="0%" stopColor="#ffcc00" />
+              <stop offset="100%" stopColor="#5b3df5" />
+            </>
+          ) : (
+            <>
+              <stop offset="0%" stopColor="#22d3c9" />
+              <stop offset="100%" stopColor="#ffcc00" />
+            </>
+          )}
+        </linearGradient>
+      </defs>
+      <path
+        d="M32 6 C46 6 58 16 56 30 C54 44 44 58 30 56 C16 54 6 42 8 28 C10 14 20 6 32 6 Z"
+        fill={`url(#${gradientId})`}
+      />
+      {theme === "security" ? (
+        <g fill="none" stroke="#0b0b0d" strokeWidth={2.5} strokeLinejoin="round">
+          <rect x={24} y={30} width={16} height={12} rx={2} />
+          <path d="M27 30 v-5 a5 5 0 0 1 10 0 v5" />
+        </g>
+      ) : (
+        <path
+          d="M23 26 a10 10 0 1 1 -1 9 M23 20 v7 h7"
+          fill="none"
+          stroke="#0b0b0d"
+          strokeWidth={2.5}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      )}
+    </svg>
+  );
+};
+
+const IllustrationC: React.FC<{ theme: IllustrationTheme; rounded?: boolean }> = ({ theme, rounded = true }) => (
+  <svg viewBox="0 0 64 64" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
+    <rect width={64} height={64} rx={rounded ? 12 : 0} fill="#151519" />
+    {theme === "security" ? (
+      <>
+        <polygon points="32,10 52,44 12,44" fill="#ffcc00" opacity={0.85} transform="rotate(-8 32 32)" />
+        <circle cx={38} cy={30} r={14} fill="#5b3df5" opacity={0.55} />
+        <rect x={14} y={16} width={18} height={18} fill="#22d3c9" opacity={0.3} transform="rotate(20 23 25)" />
+      </>
+    ) : (
+      <>
+        <circle cx={26} cy={26} r={16} fill="#22d3c9" opacity={0.5} />
+        <polygon points="46,14 58,38 34,38" fill="#ffcc00" opacity={0.8} transform="rotate(12 46 26)" />
+        <rect x={20} y={34} width={20} height={20} rx={4} fill="#5b3df5" opacity={0.35} transform="rotate(-15 30 44)" />
+      </>
+    )}
+  </svg>
+);
+
+const Illustration: React.FC<{ style: IllustrationStyle; theme: IllustrationTheme; rounded?: boolean; fill?: boolean }> = ({
+  style,
+  theme,
+  rounded,
+  fill,
+}) => {
+  if (style === "A") return <IllustrationA theme={theme} rounded={rounded} />;
+  if (style === "B") return <IllustrationB theme={theme} fill={fill} />;
+  return <IllustrationC theme={theme} rounded={rounded} />;
+};
+
+type ListLayoutProps = { projects: PrototypeProject[]; onSelect: (id: string) => void };
+
+// ---------------------------------------------------------------------------
+// Layout A — Editorial split-hero. No cards, no timeline dots: each project
+// is a full-width horizontal spread (big illustration panel + big type),
+// separated by hairlines. Information hierarchy: title/impact first, tags
+// and metadata pushed small and secondary. Primary affordance is the whole
+// row, not a button.
+// ---------------------------------------------------------------------------
+
+// Click "pop": the row does a quick spring bounce (scale up, overshoot,
+// settle) before the detail view swaps in, instead of navigating instantly.
+const POP_DURATION_MS = 380;
+
+const ListLayoutA: React.FC<ListLayoutProps> = ({ projects, onSelect }) => {
+  const [poppingId, setPoppingId] = useState<string | null>(null);
+
+  const handleOpen = (id: string) => {
+    if (poppingId) return;
+    setPoppingId(id);
+    setTimeout(() => {
+      onSelect(id);
+      setPoppingId(null);
+    }, POP_DURATION_MS);
+  };
+
+  return (
+    <div className="max-w-5xl mx-auto flex flex-col">
+      <div className="text-center mb-10">
+        <ConfigProvider theme={{ token: { colorText: "#ffcc00" } }}>
+          <Title level={2} className="!mb-2">Projects</Title>
+        </ConfigProvider>
+        <Text type="secondary" className="text-lg">
+          Self-contained pieces of engineering work I've delivered
+        </Text>
+      </div>
+
+      {projects.map((p, index) => {
+        const imageOnRight = index % 2 === 1;
+        const isPopping = poppingId === p.id;
+        return (
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: index * 0.1 }}
+            key={p.id}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            whileHover={{ scale: 1.01 }}
+            animate={isPopping ? { scale: [1, 1.06, 0.98, 1.03, 1], opacity: [1, 1, 1, 1, 0] } : { scale: 1, opacity: 1 }}
+            transition={isPopping ? { duration: POP_DURATION_MS / 1000, times: [0, 0.35, 0.6, 0.8, 1], ease: "easeInOut" } : { duration: 0.6, delay: index * 0.1 }}
+            onClick={() => handleOpen(p.id)}
+            className={`group cursor-pointer flex flex-col gap-6 md:gap-10 py-10 border-b border-white/10 first:pt-2 ${
+              imageOnRight ? "md:flex-row-reverse" : "md:flex-row"
+            }`}
           >
-            <Card
-              hoverable
-              onClick={() => onSelect(p.id)}
-              className="shadow-lg hover:shadow-xl transition-shadow"
-            >
-              <Title level={5} className="!mt-0 !mb-0">{p.title}</Title>
-              <Paragraph className="!mb-0"><ProjectOutlined className="mr-2" />{p.company}</Paragraph>
-              <Paragraph className="!mb-1">
-                <CalendarOutlined className="mr-2" />
-                <time style={{ fontSize: 14, fontWeight: 400, color: "#8c8c8c" }}>{p.startDate} – {p.endDate}</time>
-              </Paragraph>
-              <Paragraph className="!mb-2">{p.subtitle}</Paragraph>
-              <div>
-                {p.tags.map((t) => <Tag key={t} color="blue" className="mb-1">{t}</Tag>)}
+            <div className="md:w-2/5 relative rounded-xl overflow-hidden aspect-[16/10]">
+              <Illustration style="C" theme={p.theme} rounded={false} />
+              <span
+                className="absolute top-3 left-3 text-5xl font-black text-white/20 select-none"
+                style={{ fontFamily: "monospace" }}
+              >
+                {String(index + 1).padStart(2, "0")}
+              </span>
+            </div>
+            <ConfigProvider theme={lightOnDark}>
+              <div className="md:w-3/5 flex flex-col justify-center">
+                <Text type="secondary" className="uppercase tracking-wide text-xs">
+                  {p.company} · {p.startDate} – {p.endDate}
+                </Text>
+                <Title level={3} className="!mt-1 !mb-2 !text-white group-hover:!text-[#ffcc00] transition-colors">
+                  {p.title}
+                </Title>
+                <Paragraph className="text-lg !mb-3 !text-white !font-bold">
+                  {p.subtitle}
+                </Paragraph>
+                <div className="flex gap-2 flex-wrap mb-3">
+                  {p.tags.slice(0, 4).map((t) => <Tag key={t}>{t}</Tag>)}
+                </div>
+                <motion.span whileTap={{ scale: 0.9 }} style={{ display: "inline-block" }}>
+                  <Text className="!text-[#ffcc00] group-hover:underline">Read the case study →</Text>
+                </motion.span>
               </div>
-            </Card>
+            </ConfigProvider>
           </motion.div>
-        </div>
-      ))}
+        );
+      })}
     </div>
+  );
+};
+
+// ---------------------------------------------------------------------------
+// Layout B — Poster grid. Illustration fills the entire tile as a background;
+// text is overlaid at the bottom on a scrim. Information hierarchy is
+// visual-first and scannable (like a media grid), the opposite of a reading
+// list. Primary affordance is the tile itself.
+// ---------------------------------------------------------------------------
+
+const ListLayoutB: React.FC<ListLayoutProps> = ({ projects, onSelect }) => (
+  <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-2 gap-6">
+    {projects.map((p, index) => (
+      <motion.div
+        key={p.id}
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5, delay: index * 0.1 }}
+        onClick={() => onSelect(p.id)}
+        className="group relative cursor-pointer rounded-2xl overflow-hidden aspect-[4/5] shadow-lg hover:shadow-2xl transition-shadow"
+      >
+        <div className="absolute inset-0 transition-transform duration-300 group-hover:scale-105">
+          <Illustration style="B" theme={p.theme} rounded={false} fill />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+        <div className="absolute top-3 right-3 flex gap-1 flex-wrap justify-end">
+          {p.tags.slice(0, 2).map((t) => (
+            <span key={t} className="text-xs bg-black/50 text-white px-2 py-0.5 rounded-full backdrop-blur-sm">{t}</span>
+          ))}
+        </div>
+        <div className="absolute bottom-0 left-0 right-0 p-4">
+          <div className="text-xs text-white/70 mb-1">{p.startDate} – {p.endDate}</div>
+          <div className="text-white font-semibold text-lg leading-tight mb-1">{p.title}</div>
+          {p.achievements?.[0] && (
+            <div className="text-[#ffcc00] text-sm">{p.achievements[0].icon} {p.achievements[0].value}</div>
+          )}
+        </div>
+      </motion.div>
+    ))}
   </div>
 );
 
 // ---------------------------------------------------------------------------
-// Variant A — Narrative case study (single column, editorial, story-first)
+// Layout C — Compact incident-log. Dense, monospace, single-line-first rows;
+// no big visuals. Information hierarchy is scan-by-date/status, like a
+// changelog. Primary affordance is the row, illustration shrinks to a small
+// inline glyph rather than a hero image.
 // ---------------------------------------------------------------------------
 
-const ListVariantA = ListCards;
+const ListLayoutC: React.FC<ListLayoutProps> = ({ projects, onSelect }) => (
+  <div className="max-w-4xl mx-auto rounded-lg overflow-hidden border border-white/10">
+    {projects.map((p, index) => (
+      <motion.div
+        key={p.id}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.4, delay: index * 0.08 }}
+        onClick={() => onSelect(p.id)}
+        className="group cursor-pointer flex items-start gap-4 px-5 py-4 border-b border-white/10 last:border-b-0 hover:bg-white/5 transition-colors"
+        style={{ fontFamily: "monospace" }}
+      >
+        <div className="w-6 h-6 flex-shrink-0 mt-0.5 rounded overflow-hidden">
+          <Illustration style="A" theme={p.theme} rounded={false} />
+        </div>
+        <div className="flex-1 min-w-0">
+          <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+            <span className="text-xs" style={{ color: "#8c8c8c" }}>{p.startDate} → {p.endDate}</span>
+            <span className="text-white font-semibold group-hover:text-[#ffcc00]">{p.title}</span>
+            <span className="text-xs px-1.5 py-0.5 rounded bg-white/10" style={{ color: "#a1a1aa" }}>{p.status}</span>
+          </div>
+          <div className="text-sm mt-1" style={{ color: "#d4d4d8" }}>{p.subtitle}</div>
+          <div className="flex gap-1 flex-wrap mt-2">
+            {p.tags.map((t) => (
+              <span key={t} className="text-[11px] px-1.5 py-0.5 rounded" style={{ background: "rgba(255,204,0,0.12)", color: "#ffcc00" }}>{t}</span>
+            ))}
+          </div>
+        </div>
+      </motion.div>
+    ))}
+  </div>
+);
+
+// ---------------------------------------------------------------------------
+// Detail — Narrative case study. Already decided (see file header); kept
+// fixed regardless of which list layout above is being tried.
+// Render effect: sections stagger in top-to-bottom on mount, rather than
+// appearing all at once — this is what's being prototyped in this round.
+// ---------------------------------------------------------------------------
+
+const detailContainerVariants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.09, delayChildren: 0.05 } },
+};
+
+const detailItemVariants = {
+  hidden: { opacity: 0, y: 18 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.45, ease: "easeOut" } },
+};
 
 const DetailVariantA: React.FC<{ project: PrototypeProject; onBack: () => void }> = ({ project: p, onBack }) => (
-  <ConfigProvider theme={lightOnDark}>
-    <div className="max-w-3xl mx-auto">
-      <Text onClick={onBack} className="cursor-pointer inline-flex items-center gap-2 mb-6">
-        <ArrowLeftOutlined /> All projects
-      </Text>
-      <Text type="secondary">{p.company} · {p.role}</Text>
-      <Title level={2} className="!mt-1">{p.title}</Title>
-      <Paragraph className="text-lg">{p.subtitle}</Paragraph>
-      <div className="flex gap-2 flex-wrap mb-6">
-        {p.tags.map((t) => <Tag key={t}>{t}</Tag>)}
-      </div>
+  <ConfigProvider theme={detailTheme}>
+    <motion.div
+      key={p.id}
+      variants={detailContainerVariants}
+      initial="hidden"
+      animate="show"
+      className="max-w-3xl mx-auto"
+    >
+      <motion.div variants={detailItemVariants}>
+        <Text onClick={onBack} className="cursor-pointer inline-flex items-center gap-2 mb-6">
+          <ArrowLeftOutlined /> All projects
+        </Text>
+      </motion.div>
+
+      <motion.div variants={detailItemVariants}>
+        <Text type="secondary">{p.company} · {p.role}</Text>
+        <Title level={2} className="!mt-1">{p.title}</Title>
+        <Paragraph className="text-lg">{p.subtitle}</Paragraph>
+        <div className="flex gap-2 flex-wrap mb-6">
+          {p.tags.map((t) => <Tag key={t}>{t}</Tag>)}
+        </div>
+      </motion.div>
 
       {p.metrics && (
-        <div className="flex gap-8 mb-8 py-4 border-y border-zinc-700">
+        <motion.div variants={detailItemVariants} className="flex gap-8 mb-8 py-4 border-y border-zinc-700">
           <div>
             <Text type="secondary">Before</Text>
             <div className="text-2xl font-bold text-white">{p.metrics.before.totalVulnerabilities} findings</div>
@@ -261,11 +534,11 @@ const DetailVariantA: React.FC<{ project: PrototypeProject; onBack: () => void }
             <Text type="secondary">After</Text>
             <div className="text-2xl font-bold text-white">{p.metrics.after.totalVulnerabilities} findings</div>
           </div>
-        </div>
+        </motion.div>
       )}
 
       {p.timeline && (
-        <div className="mb-8">
+        <motion.div variants={detailItemVariants} className="mb-8">
           <Title level={4}>Timeline</Title>
           <Steps
             direction="vertical"
@@ -276,43 +549,43 @@ const DetailVariantA: React.FC<{ project: PrototypeProject; onBack: () => void }
               status: t.status === "completed" ? "finish" : "process",
             }))}
           />
-        </div>
+        </motion.div>
       )}
 
       {p.challenges && p.solutions && (
-        <div className="mb-8 flex flex-col gap-6">
+        <motion.div variants={detailItemVariants} className="mb-8 flex flex-col gap-6">
           <Title level={4}>Challenges & Solutions</Title>
           {p.challenges.map((c, i) => (
             <div key={c.title}>
               <Paragraph><Text strong>{c.title}.</Text> {c.description}</Paragraph>
               {p.solutions?.[i] && (
-                <ul className="list-disc pl-6 text-zinc-300">
+                <ul className="list-disc pl-6 text-white">
                   {p.solutions[i].items.map((item) => <li key={item}>{item}</li>)}
                 </ul>
               )}
             </div>
           ))}
-        </div>
+        </motion.div>
       )}
 
       {p.achievements && (
-        <div className="mb-8">
+        <motion.div variants={detailItemVariants} className="mb-8">
           <Title level={4}>Achievements</Title>
           <ul className="flex flex-col gap-2">
             {p.achievements.map((a) => (
               <li key={a.label}>{a.icon} <Text strong>{a.label}:</Text> {a.value}</li>
             ))}
           </ul>
-        </div>
+        </motion.div>
       )}
 
       {(p.techStack || p.skills) && (
-        <div className="flex gap-2 flex-wrap">
+        <motion.div variants={detailItemVariants} className="flex gap-2 flex-wrap">
           {p.techStack && Object.values(p.techStack).flat().map((t) => <Tag key={t}>{t}</Tag>)}
           {p.skills?.map((s) => <Tag key={s} color="blue">{s}</Tag>)}
-        </div>
+        </motion.div>
       )}
-    </div>
+    </motion.div>
   </ConfigProvider>
 );
 
@@ -320,7 +593,6 @@ const DetailVariantA: React.FC<{ project: PrototypeProject; onBack: () => void }
 // Variant B — Dashboard (KPI-first, grid list, tabbed detail)
 // ---------------------------------------------------------------------------
 
-const ListVariantB = ListCards;
 
 const DetailVariantB: React.FC<{ project: PrototypeProject; onBack: () => void }> = ({ project: p, onBack }) => (
   <div className="max-w-5xl mx-auto">
@@ -414,7 +686,6 @@ const DetailVariantB: React.FC<{ project: PrototypeProject; onBack: () => void }
 // Variant C — Visual showcase (poster list, sticky split detail)
 // ---------------------------------------------------------------------------
 
-const ListVariantC = ListCards;
 
 const DetailVariantC: React.FC<{ project: PrototypeProject; onBack: () => void }> = ({ project: p, onBack }) => (
   <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-8">
@@ -488,9 +759,9 @@ const DetailVariantC: React.FC<{ project: PrototypeProject; onBack: () => void }
 // ---------------------------------------------------------------------------
 
 const VARIANTS = [
-  { key: "A", name: "Narrative case study" },
-  { key: "B", name: "Dashboard" },
-  { key: "C", name: "Visual showcase" },
+  { key: "A", name: "Editorial split-hero" },
+  { key: "B", name: "Poster grid" },
+  { key: "C", name: "Compact incident-log" },
 ] as const;
 
 type VariantKey = (typeof VARIANTS)[number]["key"];
@@ -534,7 +805,7 @@ const ProjectPrototype: React.FC = () => {
   const variant = (searchParams.get("variant") as VariantKey) || "A";
   const [view, setView] = useState<"list" | "detail">("list");
   const [selectedId, setSelectedId] = useState(PROJECTS[0].id);
-  const selected = PROJECTS.find((p) => p.id === selectedId)!;
+  const selected = RHYTHM_PREVIEW_PROJECTS.find((p) => p.id === selectedId) ?? PROJECTS[0];
 
   const setVariant = (v: VariantKey) => setSearchParams({ variant: v });
 
@@ -542,16 +813,15 @@ const ProjectPrototype: React.FC = () => {
     <main className="main-content" style={{ paddingBottom: 100 }}>
       {view === "list" ? (
         <>
-          {variant === "A" && <ListVariantA projects={PROJECTS} onSelect={(id) => { setSelectedId(id); setView("detail"); }} />}
-          {variant === "B" && <ListVariantB projects={PROJECTS} onSelect={(id) => { setSelectedId(id); setView("detail"); }} />}
-          {variant === "C" && <ListVariantC projects={PROJECTS} onSelect={(id) => { setSelectedId(id); setView("detail"); }} />}
+          {/* Layout A gets the 10-item rhythm preview (see RHYTHM_PREVIEW_PROJECTS); B/C still show the real 2 projects. */}
+          {variant === "A" && <ListLayoutA projects={RHYTHM_PREVIEW_PROJECTS} onSelect={(id) => { setSelectedId(id); setView("detail"); }} />}
+          {variant === "B" && <ListLayoutB projects={PROJECTS} onSelect={(id) => { setSelectedId(id); setView("detail"); }} />}
+          {variant === "C" && <ListLayoutC projects={PROJECTS} onSelect={(id) => { setSelectedId(id); setView("detail"); }} />}
         </>
       ) : (
-        <>
-          {variant === "A" && <DetailVariantA project={selected} onBack={() => setView("list")} />}
-          {variant === "B" && <DetailVariantB project={selected} onBack={() => setView("list")} />}
-          {variant === "C" && <DetailVariantC project={selected} onBack={() => setView("list")} />}
-        </>
+        // Detail narrative style is already decided (variant A) — fixed here
+        // regardless of which list layout is being tried.
+        <DetailVariantA project={selected} onBack={() => setView("list")} />
       )}
       <PrototypeVariantSwitcher current={variant} onChange={setVariant} />
     </main>

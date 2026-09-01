@@ -1,87 +1,108 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Typography, Card, Tag, ConfigProvider } from "antd";
-import { CalendarOutlined, ProjectOutlined } from "@ant-design/icons";
+import { Typography, Tag, ConfigProvider } from "antd";
 import { motion } from "framer-motion";
 
 import { ProjectItem } from "@/interfaces/globalInterfaces";
+import ProjectIllustration from "@/components/ProjectIllustration";
 import ProjectData from "../data/ProjectData.json";
 
-const { Title, Paragraph } = Typography;
+const { Title, Text, Paragraph } = Typography;
 
 const projects: ProjectItem[] = ProjectData as ProjectItem[];
 
+const lightOnDark = {
+  token: { colorText: "white", colorTextSecondary: "#a1a1aa" },
+  components: { Tag: { defaultColor: "rgba(0, 0, 0, 0.88)" } },
+};
+
+// Clicking a project bounces the row (quick spring pop) before navigating to
+// its detail page, instead of jumping there instantly.
+const POP_DURATION_MS = 380;
+
 const ProjectList: React.FC = () => {
   const navigate = useNavigate();
+  const [poppingId, setPoppingId] = useState<string | null>(null);
+
+  const handleOpen = (id: string) => {
+    if (poppingId) return;
+    setPoppingId(id);
+    setTimeout(() => navigate(`/project/${id}`), POP_DURATION_MS);
+  };
 
   return (
     <main className="main-content py-10 px-6">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-5xl mx-auto flex flex-col">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
+          className="text-center mb-10"
         >
-          <ConfigProvider
-            theme={{
-              token: {
-                colorText: "#ffcc00",
-              },
-            }}
-          >
-            <Title level={3} className="text-center">Projects</Title>
-            <Paragraph className="text-center text-lg text-yellow">
-              Self-contained pieces of engineering work I've delivered
-            </Paragraph>
+          <ConfigProvider theme={{ token: { colorText: "#ffcc00" } }}>
+            <Title level={2} className="!mb-2">Projects</Title>
           </ConfigProvider>
+          <Text type="secondary" className="text-lg">
+            Self-contained pieces of engineering work I've delivered
+          </Text>
         </motion.div>
 
-        <div className="relative mt-6">
-          <div
-            className="absolute top-1 bottom-1 w-[2px]"
-            style={{ left: 3, backgroundColor: "rgba(255, 255, 255, 0.15)" }}
-          />
-          <div className="flex flex-col gap-6">
-            {projects.map((project, index) => (
-              <div key={project.id} className="grid grid-cols-[8px_1fr] gap-3">
-                <div className="pt-2">
-                  <div
-                    role="img"
-                    aria-label={`${project.title}, ${project.startDate} – ${project.endDate}`}
-                    className="w-2 h-2 rounded-full"
-                    style={{ backgroundColor: "#ffcc00" }}
-                  />
-                </div>
-                <motion.div
-                  initial={{ opacity: 0, x: 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
+        {projects.map((project, index) => {
+          const imageOnRight = index % 2 === 1;
+          const isPopping = poppingId === project.id;
+          return (
+            <motion.div
+              key={project.id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ scale: 1.01 }}
+              animate={
+                isPopping
+                  ? { scale: [1, 1.06, 0.98, 1.03, 1], opacity: [1, 1, 1, 1, 0] }
+                  : { scale: 1, opacity: 1 }
+              }
+              transition={
+                isPopping
+                  ? { duration: POP_DURATION_MS / 1000, times: [0, 0.35, 0.6, 0.8, 1], ease: "easeInOut" }
+                  : { duration: 0.6, delay: index * 0.1 }
+              }
+              onClick={() => handleOpen(project.id)}
+              className={`group cursor-pointer flex flex-col gap-6 md:gap-10 py-10 border-b border-white/10 first:pt-2 ${
+                imageOnRight ? "md:flex-row-reverse" : "md:flex-row"
+              }`}
+            >
+              <div className="md:w-2/5 relative rounded-xl overflow-hidden aspect-[16/10]">
+                <ProjectIllustration theme={project.theme} />
+                <span
+                  className="absolute top-3 left-3 text-5xl font-black text-white/20 select-none"
+                  style={{ fontFamily: "monospace" }}
                 >
-                  <Card
-                    hoverable
-                    onClick={() => navigate(`/project/${project.id}`)}
-                    className="shadow-lg hover:shadow-xl transition-shadow"
-                  >
-                    <Title level={5} className="!mt-0 !mb-0">{project.title}</Title>
-                    <Paragraph className="!mb-0"><ProjectOutlined className="mr-2" />{project.company}</Paragraph>
-                    <Paragraph className="!mb-1">
-                      <CalendarOutlined className="mr-2" />
-                      <time style={{ fontSize: 14, fontWeight: 400, color: "#8c8c8c" }}>
-                        {project.startDate} – {project.endDate}
-                      </time>
-                    </Paragraph>
-                    <Paragraph className="!mb-2">{project.subtitle}</Paragraph>
-                    <div>
-                      {project.tags.map((tag) => (
-                        <Tag key={tag} color="blue" className="mb-1">{tag}</Tag>
-                      ))}
-                    </div>
-                  </Card>
-                </motion.div>
+                  {String(index + 1).padStart(2, "0")}
+                </span>
               </div>
-            ))}
-          </div>
-        </div>
+
+              <ConfigProvider theme={lightOnDark}>
+                <div className="md:w-3/5 flex flex-col justify-center">
+                  <Text type="secondary" className="uppercase tracking-wide text-xs">
+                    {project.company} · {project.startDate} – {project.endDate}
+                  </Text>
+                  <Title level={3} className="!mt-1 !mb-2 !text-white group-hover:!text-[#ffcc00] transition-colors">
+                    {project.title}
+                  </Title>
+                  <Paragraph className="text-lg !mb-3 !text-white !font-bold">
+                    {project.subtitle}
+                  </Paragraph>
+                  <div className="flex gap-2 flex-wrap mb-3">
+                    {project.tags.slice(0, 4).map((tag) => <Tag key={tag}>{tag}</Tag>)}
+                  </div>
+                  <motion.span whileTap={{ scale: 0.9 }} style={{ display: "inline-block" }}>
+                    <Text className="!text-[#ffcc00] group-hover:underline">Read the case study →</Text>
+                  </motion.span>
+                </div>
+              </ConfigProvider>
+            </motion.div>
+          );
+        })}
       </div>
     </main>
   );

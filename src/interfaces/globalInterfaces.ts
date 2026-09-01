@@ -76,6 +76,8 @@ export interface Achievement {
     value: string;
 }
 
+export type ProjectTheme = "security" | "resilience";
+
 export interface ProjectItem {
     id: string;
     title: string;
@@ -86,6 +88,7 @@ export interface ProjectItem {
     startDate: string;
     endDate: string;
     tags: string[];
+    theme: ProjectTheme;
     metrics?: { before: MetricSnapshot; after: MetricSnapshot };
     timeline?: TimelinePhase[];
     challenges?: Challenge[];
