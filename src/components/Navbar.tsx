@@ -14,9 +14,9 @@ const Navbar: React.FC = () => {
 
     const menuItems: MenuItemProps[] = [
         { name: 'Home', path: '', icon: <HomeOutlined className="mr-2" /> },
-        { name: 'Github', path: '/github', icon: <GithubOutlined className="mr-2" /> },
-        { name: 'Certificates', path: '/certificate', icon: <ProfileOutlined className="mr-2" /> },
         { name: 'Projects', path: '/project', icon: <ProjectOutlined className="mr-2" /> },
+        { name: 'Certificates', path: '/certificate', icon: <ProfileOutlined className="mr-2" /> },
+        { name: 'Github', path: '/github', icon: <GithubOutlined className="mr-2" /> },
     ];
 
     useEffect(() => {

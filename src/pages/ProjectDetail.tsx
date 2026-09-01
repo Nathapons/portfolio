@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
-import { Row, Col, Card, Tag, Steps, Tabs, Statistic, Badge, Typography, ConfigProvider } from "antd";
+import { Row, Col, Card, Tag, Steps, Tabs, Statistic, Typography, ConfigProvider } from "antd";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 
 import { ProjectItem } from "@/interfaces/globalInterfaces";
@@ -41,40 +41,41 @@ const ProjectDetail: React.FC = () => {
     <main className="main-content py-10 px-6">
       <div className="max-w-5xl mx-auto">
         <ConfigProvider theme={lightOnDark}>
-          <div className="flex justify-between items-start mb-6">
-            <div>
-              <Link to="/project" className="inline-flex items-center gap-2 mb-2">
-                <ArrowLeftOutlined /> Back to projects
-              </Link>
-              <Title level={2} className="!mt-0 !mb-1">{project.title}</Title>
-              <Text type="secondary">
-                {project.company} · {project.role} · {project.startDate} – {project.endDate}
-              </Text>
-            </div>
-            <Badge status="success" text={project.status} />
+          <div className="mb-6">
+            <Link to="/project" className="inline-flex items-center gap-2 mb-2">
+              <ArrowLeftOutlined /> Back to projects
+            </Link>
+            <Title level={2} className="!mt-0 !mb-1">{project.title}</Title>
+            <Text style={{ color: "#ffffff" }}>
+              {project.company} · {project.role} · {project.startDate} – {project.endDate}
+            </Text>
           </div>
         </ConfigProvider>
 
         {project.metrics && (
           <Row gutter={16} className="mb-6">
-            <Col span={6}>
-              <Card><Statistic title="Findings before" value={project.metrics.before.totalVulnerabilities} /></Card>
-            </Col>
-            <Col span={6}>
-              <Card><Statistic title="Findings after" value={project.metrics.after.totalVulnerabilities} /></Card>
-            </Col>
-            <Col span={6}>
-              <Card><Statistic title="Effort" value={project.metrics.after.effort} suffix={project.metrics.after.effortUnit} /></Card>
-            </Col>
-            <Col span={6}>
-              <Card>
-                <Statistic
-                  title="Success rate"
-                  value={project.metrics.after.successRate ?? "—"}
-                  suffix={project.metrics.after.successRate ? "%" : ""}
-                />
-              </Card>
-            </Col>
+            {[
+              { title: "Findings before", value: project.metrics.before.totalVulnerabilities, bg: "#FFD0D0" },
+              { title: "Findings after", value: project.metrics.after.totalVulnerabilities, bg: "#D0EFC0" },
+              { title: "Effort", value: project.metrics.after.effort, suffix: project.metrics.after.effortUnit, bg: "#FFFDAB" },
+              {
+                title: "Success rate",
+                value: project.metrics.after.successRate ?? "—",
+                suffix: project.metrics.after.successRate ? "%" : "",
+                bg: "#C6B5FD",
+              },
+            ].map((metric) => (
+              <Col span={6} key={metric.title}>
+                <Card style={{ backgroundColor: metric.bg }}>
+                  <Statistic
+                    title={<span style={{ color: "#000000" }}>{metric.title}</span>}
+                    value={metric.value}
+                    suffix={metric.suffix}
+                    valueStyle={{ color: "#000000" }}
+                  />
+                </Card>
+              </Col>
+            ))}
           </Row>
         )}
 
@@ -88,7 +89,7 @@ const ProjectDetail: React.FC = () => {
                   <Steps
                     items={project.timeline.map((phase) => ({
                       title: phase.phase,
-                      description: phase.description,
+                      description: <span style={{ color: "#ffffff" }}>{phase.description}</span>,
                       status: phase.status === "completed" ? "finish" : "process",
                     }))}
                   />
@@ -123,7 +124,7 @@ const ProjectDetail: React.FC = () => {
               },
               project.techStack && {
                 key: "stack",
-                label: "Tech Stack",
+                label: "",
                 children: Object.entries(project.techStack).map(([category, items]) => (
                   <div key={category} className="mb-3">
                     <Text strong>{category}: </Text>
@@ -133,7 +134,7 @@ const ProjectDetail: React.FC = () => {
               },
               project.achievements && {
                 key: "achievements",
-                label: "Achievements",
+                label: "",
                 children: (
                   <Row gutter={16}>
                     {project.achievements.map((achievement) => (
