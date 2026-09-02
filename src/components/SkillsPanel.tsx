@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Image } from "antd";
 import styled from "styled-components";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import StatCardSection from "./StatCardSection";
 import languageSkillData from "../data/MySkill.json";
 import cloudSkillData from "../data/CloudSkill.json";
@@ -99,7 +99,9 @@ const TabBar = styled.div`
     margin-bottom: 4px;
 `;
 
-const TabButton = styled.button<{ $active: boolean; $accent: string }>`
+// ใช้ styled(motion.button) แทน styled.button ธรรมดา เพื่อให้ framer-motion
+// ควบคุม prop เช่น whileTap ได้โดยตรงบน element เดียวกัน ไม่ต้องห่อ wrapper เพิ่ม
+const TabButton = styled(motion.button)<{ $active: boolean; $accent: string }>`
     padding: 6px 14px;
     border-radius: 999px;
     font-size: 13px;
@@ -203,16 +205,27 @@ export default function SkillsPanel({ isComp }: Props) {
                                 $active={tab.key === active.key}
                                 $accent={tab.accent}
                                 onClick={() => setActiveTab(tab.key)}
+                                whileTap={{ scale: 0.9 }}
                             >
                                 {tab.shortLabel}
                             </TabButton>
                         ))}
                     </TabBar>
-                    <div style={{ marginTop: 16 }}>
-                        {active.key === 'languages' && <SkillChips isComp={isComp} accent={LANGUAGES_ACCENT} skills={languageSkillData} />}
-                        {active.key === 'cloud' && <SkillChips isComp={isComp} accent={CLOUD_ACCENT} skills={cloudSkillData} />}
-                        {active.key === 'github' && <GithubBars languages={githubLanguages} />}
-                    </div>
+                    {/* mode="wait" กันไม่ให้เนื้อหาเก่า-ใหม่ fade ทับกันตอนสลับแท็บเร็ว ๆ */}
+                    <AnimatePresence mode="wait">
+                        <motion.div
+                            key={active.key}
+                            style={{ marginTop: 16 }}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.2 }}
+                        >
+                            {active.key === 'languages' && <SkillChips isComp={isComp} accent={LANGUAGES_ACCENT} skills={languageSkillData} />}
+                            {active.key === 'cloud' && <SkillChips isComp={isComp} accent={CLOUD_ACCENT} skills={cloudSkillData} />}
+                            {active.key === 'github' && <GithubBars languages={githubLanguages} />}
+                        </motion.div>
+                    </AnimatePresence>
                 </StatCardSection>
             </div>
         </motion.div>
