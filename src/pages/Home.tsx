@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import Greeting from "../components/Greeting";
 import MySkill from "../components/MySkill";
 import WorkExperience from "../components/WorkExperience";
-import GithubTitle from "../components/GithubTitle";
-import Timeline from "../components/Timeline";
 import GithubLanguage from "../components/GithubLanguage";
 
 const Home: React.FC = () => {
@@ -34,8 +32,6 @@ const Home: React.FC = () => {
         <MySkill isComp={isComp} />
       </div>
       <div id="github">
-        <GithubTitle isComp={isComp} />
-        <Timeline isComp={isComp} />
         <GithubLanguage isComp={isComp} />
       </div>
     </main>
