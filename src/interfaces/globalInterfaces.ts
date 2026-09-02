@@ -89,6 +89,7 @@ export interface ProjectItem {
     endDate: string;
     tags: string[];
     theme: ProjectTheme;
+    image?: string;
     metrics?: { before: MetricSnapshot; after: MetricSnapshot };
     timeline?: TimelinePhase[];
     challenges?: Challenge[];

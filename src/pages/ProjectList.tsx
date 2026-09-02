@@ -72,7 +72,15 @@ const ProjectList: React.FC = () => {
               }`}
             >
               <div className="md:w-2/5 relative rounded-xl overflow-hidden aspect-[16/10]">
-                <ProjectIllustration theme={project.theme} />
+                {project.image ? (
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <ProjectIllustration theme={project.theme} />
+                )}
                 <span
                   className="absolute top-3 left-3 text-5xl font-black text-white/20 select-none"
                   style={{ fontFamily: "monospace" }}
