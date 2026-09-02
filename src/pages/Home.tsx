@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Greeting from "../components/Greeting";
-import MySkill from "../components/MySkill";
+import SkillsPanel from "../components/SkillsPanel";
 import WorkExperience from "../components/WorkExperience";
-import GithubLanguage from "../components/GithubLanguage";
 
 const Home: React.FC = () => {
   const [isComp, setIsComp] = useState(true);
@@ -28,11 +27,8 @@ const Home: React.FC = () => {
       <div id="work_experience" className="bg-zinc-800">
         <WorkExperience isComp={isComp} />
       </div>
-      <div id="my_skill">
-        <MySkill isComp={isComp} />
-      </div>
-      <div id="github">
-        <GithubLanguage isComp={isComp} />
+      <div id="skills">
+        <SkillsPanel isComp={isComp} />
       </div>
     </main>
   );
