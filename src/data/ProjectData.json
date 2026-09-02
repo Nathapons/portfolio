@@ -2,7 +2,7 @@
   {
     "id": "security-remediation-2026",
     "title": "Security Remediation & Penetration Testing Response",
-    "subtitle": "Reduced 15 vulnerabilities to 1 in 10 weeks",
+    "subtitle": "Closed 14 of 15 pentest findings (93%) in 4 weeks, independently",
     "company": "A Bank of Thailand-regulated P2P lending platform",
     "role": "Full Stack Developer & Security Remediation Lead",
     "status": "Completed & BOT Compliant",

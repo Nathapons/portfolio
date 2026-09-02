@@ -41,14 +41,14 @@ const timeline = [
     status: "completed" as const,
   },
   {
-    phase: "Report & Analysis",
-    duration: "Apr 30, 2026",
-    description: "Initial findings documented",
+    phase: "Presentation of Key Findings",
+    duration: "May 7, 2026",
+    description: "Key findings presented to stakeholders",
     status: "completed" as const,
   },
   {
     phase: "Remediation Sprint",
-    duration: "May–Jun 2026",
+    duration: "May 7–Jun 9, 2026",
     description: "Fix vulnerabilities by priority",
     status: "completed" as const,
   },
@@ -145,7 +145,7 @@ const SecurityRemediationDetail: React.FC = () => (
           <Title level={2} className="!mt-1">
             Security Remediation &amp; Penetration Testing Response
           </Title>
-          <Paragraph className="text-lg">Reduced 15 vulnerabilities to 1 in 10 weeks</Paragraph>
+          <Paragraph className="text-lg">Closed 14 of 15 pentest findings (93%) in 4 weeks, independently</Paragraph>
           <div className="flex gap-2 flex-wrap mb-6">
             {tags.map((tag) => <Tag key={tag}>{tag}</Tag>)}
           </div>
