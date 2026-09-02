@@ -45,3 +45,9 @@ Default five-role vocabulary (`needs-triage`, `needs-info`, `ready-for-agent`, `
 ### Domain docs
 
 Single-context layout: `CONTEXT.md` + `docs/adr/` at the repo root. See `docs/agents/domain.md`.
+
+### Claude Rules - Portfolio
+
+- [Clean Code Rules](/.claude/rules/clean-code.md).
+- [Conversation Rules](/.claude/rules/conversation.md).
+
