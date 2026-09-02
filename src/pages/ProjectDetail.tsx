@@ -1,12 +1,13 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
-import { Tag, Steps, Typography, ConfigProvider } from "antd";
+import { Tag, Steps, Collapse, Typography, ConfigProvider, theme } from "antd";
 import { motion } from "framer-motion";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 
 import { ProjectItem } from "@/interfaces/globalInterfaces";
 import ProjectData from "../data/ProjectData.json";
 import SecurityRemediationDetail from "../components/SecurityRemediationDetail";
+import VendorComparisonTable from "../components/VendorComparisonTable";
 
 const { Title, Text, Paragraph } = Typography;
 
@@ -36,6 +37,15 @@ const customProjectDetails: Record<string, React.FC> = {
 const ProjectDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
 
+  // อ่าน fontFamily default ของ antd (ค่าเดียวกับที่หน้า Home ใช้ เพราะ
+  // Greeting.tsx/WorkExperience.tsx ก็ไม่ได้ override fontFamily token
+  // เหมือนกัน) มาตั้งเป็น font-family ของ <main> ด้วย เพื่อให้ plain HTML
+  // element ในหน้านี้ (table cell ของ VendorComparisonTable, li ของ
+  // achievements ฯลฯ) ได้ font ตัวเดียวกับ antd component (Title, Tag, Text)
+  // แทนที่จะ inherit Montserrat จาก body (src/styles/globals.css) แล้วฟอนต์
+  // ไม่ตรงกันในหน้าเดียวกัน
+  const { token } = theme.useToken();
+
   const CustomDetail = id ? customProjectDetails[id] : undefined;
   if (CustomDetail) {
     return <CustomDetail />;
@@ -45,7 +55,7 @@ const ProjectDetail: React.FC = () => {
 
   if (!project) {
     return (
-      <main className="main-content py-10 px-6">
+      <main className="main-content py-10 px-6" style={{ fontFamily: token.fontFamily }}>
         <ConfigProvider theme={lightOnDark}>
           <div className="max-w-3xl mx-auto text-center">
             <Title level={3}>Project not found</Title>
@@ -62,7 +72,7 @@ const ProjectDetail: React.FC = () => {
   }
 
   return (
-    <main className="main-content py-10 px-6">
+    <main className="main-content py-10 px-6" style={{ fontFamily: token.fontFamily }}>
       <ConfigProvider theme={lightOnDark}>
         <motion.div
           key={project.id}
@@ -117,16 +127,41 @@ const ProjectDetail: React.FC = () => {
           {project.challenges && project.solutions && (
             <motion.div variants={itemVariants} className="mb-8 flex flex-col gap-6">
               <Title level={4}>Challenges &amp; Solutions</Title>
-              {project.challenges.map((challenge, i) => (
-                <div key={challenge.title}>
-                  <Paragraph><Text strong>{challenge.title}.</Text> {challenge.description}</Paragraph>
-                  {project.solutions?.[i] && (
-                    <ul className="list-disc pl-6 text-white">
-                      {project.solutions[i].items.map((item) => <li key={item}>{item}</li>)}
-                    </ul>
-                  )}
-                </div>
-              ))}
+              {project.comparisonTable && <VendorComparisonTable table={project.comparisonTable} />}
+              {project.comparisonTable ? (
+                // เมื่อมี comparisonTable มาก่อนแล้ว พับ challenge/solution แต่ละข้อ
+                // ไว้ใน accordion แทนแสดงเต็มทันที — ตารางเป็นหลักฐานหลักที่เห็น
+                // ก่อนเสมอ ส่วนรายละเอียดให้กดดูเองถ้าอยากรู้เพิ่ม (ผลตัดสินใจจาก
+                // การทำ prototype 3 แบบเทียบกันก่อนหน้านี้)
+                <Collapse
+                  ghost
+                  items={project.challenges.map((challenge, i) => ({
+                    key: challenge.title,
+                    label: <Text strong>{challenge.title}</Text>,
+                    children: (
+                      <>
+                        <Paragraph>{challenge.description}</Paragraph>
+                        {project.solutions?.[i] && (
+                          <ul className="list-disc pl-6 text-white">
+                            {project.solutions[i].items.map((item) => <li key={item}>{item}</li>)}
+                          </ul>
+                        )}
+                      </>
+                    ),
+                  }))}
+                />
+              ) : (
+                project.challenges.map((challenge, i) => (
+                  <div key={challenge.title}>
+                    <Paragraph><Text strong>{challenge.title}.</Text> {challenge.description}</Paragraph>
+                    {project.solutions?.[i] && (
+                      <ul className="list-disc pl-6 text-white">
+                        {project.solutions[i].items.map((item) => <li key={item}>{item}</li>)}
+                      </ul>
+                    )}
+                  </div>
+                ))
+              )}
             </motion.div>
           )}
 

@@ -20,6 +20,115 @@
     "theme": "security"
   },
   {
+    "id": "pentest-vendor-selection-2026",
+    "title": "Penetration Testing Vendor Selection",
+    "subtitle": "Compared 3 vendor bids and selected the best value for a 26 man-day, OWASP Top 10-aligned penetration test",
+    "company": "A Bank of Thailand-regulated P2P lending platform",
+    "role": "Full Stack Developer & Security Vendor Evaluation Lead",
+    "status": "Completed — vendor onboarded",
+    "startDate": "2026-03",
+    "endDate": "2026-04",
+    "tags": [
+      "Security",
+      "Vendor Management",
+      "Procurement",
+      "Fintech",
+      "Compliance"
+    ],
+    "theme": "security",
+    "timeline": [
+      {
+        "phase": "Vendor Outreach & Quotation",
+        "duration": "Mar 2026",
+        "effort": "~1 week",
+        "description": "Requested proposals from 3 penetration testing vendors: Vendor A, Vendor B, and Vendor C",
+        "status": "completed"
+      },
+      {
+        "phase": "Side-by-Side Evaluation",
+        "duration": "Mar 2026",
+        "effort": "~1 week",
+        "description": "Compared price, test scope (web/mobile function coverage), methodology, and payment terms across all 3 bids",
+        "status": "completed"
+      },
+      {
+        "phase": "Vendor Selected",
+        "duration": "Late Mar 2026",
+        "effort": "-",
+        "description": "Selected Vendor B for the best combination of test coverage (26 man-days, OWASP Top 10-aligned) and commercial terms",
+        "status": "completed"
+      },
+      {
+        "phase": "Engagement Kickoff",
+        "duration": "Apr 9, 2026",
+        "effort": "-",
+        "description": "Scope finalized and testing began — see the Security Remediation project for the resulting engagement",
+        "status": "completed"
+      }
+    ],
+    "challenges": [
+      {
+        "title": "Lowest Price Wasn't Best Value",
+        "description": "The cheapest bid (Vendor C, ฿417,300) offered the least test coverage of the three, at 16.5 man-days"
+      },
+      {
+        "title": "Vague Scope Language",
+        "description": "The most expensive bid (Vendor A, ฿631,300) quoted effort only as \"1 month\" instead of man-days, making it hard to compare against the others"
+      },
+      {
+        "title": "Cash Flow & Support Trade-offs",
+        "description": "Vendors differed sharply on payment terms (installments vs. credit) and on whether post-report support was included"
+      }
+    ],
+    "solutions": [
+      {
+        "category": "Lowest Price Wasn't Best Value",
+        "items": [
+          "Ranked bids by 3 weighted criteria in order: price, test coverage, then additional care",
+          "Normalized each quote to a cost-per-man-day figure instead of comparing sticker price alone"
+        ]
+      },
+      {
+        "category": "Vague Scope Language",
+        "items": [
+          "Required every vendor to state effort in explicit man-days for an apples-to-apples comparison",
+          "Verified each vendor's scope mapped to OWASP Top 10 categories before shortlisting"
+        ]
+      },
+      {
+        "category": "Cash Flow & Support Trade-offs",
+        "items": [
+          "Selected Vendor B's 45-day credit term, payable only after final delivery, to protect cash flow",
+          "Weighted Vendor B's ongoing consulting over a one-off report readout, plus a 10% returning-customer discount"
+        ]
+      }
+    ],
+    "comparisonTable": {
+      "columns": ["Vendor A", "Vendor C", "Vendor B"],
+      "winnerColumnIndex": 2,
+      "rows": [
+        { "criterion": "Price (incl. VAT)", "values": ["฿631,300", "฿417,300", "฿425,646"] },
+        { "criterion": "Scope of Work", "values": ["Web (43 func), Mobile (46 func)", "Web (43 func), Mobile (46 API)", "Web (43 API), Mobile (46 API)"] },
+        { "criterion": "Test Methodology", "values": ["Gray-Box", "Gray-Box", "Gray-Box (OWASP Top 10-aligned)"] },
+        { "criterion": "Duration / Man-days", "values": ["1 month", "16.5 days", "26 days"] },
+        { "criterion": "Retest (Revisit)", "values": ["✅ (1x)", "✅ (1x)", "✅ (1x)"] },
+        { "criterion": "Reporting & Consultation", "values": ["1 report presentation", "2 report presentations", "Ongoing presentation & consultation"] },
+        { "criterion": "Payment Terms", "values": ["Credit 30 days (after delivery)", "3 installments (20%/70%/10%)", "Credit 45 days (after final delivery)"] },
+        { "criterion": "Key Advantage", "values": ["—", "Installment payment available", "10% returning-customer discount, highest man-days"] }
+      ]
+    },
+    "achievements": [
+      { "icon": "💰", "label": "Value", "value": "Selected a ฿425,646 bid — 33% below the highest quote (฿631,300) — without sacrificing coverage" },
+      { "icon": "🧪", "label": "Coverage", "value": "Secured the most testing effort of the 3 bids: 26 man-days vs. 16.5 (Vendor C) and an unspecified \"1 month\" (Vendor A)" },
+      { "icon": "💳", "label": "Terms", "value": "Negotiated 45-day credit (payable after final delivery) plus a 10% returning-customer discount" },
+      { "icon": "🤝", "label": "Outcome", "value": "Vendor onboarded and testing kicked off on schedule, feeding directly into the Security Remediation project" }
+    ],
+    "techStack": {
+      "Process": ["Vendor RFP & Quotation Review", "Comparative Cost/Coverage Analysis", "OWASP Top 10"]
+    },
+    "skills": ["Vendor Management", "Procurement Negotiation", "Security Program Management"]
+  },
+  {
     "id": "bcp-testing-2025-2026",
     "title": "Business Continuity Plan Testing Program",
     "subtitle": "2 consecutive annual BCP drills passed, submitted to BOT both years",

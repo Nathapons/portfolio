@@ -103,12 +103,6 @@ const ProjectList: React.FC = () => {
                 ) : (
                   <ProjectIllustration theme={project.theme} />
                 )}
-                <span
-                  className="absolute top-3 left-3 text-5xl font-black text-white/20 select-none"
-                  style={{ fontFamily: "monospace" }}
-                >
-                  {String(index + 1).padStart(2, "0")}
-                </span>
               </div>
 
               <ConfigProvider theme={lightOnDark}>

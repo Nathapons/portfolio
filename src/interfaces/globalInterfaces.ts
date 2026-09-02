@@ -76,6 +76,22 @@ export interface Achievement {
     value: string;
 }
 
+// แถวหนึ่งของตารางเทียบเกณฑ์ (เช่น "Price", "Scope of Work") กับค่าของ
+// แต่ละคอลัมน์ใน ComparisonTable.columns ตามลำดับ index เดียวกัน
+export interface ComparisonRow {
+    criterion: string;
+    values: string[];
+}
+
+// ตารางเทียบตัวเลือก (เช่น vendor 3 เจ้า) แบบ criterion-first — ใช้ตอน
+// challenges/solutions ธรรมดาไม่พอจะเล่าเรื่อง "เทียบตัวเลือกหลายตัว"
+// winnerColumnIndex ใช้ไฮไลต์คอลัมน์ที่ถูกเลือกในตอนจบ
+export interface ComparisonTable {
+    columns: string[];
+    winnerColumnIndex: number;
+    rows: ComparisonRow[];
+}
+
 export type ProjectTheme = "security" | "resilience";
 
 export interface ProjectItem {
@@ -94,6 +110,7 @@ export interface ProjectItem {
     timeline?: TimelinePhase[];
     challenges?: Challenge[];
     solutions?: SolutionGroup[];
+    comparisonTable?: ComparisonTable;
     achievements?: Achievement[];
     techStack?: Record<string, string[]>;
     skills?: string[];

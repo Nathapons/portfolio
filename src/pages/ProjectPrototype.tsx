@@ -1,15 +1,19 @@
-// PROTOTYPE — throwaway UI exploration, now on its THIRD question.
+// PROTOTYPE — throwaway UI exploration, now on its FOURTH question.
 // Round 1 (detail-page narrative style, A/B/C) is decided and shipped for real
 // (ADR 0002 + production ProjectDetail.tsx's Security Remediation override) —
 // DetailVariantA below is kept only as a reference/fallback for this prototype.
 // Round 2 (illustration thumbnail bolted onto the existing timeline-card list)
 // was rejected: it read as "same card, different icon," not a real option.
+// Round 3 (list page structure — ListLayoutA/B/C, switchable via ?variant=A|B|C)
+// is decided and shipped for real: Layout A (editorial split-hero) is now
+// production ProjectList.tsx. ListLayoutB/C are kept below only as reference,
+// same as DetailVariantB/C — not rendered by this page anymore.
 //
-// Current question: what should the Projects LIST page's structure itself look
-// like? Three structurally different layouts (ListLayoutA/B/C below), each with
-// its own information hierarchy and its own use of the illustration components —
-// switchable via ?variant=A|B|C. The detail page is fixed to the narrative style
-// (DetailVariantA) since that part is already settled.
+// Current question: is the shipped Layout A's COLOR TONE (bright signal-amber
+// #ffcc00 accent) right for an HR/recruiter audience, or does it read as too
+// loud? Three tone presets (TONES below) applied to the same, already-decided
+// Layout A structure — switchable via ?tone=A|B|C. Tone A is the exact color
+// currently shipped in production, kept as the baseline to compare against.
 // Data: the real Security Remediation project, plus a new anonymized "BCP Testing"
 // entry mirroring the Project that will actually ship (see CONTEXT.md's anonymization
 // rules — no real company/system names or personal PII in this data, matching what
@@ -286,37 +290,89 @@ const IllustrationB: React.FC<{ theme: IllustrationTheme; fill?: boolean }> = ({
   );
 };
 
-const IllustrationC: React.FC<{ theme: IllustrationTheme; rounded?: boolean }> = ({ theme, rounded = true }) => (
+// `accent` drives just the primary shape (the one that reads as "brand color"
+// at a glance); the secondary shapes stay fixed so the illustration doesn't
+// flatten into a single-hue blob when a cooler/quieter tone is applied.
+const IllustrationC: React.FC<{ theme: IllustrationTheme; rounded?: boolean; accent?: string }> = ({
+  theme,
+  rounded = true,
+  accent = "#ffcc00",
+}) => (
   <svg viewBox="0 0 64 64" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
     <rect width={64} height={64} rx={rounded ? 12 : 0} fill="#151519" />
     {theme === "security" ? (
       <>
-        <polygon points="32,10 52,44 12,44" fill="#ffcc00" opacity={0.85} transform="rotate(-8 32 32)" />
+        <polygon points="32,10 52,44 12,44" fill={accent} opacity={0.85} transform="rotate(-8 32 32)" />
         <circle cx={38} cy={30} r={14} fill="#5b3df5" opacity={0.55} />
         <rect x={14} y={16} width={18} height={18} fill="#22d3c9" opacity={0.3} transform="rotate(20 23 25)" />
       </>
     ) : (
       <>
         <circle cx={26} cy={26} r={16} fill="#22d3c9" opacity={0.5} />
-        <polygon points="46,14 58,38 34,38" fill="#ffcc00" opacity={0.8} transform="rotate(12 46 26)" />
+        <polygon points="46,14 58,38 34,38" fill={accent} opacity={0.8} transform="rotate(12 46 26)" />
         <rect x={20} y={34} width={20} height={20} rx={4} fill="#5b3df5" opacity={0.35} transform="rotate(-15 30 44)" />
       </>
     )}
   </svg>
 );
 
-const Illustration: React.FC<{ style: IllustrationStyle; theme: IllustrationTheme; rounded?: boolean; fill?: boolean }> = ({
+const Illustration: React.FC<{ style: IllustrationStyle; theme: IllustrationTheme; rounded?: boolean; fill?: boolean; accent?: string }> = ({
   style,
   theme,
   rounded,
   fill,
+  accent,
 }) => {
   if (style === "A") return <IllustrationA theme={theme} rounded={rounded} />;
   if (style === "B") return <IllustrationB theme={theme} fill={fill} />;
-  return <IllustrationC theme={theme} rounded={rounded} />;
+  return <IllustrationC theme={theme} rounded={rounded} accent={accent} />;
 };
 
-type ListLayoutProps = { projects: PrototypeProject[]; onSelect: (id: string) => void };
+type ListLayoutProps = { projects: PrototypeProject[]; onSelect: (id: string) => void; tone: TonePreset };
+
+// Max tags shown per row before collapsing into a "+N" badge — mirrors the
+// same fix already shipped in production ProjectList.tsx, carried into this
+// prototype so what you're comparing here is only the tone, not the tags bug.
+const MAX_VISIBLE_TAGS = 4;
+
+// ---------------------------------------------------------------------------
+// Tone presets — Round 4's actual subject. Same structure (Layout A, already
+// decided), three different accent-color answers to "is bright signal-amber
+// right for an HR audience?" Tone A is the exact color shipped in production
+// today, kept as the baseline every other tone is judged against.
+// ---------------------------------------------------------------------------
+
+interface TonePreset {
+  key: "A" | "B" | "C";
+  name: string;
+  description: string;
+  accent: string;
+  focusRing: string;
+}
+
+const TONES: TonePreset[] = [
+  {
+    key: "A",
+    name: "Signal Amber (current, shipped)",
+    description: "Bright yellow accent — high energy, high contrast, currently in production.",
+    accent: "#ffcc00",
+    focusRing: "#ffcc00",
+  },
+  {
+    key: "B",
+    name: "Slate Teal",
+    description: "Muted cyan-teal accent — calmer, reads as technical/engineering rather than promotional.",
+    accent: "#4dd0c4",
+    focusRing: "#4dd0c4",
+  },
+  {
+    key: "C",
+    name: "Corporate Indigo",
+    description: "Cool blue accent — closest to a conventional 'trustworthy fintech' palette.",
+    accent: "#6d8cff",
+    focusRing: "#6d8cff",
+  },
+];
 
 // ---------------------------------------------------------------------------
 // Layout A — Editorial split-hero. No cards, no timeline dots: each project
@@ -324,13 +380,17 @@ type ListLayoutProps = { projects: PrototypeProject[]; onSelect: (id: string) =>
 // separated by hairlines. Information hierarchy: title/impact first, tags
 // and metadata pushed small and secondary. Primary affordance is the whole
 // row, not a button.
+//
+// Row is keyboard-interactive (role="link" + tabIndex + onKeyDown), matching
+// the a11y fix already shipped in production ProjectList.tsx — carried in
+// here too so the tone comparison is on real, current markup.
 // ---------------------------------------------------------------------------
 
 // Click "pop": the row does a quick spring bounce (scale up, overshoot,
 // settle) before the detail view swaps in, instead of navigating instantly.
 const POP_DURATION_MS = 380;
 
-const ListLayoutA: React.FC<ListLayoutProps> = ({ projects, onSelect }) => {
+const ListLayoutA: React.FC<ListLayoutProps> = ({ projects, onSelect, tone }) => {
   const [poppingId, setPoppingId] = useState<string | null>(null);
 
   const handleOpen = (id: string) => {
@@ -345,7 +405,7 @@ const ListLayoutA: React.FC<ListLayoutProps> = ({ projects, onSelect }) => {
   return (
     <div className="max-w-5xl mx-auto flex flex-col">
       <div className="text-center mb-10">
-        <ConfigProvider theme={{ token: { colorText: "#ffcc00" } }}>
+        <ConfigProvider theme={{ token: { colorText: tone.accent } }}>
           <Title level={2} className="!mb-2">Projects</Title>
         </ConfigProvider>
         <Text type="secondary" className="text-lg">
@@ -365,12 +425,26 @@ const ListLayoutA: React.FC<ListLayoutProps> = ({ projects, onSelect }) => {
             animate={isPopping ? { scale: [1, 1.06, 0.98, 1.03, 1], opacity: [1, 1, 1, 1, 0] } : { scale: 1, opacity: 1 }}
             transition={isPopping ? { duration: POP_DURATION_MS / 1000, times: [0, 0.35, 0.6, 0.8, 1], ease: "easeInOut" } : { duration: 0.6, delay: index * 0.1 }}
             onClick={() => handleOpen(p.id)}
-            className={`group cursor-pointer flex flex-col gap-6 md:gap-10 py-10 border-b border-white/10 first:pt-2 ${
+            role="link"
+            tabIndex={0}
+            aria-label={`View case study: ${p.title}`}
+            onKeyDown={(event) => {
+              if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                handleOpen(p.id);
+              }
+            }}
+            // CSS custom property, not a Tailwind arbitrary value: the accent
+            // is only known at render time (picked via ?tone=), and Tailwind
+            // needs a static string to scan at build time — `var(--tone-*)`
+            // is a static class whose *value* resolves dynamically instead.
+            style={{ ["--tone-accent" as any]: tone.accent, ["--tone-ring" as any]: tone.focusRing }}
+            className={`group cursor-pointer flex flex-col gap-6 md:gap-10 py-10 border-b border-white/10 first:pt-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--tone-ring)] ${
               imageOnRight ? "md:flex-row-reverse" : "md:flex-row"
             }`}
           >
             <div className="md:w-2/5 relative rounded-xl overflow-hidden aspect-[16/10]">
-              <Illustration style="C" theme={p.theme} rounded={false} />
+              <Illustration style="C" theme={p.theme} rounded={false} accent={tone.accent} />
               <span
                 className="absolute top-3 left-3 text-5xl font-black text-white/20 select-none"
                 style={{ fontFamily: "monospace" }}
@@ -383,17 +457,18 @@ const ListLayoutA: React.FC<ListLayoutProps> = ({ projects, onSelect }) => {
                 <Text type="secondary" className="uppercase tracking-wide text-xs">
                   {p.company} · {p.startDate} – {p.endDate}
                 </Text>
-                <Title level={3} className="!mt-1 !mb-2 !text-white group-hover:!text-[#ffcc00] transition-colors">
+                <Title level={3} className="!mt-1 !mb-2 !text-white group-hover:!text-[var(--tone-accent)] transition-colors">
                   {p.title}
                 </Title>
                 <Paragraph className="text-lg !mb-3 !text-white !font-bold">
                   {p.subtitle}
                 </Paragraph>
                 <div className="flex gap-2 flex-wrap mb-3">
-                  {p.tags.slice(0, 4).map((t) => <Tag key={t}>{t}</Tag>)}
+                  {p.tags.slice(0, MAX_VISIBLE_TAGS).map((t) => <Tag key={t}>{t}</Tag>)}
+                  {p.tags.length > MAX_VISIBLE_TAGS && <Tag>+{p.tags.length - MAX_VISIBLE_TAGS}</Tag>}
                 </div>
                 <motion.span whileTap={{ scale: 0.9 }} style={{ display: "inline-block" }}>
-                  <Text className="!text-[#ffcc00] group-hover:underline">Read the case study →</Text>
+                  <Text className="!text-[var(--tone-accent)] group-hover:underline">Read the case study →</Text>
                 </motion.span>
               </div>
             </ConfigProvider>
@@ -755,20 +830,18 @@ const DetailVariantC: React.FC<{ project: PrototypeProject; onBack: () => void }
 );
 
 // ---------------------------------------------------------------------------
-// Switcher
+// Switcher — now cycles TONE (Round 4's question), not list structure
+// (Round 3's question, already answered). ListLayoutB/C above are kept as
+// reference only and are no longer reachable from this switcher, same as
+// DetailVariantB/C are defined but not routed to.
 // ---------------------------------------------------------------------------
 
-const VARIANTS = [
-  { key: "A", name: "Editorial split-hero" },
-  { key: "B", name: "Poster grid" },
-  { key: "C", name: "Compact incident-log" },
-] as const;
+type ToneKey = TonePreset["key"];
 
-type VariantKey = (typeof VARIANTS)[number]["key"];
-
-const PrototypeVariantSwitcher: React.FC<{ current: VariantKey; onChange: (v: VariantKey) => void }> = ({ current, onChange }) => {
-  const index = VARIANTS.findIndex((v) => v.key === current);
-  const cycle = (dir: 1 | -1) => onChange(VARIANTS[(index + dir + VARIANTS.length) % VARIANTS.length].key);
+const ToneSwitcher: React.FC<{ current: ToneKey; onChange: (v: ToneKey) => void }> = ({ current, onChange }) => {
+  const index = TONES.findIndex((t) => t.key === current);
+  const tone = TONES[index];
+  const cycle = (dir: 1 | -1) => onChange(TONES[(index + dir + TONES.length) % TONES.length].key);
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
@@ -786,12 +859,21 @@ const PrototypeVariantSwitcher: React.FC<{ current: VariantKey; onChange: (v: Va
 
   return (
     <div
-      className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-4 bg-black text-white px-4 py-2 rounded-full shadow-2xl border border-zinc-500"
+      className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex flex-col items-center gap-1 bg-black text-white px-4 py-2 rounded-2xl shadow-2xl border border-zinc-500"
       style={{ fontFamily: "monospace" }}
     >
-      <LeftOutlined onClick={() => cycle(-1)} className="cursor-pointer" />
-      <span>{current} — {VARIANTS[index].name}</span>
-      <RightOutlined onClick={() => cycle(1)} className="cursor-pointer" />
+      <div className="flex items-center gap-4">
+        <LeftOutlined onClick={() => cycle(-1)} className="cursor-pointer" />
+        <span className="flex items-center gap-2">
+          <span
+            className="inline-block w-3 h-3 rounded-full"
+            style={{ background: tone.accent }}
+          />
+          tone {tone.key} — {tone.name}
+        </span>
+        <RightOutlined onClick={() => cycle(1)} className="cursor-pointer" />
+      </div>
+      <span className="text-xs text-zinc-400">{tone.description}</span>
     </div>
   );
 };
@@ -802,28 +884,25 @@ const PrototypeVariantSwitcher: React.FC<{ current: VariantKey; onChange: (v: Va
 
 const ProjectPrototype: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const variant = (searchParams.get("variant") as VariantKey) || "A";
+  const toneKey = (searchParams.get("tone") as ToneKey) || "A";
+  const tone = TONES.find((t) => t.key === toneKey) ?? TONES[0];
   const [view, setView] = useState<"list" | "detail">("list");
   const [selectedId, setSelectedId] = useState(PROJECTS[0].id);
   const selected = RHYTHM_PREVIEW_PROJECTS.find((p) => p.id === selectedId) ?? PROJECTS[0];
 
-  const setVariant = (v: VariantKey) => setSearchParams({ variant: v });
+  const setTone = (v: ToneKey) => setSearchParams({ tone: v });
 
   return (
     <main className="main-content" style={{ paddingBottom: 100 }}>
       {view === "list" ? (
-        <>
-          {/* Layout A gets the 10-item rhythm preview (see RHYTHM_PREVIEW_PROJECTS); B/C still show the real 2 projects. */}
-          {variant === "A" && <ListLayoutA projects={RHYTHM_PREVIEW_PROJECTS} onSelect={(id) => { setSelectedId(id); setView("detail"); }} />}
-          {variant === "B" && <ListLayoutB projects={PROJECTS} onSelect={(id) => { setSelectedId(id); setView("detail"); }} />}
-          {variant === "C" && <ListLayoutC projects={PROJECTS} onSelect={(id) => { setSelectedId(id); setView("detail"); }} />}
-        </>
+        // Structure is fixed to the shipped Layout A; only the tone changes.
+        <ListLayoutA projects={RHYTHM_PREVIEW_PROJECTS} tone={tone} onSelect={(id) => { setSelectedId(id); setView("detail"); }} />
       ) : (
-        // Detail narrative style is already decided (variant A) — fixed here
-        // regardless of which list layout is being tried.
+        // Detail narrative style is already decided — fixed here regardless
+        // of which tone is being tried.
         <DetailVariantA project={selected} onBack={() => setView("list")} />
       )}
-      <PrototypeVariantSwitcher current={variant} onChange={setVariant} />
+      <ToneSwitcher current={toneKey} onChange={setTone} />
     </main>
   );
 };
