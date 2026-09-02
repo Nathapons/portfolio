@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Tag, Steps, Typography, ConfigProvider } from "antd";
 import { motion } from "framer-motion";
-import { ArrowLeftOutlined } from "@ant-design/icons";
+import { ArrowLeftOutlined, ArrowRightOutlined, CheckCircleOutlined, WarningOutlined } from "@ant-design/icons";
 
 const { Title, Text, Paragraph } = Typography;
 
@@ -26,6 +26,12 @@ const itemVariants = {
 const tags = ["Security", "Penetration Testing", "Django", "GCP", "Fintech", "Compliance"];
 
 const metrics = { before: 15, after: 1 };
+
+// คำนวณ % การลดลงจากข้อมูล before/after แทนการ hardcode ตัวเลข
+// เพื่อให้ badge อัปเดตอัตโนมัติถ้า metrics เปลี่ยนในอนาคต
+const reductionPercent = Math.round(
+  ((metrics.before - metrics.after) / metrics.before) * 100
+);
 
 const timeline = [
   {
@@ -145,14 +151,32 @@ const SecurityRemediationDetail: React.FC = () => (
           </div>
         </motion.div>
 
-        <motion.div variants={itemVariants} className="flex gap-8 mb-8 py-4 border-y border-zinc-700">
-          <div>
-            <Text type="secondary">Before</Text>
-            <div className="text-2xl font-bold text-white">{metrics.before} findings</div>
+        <motion.div
+          variants={itemVariants}
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8 py-6"
+        >
+          <div className="w-full sm:w-auto sm:flex-1 sm:max-w-xs rounded-xl border border-red-500/40 bg-red-500/10 px-6 py-4 text-center">
+            <div className="flex items-center justify-center gap-2 text-red-300 text-xs font-semibold uppercase tracking-wider">
+              <WarningOutlined /> Before
+            </div>
+            <div className="text-4xl font-bold text-white mt-2">{metrics.before}</div>
+            <div className="text-white/70 text-sm">findings</div>
           </div>
-          <div>
-            <Text type="secondary">After</Text>
-            <div className="text-2xl font-bold text-white">{metrics.after} findings</div>
+
+          {/* Badge ตรงกลางบอก % ที่ลดลง ช่วยให้ตัวเลข before/after สื่อ impact ได้ทันทีโดยไม่ต้องคำนวณเอง */}
+          <div className="flex flex-col items-center gap-1 shrink-0">
+            <ArrowRightOutlined className="text-xl text-white/40 rotate-90 sm:rotate-0" />
+            <div className="rounded-full bg-[#ffcc00] text-black text-xs font-bold px-3 py-1 whitespace-nowrap">
+              -{reductionPercent}%
+            </div>
+          </div>
+
+          <div className="w-full sm:w-auto sm:flex-1 sm:max-w-xs rounded-xl border border-emerald-500/40 bg-emerald-500/10 px-6 py-4 text-center">
+            <div className="flex items-center justify-center gap-2 text-emerald-300 text-xs font-semibold uppercase tracking-wider">
+              <CheckCircleOutlined /> After
+            </div>
+            <div className="text-4xl font-bold text-white mt-2">{metrics.after}</div>
+            <div className="text-white/70 text-sm">findings</div>
           </div>
         </motion.div>
 
