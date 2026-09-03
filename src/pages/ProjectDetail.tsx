@@ -15,7 +15,7 @@ const projects: ProjectItem[] = ProjectData as ProjectItem[];
 
 // All text white, headings (Title) yellow — this page's fixed detail theme.
 const lightOnDark = {
-  token: { colorText: "white", colorTextSecondary: "white", colorTextHeading: "#ffcc00" },
+  token: { colorText: "white", colorTextSecondary: "white", colorTextDescription: "white", colorTextHeading: "#ffcc00" },
   components: { Tag: { defaultColor: "rgba(0, 0, 0, 0.88)" } },
 };
 
@@ -116,7 +116,7 @@ const ProjectDetail: React.FC = () => {
                 direction="vertical"
                 size="small"
                 items={project.timeline.map((phase) => ({
-                  title: phase.phase,
+                  title: <Text strong>{phase.phase}</Text>,
                   description: `${phase.duration} — ${phase.description}`,
                   status: phase.status === "completed" ? "finish" : "process",
                 }))}
