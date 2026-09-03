@@ -1,0 +1,376 @@
+[
+  {
+    "id": "p2p-backoffice-platform",
+    "title": "P2P Back-Office Admin Platform",
+    "subtitle": "Built and hardened the internal admin system used to manage users, loans, KYC, and compliance for a regulated P2P lending platform",
+    "company": "A Bank of Thailand-regulated P2P lending platform",
+    "role": "Full Stack Developer",
+    "status": "Actively maintained, in production",
+    "startDate": "2024-08",
+    "endDate": "Present",
+    "image": "https://res.cloudinary.com/dizcg5fnc/image/upload/v1788370369/upload/Gemini_Generated_Image_nuy160nuy160nuy1_b8mifc.jpg",
+    "tags": [
+      "Django",
+      "Access Control",
+      "Audit Logging",
+      "KYC/AML",
+      "Fintech",
+      "Compliance"
+    ],
+    "theme": "security",
+    "timeline": [
+      {
+        "phase": "Foundational Back-Office Build",
+        "duration": "Aug 2024 – 2025",
+        "effort": "ongoing",
+        "description": "Built out core admin screens for contracts, StockLend matching, and investor re-KYC workflows — including juristic/corporate re-KYC — on top of the existing Django admin",
+        "status": "completed"
+      },
+      {
+        "phase": "KYC Approval Hardening",
+        "duration": "Apr–May 2026",
+        "effort": "~2 weeks",
+        "description": "Closed a dual-approval bypass in the KYC approval flow and added an atomic transaction lock to remove a race condition that let two approvers process the same case simultaneously",
+        "status": "completed"
+      },
+      {
+        "phase": "Role-Based Access Control & Audit Trail",
+        "duration": "Jul–Aug 2026",
+        "effort": "~1 month",
+        "description": "Replaced scattered permission checks with a data-driven Role Permission Matrix enforced server-side, then built an immutable Audit Trail instrumented across login, role changes, and every back-office action",
+        "status": "completed"
+      },
+      {
+        "phase": "Account Lifecycle & Compliance Reporting",
+        "duration": "Jun–Aug 2026",
+        "effort": "~2 months",
+        "description": "Shipped the Close User Account workflow and a new eKYC/IT-Biometrics accuracy reporting system (FAR/FRR metrics, dynamic Word reports) for compliance review",
+        "status": "completed"
+      }
+    ],
+    "challenges": [
+      {
+        "title": "Permissions and audit history weren't first-class concepts",
+        "description": "Early admin screens relied on Django's built-in admin and ad-hoc permission checks, with no way to see who took a sensitive action or reconstruct why"
+      },
+      {
+        "title": "A dual-approval workflow could still be raced",
+        "description": "KYC approval required two approvers by design, but nothing stopped both approvals from landing on the same case at once, opening a bypass"
+      },
+      {
+        "title": "Compliance reporting was manual",
+        "description": "Biometric accuracy (FAR/FRR) and eKYC figures had to be compiled by hand for regulatory review, with no self-serve reporting for the compliance team"
+      }
+    ],
+    "solutions": [
+      {
+        "category": "Permissions and audit history weren't first-class concepts",
+        "items": [
+          "Modeled a Role Permission Matrix (role × feature × action) as data, enforced server-side for both UI visibility and view logic",
+          "Built an AuditTrail model with an immutability guard, instrumented across login/logout, role changes, and every back-office action"
+        ]
+      },
+      {
+        "category": "A dual-approval workflow could still be raced",
+        "items": [
+          "Wrapped the KYC dual-approval path in an atomic transaction lock so only one approval can commit per case",
+          "Added regression tests covering the previously-exploitable approval sequence"
+        ]
+      },
+      {
+        "category": "Compliance reporting was manual",
+        "items": [
+          "Built a self-serve eKYC/IT-Biometrics reporting screen with FAR/FRR/Accuracy tables, year filters, and pagination",
+          "Added one-click dynamic Word report generation so compliance no longer compiles figures by hand"
+        ]
+      }
+    ],
+    "achievements": [
+      { "icon": "🔒", "label": "Access Control", "value": "Replaced ad-hoc permission checks with a single data-driven Role Permission Matrix enforced server-side, closing a dual-approval race condition in the process" },
+      { "icon": "📋", "label": "Auditability", "value": "Every login, permission change, and back-office action now writes an immutable, searchable audit trail entry" },
+      { "icon": "📊", "label": "Compliance Reporting", "value": "Shipped a self-serve eKYC/biometrics accuracy reporting system, replacing manual figure compilation" },
+      { "icon": "🗓️", "label": "Longevity", "value": "Core back-office platform actively built and maintained since Aug 2024" }
+    ],
+    "techStack": {
+      "Backend": ["Django", "Python"],
+      "Data": ["MySQL", "Django ORM migrations"],
+      "Frontend": ["Django Templates", "Tailwind CSS"],
+      "Testing": ["Django test framework"]
+    },
+    "skills": ["Access Control Design", "Audit Logging", "Compliance Reporting", "Secure Code Review"]
+  },
+  {
+    "id": "p2p-core-api-platform",
+    "title": "P2P Core Server & API Platform",
+    "subtitle": "Built and operated the core Django API powering mobile and partner integrations for a regulated P2P lending platform",
+    "company": "A Bank of Thailand-regulated P2P lending platform",
+    "role": "Full Stack Developer",
+    "status": "Actively maintained, in production",
+    "startDate": "2024-08",
+    "endDate": "Present",
+    "image": "https://res.cloudinary.com/dizcg5fnc/image/upload/v1788369864/upload/3d-render-money-transfer-mobile-banking-online_sn40uv.jpg",
+    "tags": [
+      "Django",
+      "REST API",
+      "GCP",
+      "Reliability",
+      "Fintech",
+      "Compliance"
+    ],
+    "theme": "resilience",
+    "timeline": [
+      {
+        "phase": "Core API Foundation",
+        "duration": "Aug 2024 – 2025",
+        "effort": "ongoing",
+        "description": "Stood up core contract, StockLend, and re-KYC integration endpoints, then migrated deployment to Gunicorn on App Engine with Docker Compose for local development",
+        "status": "completed"
+      },
+      {
+        "phase": "Investment Interest Rate Engine",
+        "duration": "Mar–Jul 2026",
+        "effort": "~2 months (spread)",
+        "description": "Built the investor interest-rate system end to end: Excel-based rate import, contract-time-window matching for tiered rates, and cron jobs to deactivate/reactivate rates as they expire",
+        "status": "completed"
+      },
+      {
+        "phase": "Dependency & CVE Remediation",
+        "duration": "May 2026",
+        "effort": "~1 day",
+        "description": "Upgraded Django from an EOL 5.1 to 5.2 LTS along with 8 dependent packages, closing 10 CVEs including 2 critical SQL injection vulnerabilities",
+        "status": "completed"
+      },
+      {
+        "phase": "Authorization Backend & Reliability Hardening",
+        "duration": "Jul 2026",
+        "effort": "~2 weeks",
+        "description": "Built the Authorization Matrix data models shared with the back-office platform, then diagnosed and fixed intermittent 500s on the hourly account-balance cron caused by a scaling/timeout mismatch",
+        "status": "completed"
+      }
+    ],
+    "challenges": [
+      {
+        "title": "Interest rates needed time-aware matching, not just current values",
+        "description": "Tiered investor interest rates had to be matched against the rate in effect at each contract's creation time, not simply the latest imported rate, or investors could be paid the wrong tier"
+      },
+      {
+        "title": "The framework was running end-of-life with known CVEs",
+        "description": "Django 5.1 reached EOL in Dec 2025 while still in production, carrying 10 known CVEs including 2 critical SQL injection issues"
+      },
+      {
+        "title": "A financial cron job intermittently failed",
+        "description": "The hourly account-balance reconciliation job would 500 when the scheduler triggered it while the App Engine instance was cold-starting under basic scaling"
+      }
+    ],
+    "solutions": [
+      {
+        "category": "Interest rates needed time-aware matching, not just current values",
+        "items": [
+          "Reworked the Excel import pipeline to window-match each contract's tier against the rate in effect at its creation time",
+          "Added a cron endpoint to deactivate expired rates and a companion fix to reactivate any still-valid rows caught by the sweep"
+        ]
+      },
+      {
+        "category": "The framework was running end-of-life with known CVEs",
+        "items": [
+          "Upgraded Django 5.1.5 → 5.2.14 LTS and 8 dependent packages in a single coordinated release, closing all 10 outstanding CVEs"
+        ]
+      },
+      {
+        "category": "A financial cron job intermittently failed",
+        "items": [
+          "Traced the failure to a mismatch between the scaling idle timeout and the Gunicorn process timeout, then capped and aligned both",
+          "Found and fixed a cron auth wrapper that was silently swallowing real exceptions as fake success/auth responses, masking the true error"
+        ]
+      }
+    ],
+    "achievements": [
+      { "icon": "💰", "label": "Financial Accuracy", "value": "Rebuilt investor interest-rate matching to be time-aware, preventing tier mismatches on rate changes" },
+      { "icon": "🔐", "label": "Security", "value": "Closed 10 CVEs (2 critical SQLi) via a coordinated Django LTS upgrade across 8 dependencies" },
+      { "icon": "⏱️", "label": "Reliability", "value": "Eliminated intermittent 500s on the hourly financial reconciliation cron" },
+      { "icon": "🗓️", "label": "Longevity", "value": "Core API platform actively built and operated since Aug 2024" }
+    ],
+    "techStack": {
+      "Backend": ["Django", "Django REST Framework", "Python", "Gunicorn"],
+      "Infrastructure": ["Google App Engine", "Cloud Scheduler", "GCP", "Docker"],
+      "Data": ["MySQL"]
+    },
+    "skills": ["API Design", "Production Debugging", "Dependency & CVE Management", "Reliability Engineering"]
+  },
+  {
+    "id": "security-remediation-2026",
+    "title": "Security Remediation & Penetration Testing Response",
+    "subtitle": "Closed 14 of 15 pentest findings (93%) in 4 weeks, independently",
+    "company": "A Bank of Thailand-regulated P2P lending platform",
+    "role": "Full Stack Developer & Security Remediation Lead",
+    "status": "Completed & BOT Compliant",
+    "startDate": "2026-04-09",
+    "endDate": "2026-06-18",
+    "image": "https://res.cloudinary.com/dizcg5fnc/image/upload/v1788357155/upload/ChatGPT_Image_Sep_2_2026_08_47_52_PM_hmurqp.png",
+    "tags": [
+      "Security",
+      "Penetration Testing",
+      "Django",
+      "GCP",
+      "Fintech",
+      "Compliance"
+    ],
+    "theme": "security"
+  },
+  {
+    "id": "pentest-vendor-selection-2026",
+    "title": "Penetration Testing Vendor Selection",
+    "subtitle": "Compared 3 vendor bids and selected the best value for a 26 man-day, OWASP Top 10-aligned penetration test",
+    "company": "A Bank of Thailand-regulated P2P lending platform",
+    "role": "Full Stack Developer & Security Vendor Evaluation Lead",
+    "status": "Completed — vendor onboarded",
+    "startDate": "2026-03",
+    "endDate": "2026-04",
+    "image": "https://res.cloudinary.com/dizcg5fnc/image/upload/v1788436709/10705723_44658_sjkdm9.jpg",
+    "tags": [
+      "Security",
+      "Vendor Management",
+      "Procurement",
+      "Fintech",
+      "Compliance"
+    ],
+    "theme": "security",
+    "timeline": [
+      {
+        "phase": "Vendor Outreach & Quotation",
+        "duration": "Mar 2026",
+        "effort": "~1 week",
+        "description": "Requested proposals from 3 penetration testing vendors: Vendor A, Vendor B, and Vendor C",
+        "status": "completed"
+      },
+      {
+        "phase": "Side-by-Side Evaluation",
+        "duration": "Mar 2026",
+        "effort": "~1 week",
+        "description": "Compared price, test scope (web/mobile function coverage), methodology, and payment terms across all 3 bids",
+        "status": "completed"
+      },
+      {
+        "phase": "Vendor Selected",
+        "duration": "Late Mar 2026",
+        "effort": "-",
+        "description": "Selected Vendor B for the best combination of test coverage (26 man-days, OWASP Top 10-aligned) and commercial terms",
+        "status": "completed"
+      },
+      {
+        "phase": "Engagement Kickoff",
+        "duration": "Apr 9, 2026",
+        "effort": "-",
+        "description": "Scope finalized and testing began — see the Security Remediation project for the resulting engagement",
+        "status": "completed"
+      }
+    ],
+    "challenges": [
+      {
+        "title": "Lowest Price Wasn't Best Value",
+        "description": "The cheapest bid (Vendor C, ฿417,300) offered the least test coverage of the three, at 16.5 man-days"
+      },
+      {
+        "title": "Vague Scope Language",
+        "description": "The most expensive bid (Vendor A, ฿631,300) quoted effort only as \"1 month\" instead of man-days, making it hard to compare against the others"
+      },
+      {
+        "title": "Cash Flow & Support Trade-offs",
+        "description": "Vendors differed sharply on payment terms (installments vs. credit) and on whether post-report support was included"
+      }
+    ],
+    "solutions": [
+      {
+        "category": "Lowest Price Wasn't Best Value",
+        "items": [
+          "Ranked bids by 3 weighted criteria in order: price, test coverage, then additional care",
+          "Normalized each quote to a cost-per-man-day figure instead of comparing sticker price alone"
+        ]
+      },
+      {
+        "category": "Vague Scope Language",
+        "items": [
+          "Required every vendor to state effort in explicit man-days for an apples-to-apples comparison",
+          "Verified each vendor's scope mapped to OWASP Top 10 categories before shortlisting"
+        ]
+      },
+      {
+        "category": "Cash Flow & Support Trade-offs",
+        "items": [
+          "Selected Vendor B's 45-day credit term, payable only after final delivery, to protect cash flow",
+          "Weighted Vendor B's ongoing consulting over a one-off report readout, plus a 10% returning-customer discount"
+        ]
+      }
+    ],
+    "comparisonTable": {
+      "columns": ["Vendor A", "Vendor C", "Vendor B"],
+      "winnerColumnIndex": 2,
+      "rows": [
+        { "criterion": "Price (incl. VAT)", "values": ["฿631,300", "฿417,300", "฿425,646"] },
+        { "criterion": "Scope of Work", "values": ["Web (43 func), Mobile (46 func)", "Web (43 func), Mobile (46 API)", "Web (43 API), Mobile (46 API)"] },
+        { "criterion": "Test Methodology", "values": ["Gray-Box", "Gray-Box", "Gray-Box (OWASP Top 10-aligned)"] },
+        { "criterion": "Duration / Man-days", "values": ["1 month", "16.5 days", "26 days"] },
+        { "criterion": "Retest (Revisit)", "values": ["✅ (1x)", "✅ (1x)", "✅ (1x)"] },
+        { "criterion": "Reporting & Consultation", "values": ["1 report presentation", "2 report presentations", "Ongoing presentation & consultation"] },
+        { "criterion": "Payment Terms", "values": ["Credit 30 days (after delivery)", "3 installments (20%/70%/10%)", "Credit 45 days (after final delivery)"] },
+        { "criterion": "Key Advantage", "values": ["—", "Installment payment available", "10% returning-customer discount, highest man-days"] }
+      ]
+    },
+    "achievements": [
+      { "icon": "💰", "label": "Value", "value": "Selected a ฿425,646 bid — 33% below the highest quote (฿631,300) — without sacrificing coverage" },
+      { "icon": "🧪", "label": "Coverage", "value": "Secured the most testing effort of the 3 bids: 26 man-days vs. 16.5 (Vendor C) and an unspecified \"1 month\" (Vendor A)" },
+      { "icon": "💳", "label": "Terms", "value": "Negotiated 45-day credit (payable after final delivery) plus a 10% returning-customer discount" },
+      { "icon": "🤝", "label": "Outcome", "value": "Vendor onboarded and testing kicked off on schedule, feeding directly into the Security Remediation project" }
+    ],
+    "techStack": {
+      "Process": ["Vendor RFP & Quotation Review", "Comparative Cost/Coverage Analysis", "OWASP Top 10"]
+    },
+    "skills": ["Vendor Management", "Procurement Negotiation", "Security Program Management"]
+  },
+  {
+    "id": "bcp-testing-2025-2026",
+    "title": "Business Continuity Plan Testing Program",
+    "subtitle": "2 consecutive annual BCP drills passed, submitted to BOT both years",
+    "company": "A Bank of Thailand-regulated P2P lending platform",
+    "role": "Infrastructure & BCP Test Coordinator",
+    "status": "Compliant — annual cadence",
+    "startDate": "2025-07",
+    "endDate": "2026-07",
+    "image": "https://res.cloudinary.com/dizcg5fnc/image/upload/v1788356162/upload/business-continuity-plan-puzzle-diagram-illustration_1_g0mntu.jpg",
+    "tags": [
+      "Business Continuity",
+      "Disaster Recovery",
+      "GCP",
+      "Fintech",
+      "Compliance"
+    ],
+    "theme": "resilience",
+    "timeline": [
+      {
+        "phase": "2025 BCP Test",
+        "duration": "Jul 2025",
+        "effort": "1 day",
+        "description": "IT infrastructure recovery drill (database, API, and CRM failover)",
+        "status": "completed"
+      },
+      {
+        "phase": "2026 BCP Test",
+        "duration": "Jul 2026",
+        "effort": "1 day",
+        "description": "Expanded to 2 dimensions: IT infrastructure recovery plus workplace/personnel continuity (remote-ops and crisis call-tree drill)",
+        "status": "completed"
+      }
+    ],
+    "achievements": [
+      { "icon": "✅", "label": "Result", "value": "100% pass rate across both annual test cycles" },
+      { "icon": "⏱️", "label": "Recovery", "value": "Core services restored within 3–30 minutes depending on scenario" },
+      { "icon": "📋", "label": "Compliance", "value": "BCP test report submitted to and accepted by the Bank of Thailand, 2 years running" },
+      { "icon": "📞", "label": "People", "value": "Verified crisis communication (call-tree) and remote-ops continuity across leadership, IT, and operations teams" }
+    ],
+    "techStack": {
+      "Infrastructure": ["GCP Cloud SQL", "Cloud Run", "App Engine"],
+      "Process": ["Backup & restore drills", "Failover testing", "Crisis communication planning"]
+    },
+    "skills": ["Disaster Recovery Planning", "Business Continuity Testing", "Cross-team Incident Coordination"]
+  }
+]
