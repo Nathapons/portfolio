@@ -6,12 +6,14 @@ import Certificate from './pages/Certificate';
 import ProjectPrototype from './pages/ProjectPrototype';
 import ProjectList from './pages/ProjectList';
 import ProjectDetail from './pages/ProjectDetail';
+import Skills from './pages/Skills';
 
 const App: React.FC = () => {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
+        <Route path="/skills" element={<Skills />} />
         <Route path="/certificate" element={<Certificate />} />
         <Route path="/project" element={<ProjectList />} />
         <Route path="/project/:id" element={<ProjectDetail />} />

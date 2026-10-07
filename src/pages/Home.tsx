@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Greeting from "../components/Greeting";
+import About from "../components/About";
 import SkillsPanel from "../components/SkillsPanel";
 import WorkExperience from "../components/WorkExperience";
 
@@ -23,6 +24,9 @@ const Home: React.FC = () => {
     <main>
       <div id="greeting">
         <Greeting isComp={isComp} />
+      </div>
+      <div id="about">
+        <About isComp={isComp} />
       </div>
       <div id="work_experience" className="bg-zinc-800">
         <WorkExperience isComp={isComp} />
