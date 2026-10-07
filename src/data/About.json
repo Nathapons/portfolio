@@ -1,0 +1,18 @@
+{
+    "headline": "Backend/DevOps engineer who ships regulated fintech systems",
+    "summary": "I am a Bangkok-based engineer with 4+ years of experience building backend systems in Python/Django and running them on Google Cloud. For the last two years I have worked on a Bank of Thailand-regulated P2P lending platform, where correctness, auditability and uptime are not optional. I like turning messy manual processes into reliable, automated ones.",
+    "strengths": [
+        "Designing secure, auditable Django APIs and back-office tools for regulated products",
+        "Running production infrastructure on GCP (App Engine, Cloud Run, Cloud SQL, Secret Manager) with Docker",
+        "Performance profiling and fixing slow endpoints, plus automated CSV/PDF/Word reporting",
+        "Business continuity and security work: BCP testing, penetration-test remediation and vendor selection"
+    ],
+    "lookingFor": {
+        "roles": [
+            "Cloud / DevOps Engineer",
+            "Backend Engineer (Python)"
+        ],
+        "location": "Bangkok or remote-friendly",
+        "availability": "Available with 30 days notice"
+    }
+}

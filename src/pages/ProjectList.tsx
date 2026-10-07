@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 
 import { ProjectItem } from "@/interfaces/globalInterfaces";
 import ProjectIllustration from "@/components/ProjectIllustration";
+import ProjectLinks from "@/components/ProjectLinks";
 import ProjectData from "../data/ProjectData.json";
 
 const { Title, Text, Paragraph } = Typography;
@@ -119,6 +120,7 @@ const ProjectList: React.FC = () => {
                       <Tag>+{project.tags.length - MAX_VISIBLE_TAGS}</Tag>
                     )}
                   </div>
+                  {project.links && <div className="mb-3"><ProjectLinks links={project.links} /></div>}
                   <motion.span whileTap={{ scale: 0.9 }} style={{ display: "inline-block" }}>
                     <Text className="!text-[#ffcc00] group-hover:underline">Read the case study →</Text>
                   </motion.span>
