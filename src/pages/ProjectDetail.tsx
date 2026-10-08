@@ -7,6 +7,7 @@ import { ArrowLeftOutlined } from "@ant-design/icons";
 import { ProjectItem } from "@/interfaces/globalInterfaces";
 import ProjectData from "../data/ProjectData.json";
 import SecurityRemediationDetail from "../components/SecurityRemediationDetail";
+import ProjectLinks from "../components/ProjectLinks";
 import VendorComparisonTable from "../components/VendorComparisonTable";
 
 const { Title, Text, Paragraph } = Typography;
@@ -94,6 +95,7 @@ const ProjectDetail: React.FC = () => {
             <div className="flex gap-2 flex-wrap mb-6">
               {project.tags.map((tag) => <Tag key={tag}>{tag}</Tag>)}
             </div>
+            {project.links && <div className="mb-6"><ProjectLinks links={project.links} /></div>}
           </motion.div>
 
           {project.metrics && (
@@ -167,7 +169,7 @@ const ProjectDetail: React.FC = () => {
 
           {project.achievements && (
             <motion.div variants={itemVariants} className="mb-8">
-              <Title level={4}>Achievements</Title>
+              <Title level={4}>Results</Title>
               <ul className="flex flex-col gap-2">
                 {project.achievements.map((achievement) => (
                   <li key={achievement.label}>

@@ -36,14 +36,14 @@
       "achievements": [
         "Architected a scalable Django backend using ModelViewSet, Serializer, and Middleware, reducing codebase complexity and improving maintainability",
         "Optimized API performance using Django Silk profiling and led code reviews on GitHub for junior developers, establishing team coding standards",
-        " Developed automated CSV and PDF report generation pipelines using Django Import Export and Jasper Studio"
+        "Developed automated CSV and PDF report generation pipelines using Django Import Export and Jasper Studio"
       ],
-      "technologies": ["Django", "Docker", "PostgresSQL", "Jasper Reports", "Github"]
+      "technologies": ["Django", "Docker", "PostgreSQL", "Jasper Reports", "Github"]
     },
     {
       "id": 4,
       "position": "Backend Developer (Python)",
-      "company": "Mor Coporation",
+      "company": "Mor Corporation",
       "location": "Bangkok, Thailand",
       "duration": "October, 2021 – August, 2022",
       "project": "Chakri Naruebodindra Medical Institute",
@@ -51,19 +51,19 @@
         "Improved Django API and Admin performance for Chakri Naruebodindra Medical Institute hospital management system using Django Silk profiling",
         "Developed healthcare features including Appointment Document generation, Covid-19 Document management, and Health Check-up modules"
       ],
-      "technologies": ["Django", "Docker", "PostgresSQL", "Jasper Reports", "Gitlab"]
+      "technologies": ["Django", "Docker", "PostgreSQL", "Jasper Reports", "Gitlab"]
     },
     {
       "id": 5,
       "position": "Internet of Things Engineer",
       "company": "Fujikura Electronics (Thailand) Ltd.,",
-      "location": "Ayuttaya, Thailand",
+      "location": "Ayutthaya, Thailand",
       "duration": "June, 2018 – November, 2021",
       "project": "-",
       "achievements": [
         "Design PL/SQL Database to match excel file",
         "Python setting for query and upload database"
       ],
-      "technologies": ["Django", "Docker", "PostgresSQL", "Jasper Reports", "Gitlab"]
+      "technologies": ["Django", "Docker", "PostgreSQL", "Jasper Reports", "Gitlab"]
     }
 ]

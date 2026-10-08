@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { ConfigProvider, Row, Typography } from 'antd';
 import { Link } from 'react-router-dom';
 import MenuButton from './MenuButton';
-import { HomeOutlined, ProfileOutlined, ProjectOutlined } from "@ant-design/icons";
+import { HomeOutlined, ProfileOutlined, ProjectOutlined, ToolOutlined } from "@ant-design/icons";
 import { MenuItemProps } from '../interfaces/globalInterfaces';
 import MenuBar from './MenuBar';
 
@@ -15,6 +15,7 @@ const Navbar: React.FC = () => {
     const menuItems: MenuItemProps[] = [
         { name: 'Home', path: '', icon: <HomeOutlined className="mr-2" /> },
         { name: 'Projects', path: '/project', icon: <ProjectOutlined className="mr-2" /> },
+        { name: 'Skills', path: '/skills', icon: <ToolOutlined className="mr-2" /> },
         { name: 'Certificates', path: '/certificate', icon: <ProfileOutlined className="mr-2" /> },
     ];
 

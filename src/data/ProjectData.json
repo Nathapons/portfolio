@@ -86,18 +86,50 @@
       }
     ],
     "achievements": [
-      { "icon": "🔒", "label": "Access Control", "value": "Replaced ad-hoc permission checks with a single data-driven Role Permission Matrix enforced server-side, closing a dual-approval race condition in the process" },
-      { "icon": "📋", "label": "Auditability", "value": "Every login, permission change, and back-office action now writes an immutable, searchable audit trail entry" },
-      { "icon": "📊", "label": "Compliance Reporting", "value": "Shipped a self-serve eKYC/biometrics accuracy reporting system, replacing manual figure compilation" },
-      { "icon": "🗓️", "label": "Longevity", "value": "Core back-office platform actively built and maintained since Aug 2024" }
+      {
+        "icon": "🔒",
+        "label": "Access Control",
+        "value": "Replaced ad-hoc permission checks with a single data-driven Role Permission Matrix enforced server-side, closing a dual-approval race condition in the process"
+      },
+      {
+        "icon": "📋",
+        "label": "Auditability",
+        "value": "Every login, permission change, and back-office action now writes an immutable, searchable audit trail entry"
+      },
+      {
+        "icon": "📊",
+        "label": "Compliance Reporting",
+        "value": "Shipped a self-serve eKYC/biometrics accuracy reporting system, replacing manual figure compilation"
+      },
+      {
+        "icon": "🗓️",
+        "label": "Longevity",
+        "value": "Core back-office platform actively built and maintained since Aug 2024"
+      }
     ],
     "techStack": {
-      "Backend": ["Django", "Python"],
-      "Data": ["MySQL", "Django ORM migrations"],
-      "Frontend": ["Django Templates", "Tailwind CSS"],
-      "Testing": ["Django test framework"]
+      "Backend": [
+        "Django",
+        "Python"
+      ],
+      "Data": [
+        "MySQL",
+        "Django ORM migrations"
+      ],
+      "Frontend": [
+        "Django Templates",
+        "Tailwind CSS"
+      ],
+      "Testing": [
+        "Django test framework"
+      ]
     },
-    "skills": ["Access Control Design", "Audit Logging", "Compliance Reporting", "Secure Code Review"]
+    "skills": [
+      "Access Control Design",
+      "Audit Logging",
+      "Compliance Reporting",
+      "Secure Code Review"
+    ]
   },
   {
     "id": "p2p-core-api-platform",
@@ -185,17 +217,50 @@
       }
     ],
     "achievements": [
-      { "icon": "💰", "label": "Financial Accuracy", "value": "Rebuilt investor interest-rate matching to be time-aware, preventing tier mismatches on rate changes" },
-      { "icon": "🔐", "label": "Security", "value": "Closed 10 CVEs (2 critical SQLi) via a coordinated Django LTS upgrade across 8 dependencies" },
-      { "icon": "⏱️", "label": "Reliability", "value": "Eliminated intermittent 500s on the hourly financial reconciliation cron" },
-      { "icon": "🗓️", "label": "Longevity", "value": "Core API platform actively built and operated since Aug 2024" }
+      {
+        "icon": "💰",
+        "label": "Financial Accuracy",
+        "value": "Rebuilt investor interest-rate matching to be time-aware, preventing tier mismatches on rate changes"
+      },
+      {
+        "icon": "🔐",
+        "label": "Security",
+        "value": "Closed 10 CVEs (2 critical SQLi) via a coordinated Django LTS upgrade across 8 dependencies"
+      },
+      {
+        "icon": "⏱️",
+        "label": "Reliability",
+        "value": "Eliminated intermittent 500s on the hourly financial reconciliation cron"
+      },
+      {
+        "icon": "🗓️",
+        "label": "Longevity",
+        "value": "Core API platform actively built and operated since Aug 2024"
+      }
     ],
     "techStack": {
-      "Backend": ["Django", "Django REST Framework", "Python", "Gunicorn"],
-      "Infrastructure": ["Google App Engine", "Cloud Scheduler", "GCP", "Docker"],
-      "Data": ["MySQL"]
+      "Backend": [
+        "Django",
+        "Django REST Framework",
+        "Python",
+        "Gunicorn"
+      ],
+      "Infrastructure": [
+        "Google App Engine",
+        "Cloud Scheduler",
+        "GCP",
+        "Docker"
+      ],
+      "Data": [
+        "MySQL"
+      ]
     },
-    "skills": ["API Design", "Production Debugging", "Dependency & CVE Management", "Reliability Engineering"]
+    "skills": [
+      "API Design",
+      "Production Debugging",
+      "Dependency & CVE Management",
+      "Reliability Engineering"
+    ]
   },
   {
     "id": "security-remediation-2026",
@@ -303,29 +368,113 @@
       }
     ],
     "comparisonTable": {
-      "columns": ["Vendor A", "Vendor C", "Vendor B"],
+      "columns": [
+        "Vendor A",
+        "Vendor C",
+        "Vendor B"
+      ],
       "winnerColumnIndex": 2,
       "rows": [
-        { "criterion": "Price (incl. VAT)", "values": ["฿631,300", "฿417,300", "฿425,646"] },
-        { "criterion": "Scope of Work", "values": ["Web (43 func), Mobile (46 func)", "Web (43 func), Mobile (46 API)", "Web (43 API), Mobile (46 API)"] },
-        { "criterion": "Test Methodology", "values": ["Gray-Box", "Gray-Box", "Gray-Box (OWASP Top 10-aligned)"] },
-        { "criterion": "Duration / Man-days", "values": ["1 month", "16.5 days", "26 days"] },
-        { "criterion": "Retest (Revisit)", "values": ["✅ (1x)", "✅ (1x)", "✅ (1x)"] },
-        { "criterion": "Reporting & Consultation", "values": ["1 report presentation", "2 report presentations", "Ongoing presentation & consultation"] },
-        { "criterion": "Payment Terms", "values": ["Credit 30 days (after delivery)", "3 installments (20%/70%/10%)", "Credit 45 days (after final delivery)"] },
-        { "criterion": "Key Advantage", "values": ["—", "Installment payment available", "10% returning-customer discount, highest man-days"] }
+        {
+          "criterion": "Price (incl. VAT)",
+          "values": [
+            "฿631,300",
+            "฿417,300",
+            "฿425,646"
+          ]
+        },
+        {
+          "criterion": "Scope of Work",
+          "values": [
+            "Web (43 func), Mobile (46 func)",
+            "Web (43 func), Mobile (46 API)",
+            "Web (43 API), Mobile (46 API)"
+          ]
+        },
+        {
+          "criterion": "Test Methodology",
+          "values": [
+            "Gray-Box",
+            "Gray-Box",
+            "Gray-Box (OWASP Top 10-aligned)"
+          ]
+        },
+        {
+          "criterion": "Duration / Man-days",
+          "values": [
+            "1 month",
+            "16.5 days",
+            "26 days"
+          ]
+        },
+        {
+          "criterion": "Retest (Revisit)",
+          "values": [
+            "✅ (1x)",
+            "✅ (1x)",
+            "✅ (1x)"
+          ]
+        },
+        {
+          "criterion": "Reporting & Consultation",
+          "values": [
+            "1 report presentation",
+            "2 report presentations",
+            "Ongoing presentation & consultation"
+          ]
+        },
+        {
+          "criterion": "Payment Terms",
+          "values": [
+            "Credit 30 days (after delivery)",
+            "3 installments (20%/70%/10%)",
+            "Credit 45 days (after final delivery)"
+          ]
+        },
+        {
+          "criterion": "Key Advantage",
+          "values": [
+            "—",
+            "Installment payment available",
+            "10% returning-customer discount, highest man-days"
+          ]
+        }
       ]
     },
     "achievements": [
-      { "icon": "💰", "label": "Value", "value": "Selected a ฿425,646 bid — 33% below the highest quote (฿631,300) — without sacrificing coverage" },
-      { "icon": "🧪", "label": "Coverage", "value": "Secured the most testing effort of the 3 bids: 26 man-days vs. 16.5 (Vendor C) and an unspecified \"1 month\" (Vendor A)" },
-      { "icon": "💳", "label": "Terms", "value": "Negotiated 45-day credit (payable after final delivery) plus a 10% returning-customer discount" },
-      { "icon": "🤝", "label": "Outcome", "value": "Vendor onboarded and testing kicked off on schedule, feeding directly into the Security Remediation project" }
+      {
+        "icon": "💰",
+        "label": "Value",
+        "value": "Selected a ฿425,646 bid — 33% below the highest quote (฿631,300) — without sacrificing coverage"
+      },
+      {
+        "icon": "🧪",
+        "label": "Coverage",
+        "value": "Secured the most testing effort of the 3 bids: 26 man-days vs. 16.5 (Vendor C) and an unspecified \"1 month\" (Vendor A)"
+      },
+      {
+        "icon": "💳",
+        "label": "Terms",
+        "value": "Negotiated 45-day credit (payable after final delivery) plus a 10% returning-customer discount"
+      },
+      {
+        "icon": "🤝",
+        "label": "Outcome",
+        "value": "Vendor onboarded and testing kicked off on schedule, feeding directly into the Security Remediation project"
+      }
     ],
     "techStack": {
-      "Process": ["Vendor RFP & Quotation Review", "Comparative Cost/Coverage Analysis", "OWASP Top 10"]
+      "Process": [
+        "Vendor RFP & Quotation Review",
+        "Comparative Cost/Coverage Analysis",
+        "OWASP Top 10"
+      ]
     },
-    "skills": ["Vendor Management", "Procurement Negotiation", "Security Program Management"]
+    "skills": [
+      "Vendor Management",
+      "Procurement Negotiation",
+      "Security Program Management"
+    ]
   },
   {
     "id": "bcp-testing-2025-2026",
@@ -362,15 +511,43 @@
       }
     ],
     "achievements": [
-      { "icon": "✅", "label": "Result", "value": "100% pass rate across both annual test cycles" },
-      { "icon": "⏱️", "label": "Recovery", "value": "Core services restored within 3–30 minutes depending on scenario" },
-      { "icon": "📋", "label": "Compliance", "value": "BCP test report submitted to and accepted by the Bank of Thailand, 2 years running" },
-      { "icon": "📞", "label": "People", "value": "Verified crisis communication (call-tree) and remote-ops continuity across leadership, IT, and operations teams" }
+      {
+        "icon": "✅",
+        "label": "Result",
+        "value": "100% pass rate across both annual test cycles"
+      },
+      {
+        "icon": "⏱️",
+        "label": "Recovery",
+        "value": "Core services restored within 3–30 minutes depending on scenario"
+      },
+      {
+        "icon": "📋",
+        "label": "Compliance",
+        "value": "BCP test report submitted to and accepted by the Bank of Thailand, 2 years running"
+      },
+      {
+        "icon": "📞",
+        "label": "People",
+        "value": "Verified crisis communication (call-tree) and remote-ops continuity across leadership, IT, and operations teams"
+      }
     ],
     "techStack": {
-      "Infrastructure": ["GCP Cloud SQL", "Cloud Run", "App Engine"],
-      "Process": ["Backup & restore drills", "Failover testing", "Crisis communication planning"]
+      "Infrastructure": [
+        "GCP Cloud SQL",
+        "Cloud Run",
+        "App Engine"
+      ],
+      "Process": [
+        "Backup & restore drills",
+        "Failover testing",
+        "Crisis communication planning"
+      ]
     },
-    "skills": ["Disaster Recovery Planning", "Business Continuity Testing", "Cross-team Incident Coordination"]
+    "skills": [
+      "Disaster Recovery Planning",
+      "Business Continuity Testing",
+      "Cross-team Incident Coordination"
+    ]
   }
 ]

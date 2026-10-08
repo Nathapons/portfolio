@@ -1,9 +1,10 @@
 import React from "react";
 import { Button, Col, ConfigProvider, Image, Row, Space } from "antd";
-import { GithubOutlined, LinkedinOutlined, EnvironmentOutlined, ManOutlined } from "@ant-design/icons"
+import { GithubOutlined, LinkedinOutlined, EnvironmentOutlined, ManOutlined, MailOutlined, DownloadOutlined } from "@ant-design/icons"
 import styled from "styled-components";
 import { Typography } from 'antd';
-import { Props } from '../interfaces/globalInterfaces';
+import { Props, ContactInfo } from '../interfaces/globalInterfaces';
+import contactData from '@/data/Contact.json';
 import { motion } from "framer-motion"
 
 const CustomRow = styled(Row)`
@@ -33,6 +34,7 @@ const CustomImgCol = styled(Col)`
 `;
 
 const { Title, Paragraph } = Typography;
+const contact: ContactInfo = contactData;
 
 const Greeting: React.FC<Props> = ({ isComp }) => {
     const img: string = "https://res.cloudinary.com/dizcg5fnc/image/upload/v1751286613/upload/pxjotniorcjdiip9fs79.jpg";
@@ -61,22 +63,22 @@ const Greeting: React.FC<Props> = ({ isComp }) => {
                 <CustomImgCol xl={12} xxl={12} lg={12} md={24} sm={24} xs={24}>
                     <motion.div initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
                         <Col span={24}>
-                            <Title level={3}>
+                            <Title level={3} className="!mb-3">
                                 I'm <span className="text-amber-400">Nuthapon Sripornprasert</span>
                             </Title>
                             <Title level={4} className="mb-10"><span className="text-amber-400">Backend/DevOps Engineer</span></Title>
-                            <Paragraph className="mt-2 !mb-0">
+                            <Paragraph className="mt-2 !mb-2">
                                 <EnvironmentOutlined className="mr-2" />Bangkok, Thailand
                             </Paragraph>
-                            <Paragraph className="mb-2 !mt-0">
+                            <Paragraph className="!mb-6 !mt-0">
                                 <ManOutlined className="mr-2" />Gender: Male
                             </Paragraph>
-                            <Paragraph>
+                            <Paragraph className="!mb-8">
                                 Backend/DevOps Engineer with 4+ years of experience building scalable fintech systems on Python/Django and GCP infrastructure.
                                 Currently expanding into AWS cloud architecture. Seeking a Cloud/DevOps Engineer role to apply infrastructure automation and
                                 regulatory-compliant system design skills.
                             </Paragraph>
-                            <Space size="large">
+                            <Space size="large" wrap>
                                 <Button
                                     color="orange"
                                     size="large"
@@ -96,6 +98,25 @@ const Greeting: React.FC<Props> = ({ isComp }) => {
                                     target="_blank"
                                 >
                                     LinkedIn
+                                </Button>
+                                <Button
+                                    color="green"
+                                    size="large"
+                                    variant="outlined"
+                                    icon={<MailOutlined />}
+                                    href={`mailto:${contact.email}`}
+                                >
+                                    Email
+                                </Button>
+                                <Button
+                                    color="purple"
+                                    size="large"
+                                    variant="solid"
+                                    icon={<DownloadOutlined />}
+                                    href={`${import.meta.env.BASE_URL}${contact.cvPath}`}
+                                    download
+                                >
+                                    Download CV
                                 </Button>
                             </Space>
                         </Col>

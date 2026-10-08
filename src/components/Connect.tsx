@@ -1,9 +1,11 @@
 import React from "react";
-import { Props } from '../interfaces/globalInterfaces';
-import { LinkedinOutlined, GithubOutlined, FacebookOutlined, InstagramOutlined } from '@ant-design/icons';
+import { Props, ContactInfo } from '../interfaces/globalInterfaces';
+import contactData from '@/data/Contact.json';
+import { LinkedinOutlined, GithubOutlined, FacebookOutlined, InstagramOutlined, MailOutlined } from '@ant-design/icons';
 import { Col, Row, Typography, ConfigProvider } from 'antd';
 
 const { Title } = Typography;
+const contact: ContactInfo = contactData;
 
 const Connect: React.FC<Props> = ({ isComp }) => {
     const linkedinUrl: string = 'https://www.linkedin.com/in/nuthapon-sripornprasert-a41138213/';
@@ -40,6 +42,11 @@ const Connect: React.FC<Props> = ({ isComp }) => {
                     <Col xs={4} sm={4} md={4} lg={4} xl={4} xxl={4} flex="none">
                         <a href={linkedinUrl} target='_blank' rel="noopener noreferrer">
                             <LinkedinOutlined className="linkedin-icon" style={{color: "#1677ff", fontSize: (isComp) ? '50px' : '30px'}}/>
+                        </a>
+                    </Col>
+                    <Col xs={4} sm={4} md={4} lg={4} xl={4} xxl={4} flex="none">
+                        <a href={`mailto:${contact.email}`}>
+                            <MailOutlined style={{color: "#52c41a", fontSize: (isComp) ? '50px' : '30px'}}/>
                         </a>
                     </Col>
                     <Col xs={4} sm={4} md={4} lg={4} xl={4} xxl={4} flex="none">

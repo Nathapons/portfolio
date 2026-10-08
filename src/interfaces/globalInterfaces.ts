@@ -94,6 +94,14 @@ export interface ComparisonTable {
 
 export type ProjectTheme = "security" | "resilience";
 
+export type ProjectLinkKind = "github" | "demo";
+
+export interface ProjectLink {
+    kind: ProjectLinkKind;
+    label: string;
+    url: string;
+}
+
 export interface ProjectItem {
     id: string;
     title: string;
@@ -106,6 +114,7 @@ export interface ProjectItem {
     tags: string[];
     theme: ProjectTheme;
     image?: string;
+    links?: ProjectLink[];
     metrics?: { before: MetricSnapshot; after: MetricSnapshot };
     timeline?: TimelinePhase[];
     challenges?: Challenge[];
@@ -114,4 +123,33 @@ export interface ProjectItem {
     achievements?: Achievement[];
     techStack?: Record<string, string[]>;
     skills?: string[];
+}
+
+export type SkillLevel = "Expert" | "Advanced" | "Intermediate" | "Beginner";
+
+export interface SkillItem {
+    name: string;
+    level: SkillLevel;
+    note: string;
+}
+
+export interface SkillCategory {
+    category: string;
+    skills: SkillItem[];
+}
+
+export interface AboutContent {
+    headline: string;
+    summary: string;
+    strengths: string[];
+    lookingFor: {
+        roles: string[];
+        location: string;
+        availability: string;
+    };
+}
+
+export interface ContactInfo {
+    email: string;
+    cvPath: string;
 }
