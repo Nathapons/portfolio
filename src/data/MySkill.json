@@ -34,11 +34,11 @@
     
     {
         "src": "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/git-colored.svg",
-        "alt": "GitBash"
+        "alt": "Git Bash"
     },
     {
         "src": "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/postgresql-colored.svg",
-        "alt": "PostgresSQL"
+        "alt": "PostgreSQL"
     },
     {
         "src": "https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/mysql-colored.svg",
