@@ -48,6 +48,6 @@ Single-context layout: `CONTEXT.md` + `docs/adr/` at the repo root. See `docs/ag
 
 ### Claude Rules - Portfolio
 
-- [Clean Code Rules](/.claude/rules/clean-code.md).
-- [Conversation Rules](/.claude/rules/conversation.md).
+- [Clean Code Rules](rules/clean-code.md).
+- [Conversation Rules](rules/conversation.md).
 
